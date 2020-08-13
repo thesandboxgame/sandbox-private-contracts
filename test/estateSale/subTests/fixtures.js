@@ -9,7 +9,7 @@ const maxCommissionRate = "2000";
 const signer = "0x26BC52894A05EDE59B34EE7B014b57ef0a8558B3";
 const contractName = "EstateSaleWithFee";
 
-module.exports.setupEstateSale = async (landSaleName, landType) => {
+module.exports.setupEstateSale = async (landSaleName, landType, exactDeployment) => {
   const {
     userWithSAND,
     secondUserWithSAND,
@@ -76,6 +76,9 @@ module.exports.setupEstateSale = async (landSaleName, landType) => {
       lands = deployment.linkedData;
       const landHashArray = createDataArray(lands);
       tree = new MerkleTree(landHashArray);
+      if (exactDeployment) {
+        contracts.estateSale = await ethers.getContract(landSaleName, roles.landSaleAdmin);
+      }
     } else if (landType === "testLands") {
       testLands.forEach((testLand) => {
         testLand.assetIds = [];
@@ -89,24 +92,26 @@ module.exports.setupEstateSale = async (landSaleName, landType) => {
       tree = new MerkleTree(testLandHashArray);
     }
 
-    const ethersFactory = await ethers.getContractFactory(contractName);
+    if (!exactDeployment || landType === "testLands") {
+      const ethersFactory = await ethers.getContractFactory(contractName);
 
-    const estateSaleContract = await ethersFactory.deploy(
-      contracts.land.address,
-      contracts.sand.address,
-      contracts.sand.address,
-      roles.landSaleAdmin,
-      roles.landSaleBeneficiary,
-      tree.getRoot().hash,
-      saleEnd,
-      signer,
-      maxCommissionRate,
-      contracts.estate.address,
-      contracts.asset.address,
-      roles.others[5] // TODO FeeDistributor for 5% fee
-    );
+      const estateSaleContract = await ethersFactory.deploy(
+        contracts.land.address,
+        contracts.sand.address,
+        contracts.sand.address,
+        roles.landSaleAdmin,
+        roles.landSaleBeneficiary,
+        tree.getRoot().hash,
+        saleEnd,
+        signer,
+        maxCommissionRate,
+        contracts.estate.address,
+        contracts.asset.address,
+        roles.others[5] // TODO FeeDistributor for 5% fee
+      );
 
-    contracts.estateSale = estateSaleContract.connect(estateSaleContract.provider.getSigner(roles.landSaleAdmin));
+      contracts.estateSale = estateSaleContract.connect(estateSaleContract.provider.getSigner(roles.landSaleAdmin));
+    }
 
     if (landType === "testLands") {
       await assetAsCreator.safeBatchTransferFrom(creator, contracts.estateSale.address, assetIds, assetAmounts, "0x");

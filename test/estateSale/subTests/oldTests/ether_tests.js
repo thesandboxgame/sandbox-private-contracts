@@ -6,16 +6,17 @@ const {setupEstateSale} = require("../fixtures");
 const {calculateLandHash} = require("../../../../lib/merkleTreeHelper");
 const {createReferral} = require("../../../../lib/referralValidator");
 
-function runEtherTests(landSaleName) {
+function runEtherTests(landSaleName, options) {
+  const testLands = options ? options.testLands : true;
   describe(landSaleName + ":ETH", function () {
     let initialSetUp;
     const emptyReferral = "0x";
-    const privateKey = "0x96aa38e97d1d0d19e0f1d5215ff9dad66dc5d99225b1657205d124d00d2de177";
+    const privateKey = "0x4242424242424242424242424242424242424242424242424242424242424242";
     const referralLinkValidity = 60 * 60 * 24 * 30;
 
     describe("--> Tests with real LANDs", function () {
       beforeEach(async function () {
-        initialSetUp = await setupEstateSale(landSaleName, "lands");
+        initialSetUp = await setupEstateSale(landSaleName, "lands", !testLands);
       });
 
       it("ETH is enabled", async function () {
@@ -282,13 +283,31 @@ function runEtherTests(landSaleName) {
         assert.equal(estateOwner, users[0].address);
       });
 
-      it("CANNOT buy LAND without enough ETH (empty referral)", async function () {
+      it("CANNOT buy LAND without enough ETH (empty referral) unless price is zero", async function () {
         const {tree, users, lands} = initialSetUp;
         const land = lands.find((l) => l.size === 6);
         const proof = tree.getProof(calculateLandHash(land));
 
-        await expectRevert(
-          users[0].EstateSale.functions.buyLandWithETH(
+        if (land.price != 0) {
+          await expectRevert(
+            users[0].EstateSale.functions.buyLandWithETH(
+              users[0].address,
+              users[0].address,
+              zeroAddress,
+              land.x,
+              land.y,
+              land.size,
+              land.price,
+              land.salt,
+              [],
+              proof,
+              emptyReferral,
+              {value: 0}
+            ),
+            "not enough ether sent"
+          );
+        } else {
+          await users[0].EstateSale.functions.buyLandWithETH(
             users[0].address,
             users[0].address,
             zeroAddress,
@@ -301,9 +320,8 @@ function runEtherTests(landSaleName) {
             proof,
             emptyReferral,
             {value: 0}
-          ),
-          "not enough ether sent"
-        );
+          );
+        }
       });
 
       it("CANNOT buy Land from a non reserved Land with reserved param (empty referral)", async function () {
@@ -510,22 +528,46 @@ function runEtherTests(landSaleName) {
       });
     });
 
-    describe("--> Tests with test LANDs for reserved addresses", function () {
-      beforeEach(async function () {
-        initialSetUp = await setupEstateSale(landSaleName, "testLands");
-      });
+    if (testLands) {
+      describe("--> Tests with test LANDs for reserved addresses", function () {
+        beforeEach(async function () {
+          initialSetUp = await setupEstateSale(landSaleName, "testLands");
+        });
 
-      it("CANNOT buy Land from a reserved Land of a different address (empty referral)", async function () {
-        const {lands, users, tree, contracts} = initialSetUp;
-        const land = lands[0];
-        const proof = tree.getProof(calculateLandHash(land));
-        const value = await contracts.estateSale.getEtherAmountWithSAND(land.price);
+        it("CANNOT buy Land from a reserved Land of a different address (empty referral)", async function () {
+          const {lands, users, tree, contracts} = initialSetUp;
+          const land = lands[0];
+          const proof = tree.getProof(calculateLandHash(land));
+          const value = await contracts.estateSale.getEtherAmountWithSAND(land.price);
 
-        await expectRevert(
-          users[0].EstateSale.functions.buyLandWithETH(
-            users[0].address,
-            users[0].address,
-            users[0].address,
+          await expectRevert(
+            users[0].EstateSale.functions.buyLandWithETH(
+              users[0].address,
+              users[0].address,
+              users[0].address,
+              land.x,
+              land.y,
+              land.size,
+              land.price,
+              land.salt,
+              [],
+              proof,
+              emptyReferral,
+              {value: value}
+            ),
+            "Invalid land provided"
+          );
+        });
+
+        it("can buy land (size === 1) from a reserved Land if matching address (empty referral)", async function () {
+          const {lands, users, tree, contracts} = initialSetUp;
+          const land = lands[0];
+          const value = await contracts.estateSale.getEtherAmountWithSAND(land.price);
+          const proof = tree.getProof(calculateLandHash(land));
+          await users[1].EstateSale.functions.buyLandWithETH(
+            users[1].address,
+            users[1].address,
+            users[1].address,
             land.x,
             land.y,
             land.size,
@@ -535,225 +577,154 @@ function runEtherTests(landSaleName) {
             proof,
             emptyReferral,
             {value: value}
-          ),
-          "Invalid land provided"
-        );
-      });
+          );
+          const owner = await contracts.land.ownerOf(400 + 106 * 408);
+          assert.equal(owner, users[1].address);
+        });
 
-      it("can buy land (size === 1) from a reserved Land if matching address (empty referral)", async function () {
-        const {lands, users, tree, contracts} = initialSetUp;
-        const land = lands[0];
-        const value = await contracts.estateSale.getEtherAmountWithSAND(land.price);
-        const proof = tree.getProof(calculateLandHash(land));
-        await users[1].EstateSale.functions.buyLandWithETH(
-          users[1].address,
-          users[1].address,
-          users[1].address,
-          land.x,
-          land.y,
-          land.size,
-          land.price,
-          land.salt,
-          [],
-          proof,
-          emptyReferral,
-          {value: value}
-        );
-        const owner = await contracts.land.ownerOf(400 + 106 * 408);
-        assert.equal(owner, users[1].address);
-      });
-
-      it("can buy lands (size > 1) from a reserved Land if matching address (empty referral)", async function () {
-        const {lands, users, tree, contracts} = initialSetUp;
-        const land = lands[3];
-        const value = await contracts.estateSale.getEtherAmountWithSAND(land.price);
-        const proof = tree.getProof(calculateLandHash(land));
-        await users[1].EstateSale.functions.buyLandWithETH(
-          users[1].address,
-          users[1].address,
-          users[1].address,
-          land.x,
-          land.y,
-          land.size,
-          land.price,
-          land.salt,
-          [],
-          proof,
-          emptyReferral,
-          {value: value}
-        );
-        for (let sx = 0; sx < land.size; sx++) {
-          for (let sy = 0; sy < land.size; sy++) {
-            const id = land.x + sx + (land.y + sy) * 408;
-            const landOwner = await contracts.land.ownerOf(id);
-            assert.equal(landOwner, contracts.estate.address);
-          }
-        }
-        const estateOwner = await contracts.estate.ownerOf(1);
-        assert.equal(estateOwner, users[1].address);
-      });
-
-      it("can buy land (size === 1) from a reserved Land and send it to another address (empty referral)", async function () {
-        const {lands, users, tree, contracts} = initialSetUp;
-        const land = lands[0];
-        const proof = tree.getProof(calculateLandHash(land));
-        const value = await contracts.estateSale.getEtherAmountWithSAND(land.price);
-        await users[1].EstateSale.functions.buyLandWithETH(
-          users[1].address,
-          users[2].address,
-          users[1].address,
-          land.x,
-          land.y,
-          land.size,
-          land.price,
-          land.salt,
-          [],
-          proof,
-          emptyReferral,
-          {value: value}
-        );
-        const owner = await contracts.land.ownerOf(400 + 106 * 408);
-        assert.equal(owner, users[2].address);
-      });
-
-      it("can buy lands (size > 1) from a reserved Land and send Estate token to another address (empty referral)", async function () {
-        const {lands, users, tree, contracts} = initialSetUp;
-        const land = lands[3];
-        const proof = tree.getProof(calculateLandHash(land));
-        const value = await contracts.estateSale.getEtherAmountWithSAND(land.price);
-        await users[1].EstateSale.functions.buyLandWithETH(
-          users[1].address,
-          users[2].address,
-          users[1].address,
-          land.x,
-          land.y,
-          land.size,
-          land.price,
-          land.salt,
-          [],
-          proof,
-          emptyReferral,
-          {value: value}
-        );
-        for (let sx = 0; sx < land.size; sx++) {
-          for (let sy = 0; sy < land.size; sy++) {
-            const id = land.x + sx + (land.y + sy) * 408;
-            const landOwner = await contracts.land.ownerOf(id);
-            assert.equal(landOwner, contracts.estate.address);
-          }
-        }
-        const estateOwner = await contracts.estate.ownerOf(1);
-        assert.equal(estateOwner, users[2].address);
-      });
-
-      it("can buy all lands specified in json except reserved lands (empty referral)", async function () {
-        const {lands, users, tree, contracts} = initialSetUp;
-        for (const land of lands) {
+        it("can buy lands (size > 1) from a reserved Land if matching address (empty referral)", async function () {
+          const {lands, users, tree, contracts} = initialSetUp;
+          const land = lands[3];
           const value = await contracts.estateSale.getEtherAmountWithSAND(land.price);
           const proof = tree.getProof(calculateLandHash(land));
-          if (land.reserved) {
-            await expectRevert(
-              users[0].EstateSale.functions.buyLandWithETH(
-                users[0].address,
-                users[0].address,
-                land.reserved,
-                land.x,
-                land.y,
-                land.size,
-                land.price,
-                land.salt,
-                land.assetIds,
-                proof,
-                emptyReferral,
-                {value: value}
-              ),
-              "cannot buy reserved Land"
-            );
-          } else {
-            try {
-              await users[0].EstateSale.functions.buyLandWithETH(
-                users[0].address,
-                users[0].address,
-                zeroAddress,
-                land.x,
-                land.y,
-                land.size,
-                land.price,
-                land.salt,
-                land.assetIds,
-                proof,
-                emptyReferral,
-                {value: value}
-              );
-            } catch (e) {
-              console.log(JSON.stringify(land));
-              console.log(JSON.stringify(proof));
-              throw e;
+          await users[1].EstateSale.functions.buyLandWithETH(
+            users[1].address,
+            users[1].address,
+            users[1].address,
+            land.x,
+            land.y,
+            land.size,
+            land.price,
+            land.salt,
+            [],
+            proof,
+            emptyReferral,
+            {value: value}
+          );
+          for (let sx = 0; sx < land.size; sx++) {
+            for (let sy = 0; sy < land.size; sy++) {
+              const id = land.x + sx + (land.y + sy) * 408;
+              const landOwner = await contracts.land.ownerOf(id);
+              assert.equal(landOwner, contracts.estate.address);
             }
           }
-        }
+          const estateOwner = await contracts.estate.ownerOf(1);
+          assert.equal(estateOwner, users[1].address);
+        });
+
+        it("can buy land (size === 1) from a reserved Land and send it to another address (empty referral)", async function () {
+          const {lands, users, tree, contracts} = initialSetUp;
+          const land = lands[0];
+          const proof = tree.getProof(calculateLandHash(land));
+          const value = await contracts.estateSale.getEtherAmountWithSAND(land.price);
+          await users[1].EstateSale.functions.buyLandWithETH(
+            users[1].address,
+            users[2].address,
+            users[1].address,
+            land.x,
+            land.y,
+            land.size,
+            land.price,
+            land.salt,
+            [],
+            proof,
+            emptyReferral,
+            {value: value}
+          );
+          const owner = await contracts.land.ownerOf(400 + 106 * 408);
+          assert.equal(owner, users[2].address);
+        });
+
+        it("can buy lands (size > 1) from a reserved Land and send Estate token to another address (empty referral)", async function () {
+          const {lands, users, tree, contracts} = initialSetUp;
+          const land = lands[3];
+          const proof = tree.getProof(calculateLandHash(land));
+          const value = await contracts.estateSale.getEtherAmountWithSAND(land.price);
+          await users[1].EstateSale.functions.buyLandWithETH(
+            users[1].address,
+            users[2].address,
+            users[1].address,
+            land.x,
+            land.y,
+            land.size,
+            land.price,
+            land.salt,
+            [],
+            proof,
+            emptyReferral,
+            {value: value}
+          );
+          for (let sx = 0; sx < land.size; sx++) {
+            for (let sy = 0; sy < land.size; sy++) {
+              const id = land.x + sx + (land.y + sy) * 408;
+              const landOwner = await contracts.land.ownerOf(id);
+              assert.equal(landOwner, contracts.estate.address);
+            }
+          }
+          const estateOwner = await contracts.estate.ownerOf(1);
+          assert.equal(estateOwner, users[2].address);
+        });
+
+        it("can buy all lands specified in json except reserved lands (empty referral)", async function () {
+          const {lands, users, tree, contracts} = initialSetUp;
+          for (const land of lands) {
+            const value = await contracts.estateSale.getEtherAmountWithSAND(land.price);
+            const proof = tree.getProof(calculateLandHash(land));
+            if (land.reserved) {
+              await expectRevert(
+                users[0].EstateSale.functions.buyLandWithETH(
+                  users[0].address,
+                  users[0].address,
+                  land.reserved,
+                  land.x,
+                  land.y,
+                  land.size,
+                  land.price,
+                  land.salt,
+                  land.assetIds,
+                  proof,
+                  emptyReferral,
+                  {value: value}
+                ),
+                "cannot buy reserved Land"
+              );
+            } else {
+              try {
+                await users[0].EstateSale.functions.buyLandWithETH(
+                  users[0].address,
+                  users[0].address,
+                  zeroAddress,
+                  land.x,
+                  land.y,
+                  land.size,
+                  land.price,
+                  land.salt,
+                  land.assetIds,
+                  proof,
+                  emptyReferral,
+                  {value: value}
+                );
+              } catch (e) {
+                console.log(JSON.stringify(land));
+                console.log(JSON.stringify(proof));
+                throw e;
+              }
+            }
+          }
+        });
       });
-    });
 
-    describe("--> Tests with test LANDs for assets bundle", function () {
-      beforeEach(async function () {
-        initialSetUp = await setupEstateSale(landSaleName, "testLands");
-      });
+      describe("--> Tests with test LANDs for assets bundle", function () {
+        beforeEach(async function () {
+          initialSetUp = await setupEstateSale(landSaleName, "testLands");
+        });
 
-      it("can buy Land with assets", async function () {
-        const {lands, users, tree, contracts} = initialSetUp;
-        const land = lands[5];
-        const proof = tree.getProof(calculateLandHash(land));
+        it("can buy Land with assets", async function () {
+          const {lands, users, tree, contracts} = initialSetUp;
+          const land = lands[5];
+          const proof = tree.getProof(calculateLandHash(land));
 
-        await users[0].EstateSale.functions.buyLandWithETH(
-          users[0].address,
-          users[0].address,
-          zeroAddress,
-          land.x,
-          land.y,
-          land.size,
-          land.price,
-          land.salt,
-          land.assetIds,
-          proof,
-          emptyReferral
-        );
-
-        const {asset} = contracts;
-        const balances = await asset.callStatic.balanceOfBatch(
-          land.assetIds.map(() => users[0].address),
-          land.assetIds
-        );
-        expect(balances[0]).to.equal(1);
-      });
-
-      it("can buy Land with zero assets", async function () {
-        const {lands, users, tree} = initialSetUp;
-        const land = lands[4];
-        const proof = tree.getProof(calculateLandHash(land));
-
-        await users[0].EstateSale.functions.buyLandWithETH(
-          users[0].address,
-          users[0].address,
-          zeroAddress,
-          land.x,
-          land.y,
-          land.size,
-          land.price,
-          land.salt,
-          land.assetIds,
-          proof,
-          emptyReferral
-        );
-      });
-
-      it("CANNOT buy Land with assets using zero asset", async function () {
-        const {lands, users, tree} = initialSetUp;
-        const land = lands[5];
-        const proof = tree.getProof(calculateLandHash(land));
-
-        await expectRevert(
-          users[0].EstateSale.functions.buyLandWithETH(
+          await users[0].EstateSale.functions.buyLandWithETH(
             users[0].address,
             users[0].address,
             zeroAddress,
@@ -762,46 +733,95 @@ function runEtherTests(landSaleName) {
             land.size,
             land.price,
             land.salt,
-            [],
+            land.assetIds,
             proof,
             emptyReferral
-          ),
-          "Invalid land provided"
-        );
-      });
+          );
 
-      it("can withdraw asset token post sale from admin", async function () {
-        const {lands, users, contracts} = initialSetUp;
-        const {asset, estateSale} = contracts;
-        const land = lands[5];
-        await increaseTime(60 * 60 + 1);
-        await estateSale.functions.withdrawAssets(
-          users[0].address,
-          land.assetIds,
-          land.assetIds.map(() => 1)
-        );
+          const {asset} = contracts;
+          const balances = await asset.callStatic.balanceOfBatch(
+            land.assetIds.map(() => users[0].address),
+            land.assetIds
+          );
+          expect(balances[0]).to.equal(1);
+        });
 
-        const balances = await asset.callStatic.balanceOfBatch(
-          land.assetIds.map(() => users[0].address),
-          land.assetIds
-        );
-        expect(balances[0]).to.equal(1);
-      });
+        it("can buy Land with zero assets", async function () {
+          const {lands, users, tree} = initialSetUp;
+          const land = lands[4];
+          const proof = tree.getProof(calculateLandHash(land));
 
-      it("CANNOT withdraw asset token post sale if not admin", async function () {
-        const {lands, users} = initialSetUp;
-        const land = lands[5];
-        await increaseTime(60 * 60 + 1);
-        await expectRevert(
-          users[0].EstateSale.functions.withdrawAssets(
+          await users[0].EstateSale.functions.buyLandWithETH(
+            users[0].address,
+            users[0].address,
+            zeroAddress,
+            land.x,
+            land.y,
+            land.size,
+            land.price,
+            land.salt,
+            land.assetIds,
+            proof,
+            emptyReferral
+          );
+        });
+
+        it("CANNOT buy Land with assets using zero asset", async function () {
+          const {lands, users, tree} = initialSetUp;
+          const land = lands[5];
+          const proof = tree.getProof(calculateLandHash(land));
+
+          await expectRevert(
+            users[0].EstateSale.functions.buyLandWithETH(
+              users[0].address,
+              users[0].address,
+              zeroAddress,
+              land.x,
+              land.y,
+              land.size,
+              land.price,
+              land.salt,
+              [],
+              proof,
+              emptyReferral
+            ),
+            "Invalid land provided"
+          );
+        });
+
+        it("can withdraw asset token post sale from admin", async function () {
+          const {lands, users, contracts} = initialSetUp;
+          const {asset, estateSale} = contracts;
+          const land = lands[5];
+          await increaseTime(60 * 60 + 1);
+          await estateSale.functions.withdrawAssets(
             users[0].address,
             land.assetIds,
             land.assetIds.map(() => 1)
-          ),
-          "NOT_AUTHORIZED"
-        );
+          );
+
+          const balances = await asset.callStatic.balanceOfBatch(
+            land.assetIds.map(() => users[0].address),
+            land.assetIds
+          );
+          expect(balances[0]).to.equal(1);
+        });
+
+        it("CANNOT withdraw asset token post sale if not admin", async function () {
+          const {lands, users} = initialSetUp;
+          const land = lands[5];
+          await increaseTime(60 * 60 + 1);
+          await expectRevert(
+            users[0].EstateSale.functions.withdrawAssets(
+              users[0].address,
+              land.assetIds,
+              land.assetIds.map(() => 1)
+            ),
+            "NOT_AUTHORIZED"
+          );
+        });
       });
-    });
+    }
   });
 }
 
