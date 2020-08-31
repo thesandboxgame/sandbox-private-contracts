@@ -1,10 +1,10 @@
 const fs = require("fs");
 const MerkleTree = require("../../lib/merkleTree");
 const {createDataArray, saltLands} = require("../../lib/merkleTreeHelper");
-const rawSector = require("./sector10.json");
+const rawSector = require("./sector1000.json");
 const prices = require("./prices");
 const addresses = require("../addresses.json");
-const bundles = require("./sector10.bundles.json");
+const bundles = require("./sector1000.bundles.json");
 
 const sandboxWallet = addresses["sandbox"];
 
