@@ -7,7 +7,7 @@ const {findEvents} = require("../../../../lib/findEvents.js");
 // Inputs
 const maxCommissionRate = "2000";
 const signer = "0x26BC52894A05EDE59B34EE7B014b57ef0a8558B3";
-const contractName = "EstateSaleWithFee";
+const contractName = "EstateSale";
 
 module.exports.setupEstateSale = async (landSaleName, landType, exactDeployment) => {
   const {
