@@ -1,5 +1,7 @@
 const {guard} = require("../lib");
+const fs = require("fs");
 const {getLands} = require("../data/LandGiveaway_1/getLands");
+const {calculateLandHash} = require("../lib/merkleTreeHelper");
 
 module.exports = async ({getChainId, getNamedAccounts, deployments, network}) => {
   const {deploy} = deployments;
@@ -15,7 +17,7 @@ module.exports = async ({getChainId, getNamedAccounts, deployments, network}) =>
   const daiMedianizer = await deployments.get("DAIMedianizer");
   const dai = await deployments.get("DAI");
 
-  const {lands, merkleRootHash} = getLands(network.live, chainId);
+  const {lands, merkleRootHash, saltedLands, tree} = getLands(network.live, chainId);
 
   await deploy("LandGiveaway_1", {
     from: deployer,
@@ -39,6 +41,13 @@ module.exports = async ({getChainId, getNamedAccounts, deployments, network}) =>
     ],
     log: true,
   });
+
+  const landsWithProof = [];
+  for (const land of saltedLands) {
+    land.proof = tree.getProof(calculateLandHash(land));
+    landsWithProof.push(land);
+  }
+  fs.writeFileSync(`./.presale_giveaway_1_proofs_${chainId}.json`, JSON.stringify(landsWithProof, null, "  "));
 };
 module.exports.skip = guard(["1", "4", "314159"]); // TODO , 'LandPreSale_5');
 module.exports.tags = ["LandGiveaway_1"];

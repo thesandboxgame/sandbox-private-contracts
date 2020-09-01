@@ -182,10 +182,10 @@ module.exports = {
       throw new Error("chainId not a string");
     }
 
-    let secretPath = "./.land_presale_4_1_secret";
+    let secretPath = "./.land_presale_giveaway_1_secret";
     if (chainId === "1") {
       console.log("MAINNET secret");
-      secretPath = "./.land_presale_4_1_secret.mainnet";
+      secretPath = "./.land_presale_giveaway_1_secret.mainnet";
     }
 
     let expose = false;
