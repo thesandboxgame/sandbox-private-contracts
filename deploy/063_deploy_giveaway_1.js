@@ -11,7 +11,6 @@ module.exports = async ({getChainId, getNamedAccounts, deployments, network}) =>
 
   const sandContract = await deployments.get("Sand");
   const landContract = await deployments.get("Land");
-  const estateContract = await deployments.get("Estate");
   const assetContract = await deployments.get("Asset");
 
   const daiMedianizer = await deployments.get("DAIMedianizer");
@@ -31,12 +30,12 @@ module.exports = async ({getChainId, getNamedAccounts, deployments, network}) =>
       deployer,
       landSaleBeneficiary,
       merkleRootHash,
-      1600007120, // TODO
+      1630761364, // Saturday, 4 September 2021 13:16:04 GMT
       daiMedianizer.address,
       dai.address,
       backendReferralWallet,
       2000,
-      estateContract.address,
+      "0x0000000000000000000000000000000000000000",
       assetContract.address,
     ],
     log: true,
@@ -49,6 +48,6 @@ module.exports = async ({getChainId, getNamedAccounts, deployments, network}) =>
   }
   fs.writeFileSync(`./.presale_giveaway_1_proofs_${chainId}.json`, JSON.stringify(landsWithProof, null, "  "));
 };
-module.exports.skip = guard(["1", "4", "314159"]); // TODO , 'LandPreSale_5');
+module.exports.skip = guard(["1", "4", "314159"], "LandGiveaway_1");
 module.exports.tags = ["LandGiveaway_1"];
 module.exports.dependencies = ["Sand", "Land", "DAI", "Asset", "Estate"];

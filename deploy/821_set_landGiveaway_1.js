@@ -20,18 +20,19 @@ module.exports = async ({getNamedAccounts, deployments}) => {
     await execute(landSaleName, {from: currentAdmin, skipUnknownSigner: true}, "changeAdmin", landSaleAdmin);
   }
 
-  const isSandSuperOperator = await read("Sand", "isSuperOperator", landSale.address);
-  if (!isSandSuperOperator) {
-    log("setting LandGiveaway_1 as super operator for Sand");
-    const currentSandAdmin = await read("Sand", "getAdmin");
-    await execute(
-      "Sand",
-      {from: currentSandAdmin, skipUnknownSigner: true},
-      "setSuperOperator",
-      landSale.address,
-      true
-    );
-  }
+  // not needed as we are not letting binance purchase
+  // const isSandSuperOperator = await read("Sand", "isSuperOperator", landSale.address);
+  // if (!isSandSuperOperator) {
+  //   log("setting LandGiveaway_1 as super operator for Sand");
+  //   const currentSandAdmin = await read("Sand", "getAdmin");
+  //   await execute(
+  //     "Sand",
+  //     {from: currentSandAdmin, skipUnknownSigner: true},
+  //     "setSuperOperator",
+  //     landSale.address,
+  //     true
+  //   );
+  // }
 };
 module.exports.skip = guard(["1", "4", "314159"]); // TODO remove
 module.exports.dependencies = ["Land", "LandGiveaway_1"];
