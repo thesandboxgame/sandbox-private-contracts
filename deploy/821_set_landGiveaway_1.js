@@ -14,25 +14,30 @@ module.exports = async ({getNamedAccounts, deployments}) => {
     await execute("Land", {from: currentLandAdmin, skipUnknownSigner: true}, "setMinter", landSale.address, true);
   }
 
+  const isSANDEnabled = await read(landSaleName, "isSANDEnabled");
+  if (!isSANDEnabled) {
+    log("enabling SAND for LandGiveaway_1");
+    const currentLandSaleAdmin = await read(landSaleName, "getAdmin");
+    await execute(landSaleName, {from: currentLandSaleAdmin, skipUnknownSigner: true}, "setSANDEnabled", true);
+  }
+
   const currentAdmin = await read(landSaleName, "getAdmin");
   if (currentAdmin.toLowerCase() !== landSaleAdmin.toLowerCase()) {
     log("setting LandGiveaway_1 Admin");
     await execute(landSaleName, {from: currentAdmin, skipUnknownSigner: true}, "changeAdmin", landSaleAdmin);
   }
 
-  // not needed as we are not letting binance purchase
-  // const isSandSuperOperator = await read("Sand", "isSuperOperator", landSale.address);
-  // if (!isSandSuperOperator) {
-  //   log("setting LandGiveaway_1 as super operator for Sand");
-  //   const currentSandAdmin = await read("Sand", "getAdmin");
-  //   await execute(
-  //     "Sand",
-  //     {from: currentSandAdmin, skipUnknownSigner: true},
-  //     "setSuperOperator",
-  //     landSale.address,
-  //     true
-  //   );
-  // }
+  const isSandSuperOperator = await read("Sand", "isSuperOperator", landSale.address);
+  if (!isSandSuperOperator) {
+    log("setting LandGiveaway_1 as super operator for Sand");
+    const currentSandAdmin = await read("Sand", "getAdmin");
+    await execute(
+      "Sand",
+      {from: currentSandAdmin, skipUnknownSigner: true},
+      "setSuperOperator",
+      landSale.address,
+      true
+    );
+  }
 };
-module.exports.skip = guard(["1", "4", "314159"]); // TODO remove
 module.exports.dependencies = ["Land", "LandGiveaway_1"];
