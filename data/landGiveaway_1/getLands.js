@@ -4,7 +4,7 @@ const {createDataArray, saltLands} = require("../../lib/merkleTreeHelper");
 const rawSector = require("./sector1000.json");
 const prices = require("./prices");
 const addresses = require("../addresses.json");
-const bundles = require("./sector1000.bundles.json");
+const bundles = require("./sector1000.json");
 
 const sandboxWallet = addresses["sandbox"];
 
