@@ -15,3 +15,4 @@ module.exports = async ({deployments}) => {
     );
   }
 };
+module.exports.skip = () => true;

@@ -30,6 +30,6 @@ module.exports = async ({getNamedAccounts, deployments}) => {
   });
 };
 
-module.exports.skip = guard(["1", "4", "314159"], "StarterPackV1");
+module.exports.skip = guard(["1", "4", "314159"]);
 module.exports.tags = ["StarterPackV1"];
 module.exports.dependencies = ["Sand", "DAI", "Catalyst", "Gem"];
