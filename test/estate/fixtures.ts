@@ -9,7 +9,7 @@ export const setupEstate = deployments.createFixture(async function () {
   const user0 = others[0];
   const user1 = others[2];
   const estateContract = await ethers.getContract('ChildEstateToken', minter);
-  const landContract = await ethers.getContract('Land');
+  const landContract = await ethers.getContract('ChildLandToken');
   const landAdmin = await landContract.callStatic.getAdmin();
   const landContractAsMinter = await landContract.connect(
     ethers.provider.getSigner(minter)
@@ -32,6 +32,7 @@ export const setupEstate = deployments.createFixture(async function () {
     minter,
     user0,
     user1,
+    // @note need to pass the mainnet Land contract to estateTestHelper for it to work
     helper: new EstateTestHelper({
       Estate: estateContract,
       LandFromMinter: landContractAsMinter,

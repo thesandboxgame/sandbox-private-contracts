@@ -8,7 +8,12 @@ import {BigNumber, utils, Contract, BytesLike} from 'ethers';
 import Prando from 'prando';
 import {Address} from 'hardhat-deploy/types';
 import {expect} from '../chai-setup';
-import {waitFor, expectEventWithArgs, findEvents} from '../utils';
+import {
+  waitFor,
+  expectEventWithArgs,
+  findEvents,
+  getImmutableChainIndex,
+} from '../utils';
 import {setupTest, User} from './fixtures';
 import {supplyAssets} from './assets';
 import {toUtf8Bytes} from 'ethers/lib/utils';
@@ -228,7 +233,8 @@ describe('GameToken', function () {
     });
 
     it('can get the chainIndex for a GAME', async function () {
-      const chainIndex = await gameToken.getChainIndex(gameId);
+      // const idAsHexString = utils.hexValue(gameId);
+      const chainIndex = getImmutableChainIndex(gameId);
       expect(chainIndex).to.be.equal(1);
     });
 

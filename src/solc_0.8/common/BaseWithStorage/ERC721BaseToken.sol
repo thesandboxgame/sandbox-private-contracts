@@ -27,6 +27,11 @@ contract ERC721BaseToken is IERC721, WithSuperOperators, ERC2771Handler {
     mapping(uint256 => uint256) internal _owners;
     mapping(address => mapping(address => bool)) internal _operatorsForAll;
     mapping(uint256 => address) internal _operators;
+    uint8 internal _chainIndex;
+
+    function __ERC721BaseToken_initialize(uint8 chainIndex) internal {
+        _chainIndex = chainIndex;
+    }
 
     /// @notice Approve an operator to spend tokens on the senders behalf.
     /// @param operator The address receiving the approval.

@@ -9,22 +9,8 @@ contract ImmutableERC721 is ERC721BaseToken {
     uint256 internal constant CHAIN_INDEX_OFFSET_MULTIPLIER = uint256(2)**(256 - 160 - 64 - 16);
     uint256 internal constant STORAGE_ID_MASK = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000;
     uint256 internal constant VERSION_MASK = 0x000000FFFFFFFF00000000000000000000000000000000000000000000000000;
-    uint256 internal constant CHAIN_INDEX_MASK = 0x0000000000000000000000000000000000000000000000000000000000FF0000;
+
     bytes32 internal constant base32Alphabet = 0x6162636465666768696A6B6C6D6E6F707172737475767778797A323334353637;
-
-    uint8 internal _chainIndex;
-
-    function __ImmutableERC721_initialize(uint8 index) internal {
-        _chainIndex = index;
-    }
-
-    /// @dev get the layer a token was minted on from its id.
-    /// @param id The id of the token to query.
-    /// @return The index of the original layer of minting.
-    /// 0 = eth mainnet, 1 == Polygon, etc...
-    function getChainIndex(uint256 id) public pure virtual returns (uint256) {
-        return uint256((id & CHAIN_INDEX_MASK) >> 16);
-    }
 
     /// @dev An implementation which handles versioned tokenIds.
     /// @param id The tokenId to get the owner of.

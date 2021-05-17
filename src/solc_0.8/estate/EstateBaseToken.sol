@@ -7,6 +7,8 @@ import "../common/interfaces/ILandToken.sol";
 import "../common/interfaces/IERC721MandatoryTokenReceiver.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
+/// @dev An updated Estate Token contract using a simplified verison of LAND with no Quads
+
 contract EstateBaseToken is ImmutableERC721, Initializable {
     uint8 internal constant OWNER = 0;
     uint8 internal constant ADD = 1;
@@ -16,13 +18,13 @@ contract EstateBaseToken is ImmutableERC721, Initializable {
     uint16 internal constant GRID_SIZE = 408;
 
     uint64 internal _nextId; // max uint64 = 18,446,744,073,709,551,615
-    mapping(uint256 => uint24[]) internal _quadsInEstate;
+
     mapping(uint256 => bytes32) internal _metaData;
     LandToken internal _land;
     address internal _minter;
+    // @review needed?
     address internal _breaker;
-
-    event QuadsAddedInEstate(uint256 indexed id, uint24[] list);
+    // @todo add Update struct like GameToken ?
     event EstateTokenUpdated(
         uint256 indexed oldId,
         uint256 indexed newId,
@@ -37,35 +39,11 @@ contract EstateBaseToken is ImmutableERC721, Initializable {
         uint8 chainIndex
     ) public initializer() {
         _land = land;
-        ImmutableERC721.__ImmutableERC721_initialize(chainIndex);
+        ERC721BaseToken.__ERC721BaseToken_initialize(chainIndex);
         ERC2771Handler.__ERC2771Handler_initialize(trustedForwarder);
     }
 
-    function createFromQuad(
-        address sender,
-        address to,
-        uint256 size,
-        uint256 x,
-        uint256 y
-    ) external returns (uint256) {
-        _check_authorized(sender, ADD);
-        (uint256 id, ) = _mintEstate(sender, to, 1, true);
-        _addSingleQuad(sender, id, size, x, y);
-        return id;
-    }
-
-    function addQuad(
-        address sender,
-        uint256 estateId,
-        uint256 size,
-        uint256 x,
-        uint256 y
-    ) external {
-        _check_authorized(sender, ADD);
-        _check_hasOwnerRights(sender, estateId);
-        _addSingleQuad(sender, estateId, size, x, y);
-    }
-
+    // @review rename createEstate to mimic GameToken funcs ?
     function createFromMultipleLands(
         address sender,
         address to,
@@ -89,33 +67,6 @@ contract EstateBaseToken is ImmutableERC721, Initializable {
         _check_authorized(sender, ADD);
         _check_hasOwnerRights(sender, estateId);
         _addLands(sender, estateId, ids, junctions, false);
-    }
-
-    function createFromMultipleQuads(
-        address sender,
-        address to,
-        uint256[] calldata sizes,
-        uint256[] calldata xs,
-        uint256[] calldata ys,
-        uint256[] calldata junctions
-    ) external returns (uint256) {
-        _check_authorized(sender, ADD);
-        (uint256 id, ) = _mintEstate(sender, to, 1, true);
-        _addQuads(sender, id, sizes, xs, ys, junctions, true);
-        return id;
-    }
-
-    function addMultipleQuads(
-        address sender,
-        uint256 estateId,
-        uint256[] calldata sizes,
-        uint256[] calldata xs,
-        uint256[] calldata ys,
-        uint256[] calldata junctions
-    ) external {
-        _check_authorized(sender, ADD);
-        _check_hasOwnerRights(sender, estateId);
-        _addQuads(sender, estateId, sizes, xs, ys, junctions, false);
     }
 
     /// @notice Burns token `id`.
@@ -326,46 +277,6 @@ contract EstateBaseToken is ImmutableERC721, Initializable {
         return (estateId, strgId);
     }
 
-    function _addSingleQuad(
-        address sender,
-        uint256 estateId,
-        uint256 size,
-        uint256 x,
-        uint256 y
-    ) internal {
-        _land.transferQuad(sender, address(this), size, x, y, "");
-        uint24[] memory list = new uint24[](1);
-        list[0] = _encode(uint16(x), uint16(y), uint8(size));
-        // TODO check adjacency
-        _quadsInEstate[estateId].push(list[0]);
-        emit QuadsAddedInEstate(estateId, list);
-    }
-
-    function _addQuads(
-        address sender,
-        uint256 estateId,
-        uint256[] memory sizes,
-        uint256[] memory xs,
-        uint256[] memory ys,
-        uint256[] memory, // junctions,
-        bool justCreated
-    ) internal {
-        _land.batchTransferQuad(sender, address(this), sizes, xs, ys, "");
-        uint24[] memory list = new uint24[](sizes.length);
-        for (uint256 i = 0; i < list.length; i++) {
-            list[i] = _encode(uint16(xs[i]), uint16(ys[i]), uint8(sizes[i]));
-        }
-        // TODO check adjacency
-        if (justCreated) {
-            _quadsInEstate[estateId] = list;
-        } else {
-            for (uint256 i = 0; i < list.length; i++) {
-                _quadsInEstate[estateId].push(list[i]);
-            }
-        }
-        emit QuadsAddedInEstate(estateId, list);
-    }
-
     function _adjacent(
         uint16 x1,
         uint16 y1,
@@ -391,13 +302,19 @@ contract EstateBaseToken is ImmutableERC721, Initializable {
             (x1 == x2 - s2 && y1 >= y2 && y1 < y2 + s2));
     }
 
+    // solhint-disable no-empty-blocks
     function _addLands(
         address sender,
         uint256 estateId,
         uint256[] memory ids,
         uint256[] memory junctions,
         bool justCreated
-    ) internal {
+    ) internal {}
+
+    // solhint-enable no-empty-blocks
+    //temporarily disable function logic until it gets refactored in next PR
+
+    /**
         _land.batchTransferFrom(sender, address(this), ids, "");
         uint24[] memory list = new uint24[](ids.length);
         for (uint256 i = 0; i < list.length; i++) {
@@ -445,8 +362,8 @@ contract EstateBaseToken is ImmutableERC721, Initializable {
                 _quadsInEstate[estateId].push(list[i]);
             }
         }
-        emit QuadsAddedInEstate(estateId, list);
     }
+    */
 
     // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     function onERC721BatchReceived(
