@@ -44,12 +44,12 @@ contract PolygonAssetV2 is ERC1155ERC721 {
             // ERC-721
             if ((amounts[i] == 1) && (ids[i] & IS_NFT > 0)) {
                 uint8 rarity = 0;
-                _mint(hash, amounts[i], rarity, sender, user, ids[0], data, false);
+                _mint(hash, amounts[i], rarity, sender, user, ids[i], data, false);
             }
             // ERC-1155
             else {
                 uint8 rarity = 0;
-                _mint(hash, amounts[i], rarity, sender, user, ids[0], data, false);
+                _mint(hash, amounts[i], rarity, sender, user, ids[i], data, false);
             }
         }
     }
