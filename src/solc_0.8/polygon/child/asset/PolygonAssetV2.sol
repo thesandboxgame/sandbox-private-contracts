@@ -59,11 +59,13 @@ contract PolygonAssetV2 is ERC1155ERC721 {
     /// @param ids ids to withdraw
     /// @param amounts amounts to withdraw
     function withdraw(uint256[] calldata ids, uint256[] calldata amounts) external {
+        bytes32 hash = _metadataHash[ids[0] & URI_ID];
+        bytes memory data = abi.encode(hash);
         if (ids.length == 1) {
             _burn(_msgSender(), ids[0], amounts[0]);
         } else {
             _burnBatch(_msgSender(), ids, amounts);
         }
-        emit ChainExit(_msgSender(), ids, amounts, "");
+        emit ChainExit(_msgSender(), ids, amounts, data);
     }
 }
