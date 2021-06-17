@@ -65,7 +65,7 @@ const config: HardhatUserConfig = {
         settings: {
           optimizer: {
             enabled: true,
-            runs: 550,
+            runs: 450,
           },
         },
       },
@@ -223,11 +223,11 @@ const config: HardhatUserConfig = {
       tags: ['testnet', 'L1', 'L2'],
       forking: process.env.HARDHAT_FORK
         ? {
-            url: node_url(process.env.HARDHAT_FORK),
-            blockNumber: process.env.HARDHAT_FORK_NUMBER
-              ? parseInt(process.env.HARDHAT_FORK_NUMBER)
-              : undefined,
-          }
+          url: node_url(process.env.HARDHAT_FORK),
+          blockNumber: process.env.HARDHAT_FORK_NUMBER
+            ? parseInt(process.env.HARDHAT_FORK_NUMBER)
+            : undefined,
+        }
         : undefined,
       deploy: ['deploy_polygon', 'deploy'],
       // deploy: ['deploy-for-test', 'deploy'],
@@ -277,10 +277,10 @@ const config: HardhatUserConfig = {
 
   external: process.env.HARDHAT_FORK
     ? {
-        deployments: {
-          hardhat: ['deployments/' + process.env.HARDHAT_FORK],
-        },
-      }
+      deployments: {
+        hardhat: ['deployments/' + process.env.HARDHAT_FORK],
+      },
+    }
     : undefined,
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY || '',
