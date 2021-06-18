@@ -37,9 +37,7 @@ export const setupAsset = deployments.createFixture(async function () {
 
   // Set predicate Asset
   try {
-    await waitFor(
-      predicate.setAsset(Asset.address)
-    )
+    await waitFor(predicate.setAsset(Asset.address));
   } catch (e) {
     console.log(e);
   }

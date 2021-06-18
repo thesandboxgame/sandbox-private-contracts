@@ -31,14 +31,12 @@ export const setupAsset = deployments.createFixture(async function () {
     TRUSTED_FORWARDER.address
   );
 
-    // Set childChainManager Asset
-    try {
-      await waitFor(
-        childChainManager.setPolygonAsset(Asset.address)
-      )
-    } catch (e) {
-      console.log(e);
-    }
+  // Set childChainManager Asset
+  try {
+    await waitFor(childChainManager.setPolygonAsset(Asset.address));
+  } catch (e) {
+    console.log(e);
+  }
 
   let id = 0;
   const ipfsHashString =
