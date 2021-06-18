@@ -3,7 +3,6 @@ import { setupAsset as setupMainnetAsset } from '../../asset/fixtures';
 import { waitFor, getAssetChainIndex } from '../../utils';
 import { expect } from '../../chai-setup';
 import { sendMetaTx } from '../../sendMetaTx';
-import { ethers } from 'hardhat';
 import { AbiCoder } from 'ethers/lib/utils';
 
 const abiCoder = new AbiCoder();
@@ -225,22 +224,22 @@ describe('PolygonAsset.sol', function () {
       // const mainnet_owner = await mainnet.Asset['ownerOf(uint256)'](tokenId);
 
       // Approve ERC1155 predicate contarct
-      const approvalReceipt = await waitFor(
+      await waitFor(
         mainnet.users[0].Asset.setApprovalForAll(mainnet.predicate.address, true)
       );
 
       // Generate data to be passed to Polygon
       const ipfshash = "0x78b9f42c22c3c8b260b781578da3151e8200c741c6b7437bafaff5a9df9b403e";
       const tokenData = abiCoder.encode(["bytes32"], [ipfshash]);
-      var data = abiCoder.encode(["uint256[]", "uint256[]", "bytes"], [[tokenId], [balance], tokenData]);
+      const data = abiCoder.encode(["uint256[]", "uint256[]", "bytes"], [[tokenId], [balance], tokenData]);
 
       // Lock tokens on ERC1155 predicate contract
-      const lockTokensReceipt = await waitFor(
+      await waitFor(
         mainnet.predicate.lockTokens(mainnet.users[0].address, [tokenId], [20], data)
       );
 
       // Emulate the ChildChainManager call to deposit
-      const depositReceipt = await waitFor(
+      await waitFor(
         polygon.childChainManager.callDeposit(mainnet.users[0].address, data)
       );
 

@@ -32,9 +32,8 @@ export const setupAsset = deployments.createFixture(async function () {
   );
 
     // Set childChainManager Asset
-    let setAssetReceipt;
     try {
-      setAssetReceipt = await waitFor(
+      await waitFor(
         childChainManager.setPolygonAsset(Asset.address)
       )
     } catch (e) {
