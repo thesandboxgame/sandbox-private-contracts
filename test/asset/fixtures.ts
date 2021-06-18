@@ -35,6 +35,16 @@ export const setupAsset = deployments.createFixture(async function () {
     TRUSTED_FORWARDER.address
   );
 
+  // Set predicate Asset
+  let setAssetReceipt;
+  try {
+    setAssetReceipt = await waitFor(
+      predicate.setAsset(Asset.address)
+    )
+  } catch (e) {
+    console.log(e);
+  }
+
   let id = 0;
   const ipfsHashString =
     '0x78b9f42c22c3c8b260b781578da3151e8200c741c6b7437bafaff5a9df9b403e';
