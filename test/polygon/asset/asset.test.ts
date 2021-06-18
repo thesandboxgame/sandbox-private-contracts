@@ -225,7 +225,7 @@ describe('PolygonAsset.sol', function () {
   });
 
   describe('Asset <> PolygonAsset: Transfer', function () {
-    it('can transfer assets from L1 to L2', async function () {
+    it('can transfer L1 minted assets: L1 to L2', async function () {
       const mainnet = await setupMainnetAsset();
       const polygon = await setupPolygonAsset();
       const tokenId = await mainnet.mintAsset(mainnet.users[0].address, 20);
@@ -268,6 +268,51 @@ describe('PolygonAsset.sol', function () {
       // Emulate the ChildChainManager call to deposit
       await waitFor(
         polygon.childChainManager.callDeposit(mainnet.users[0].address, data)
+      );
+
+      // Ensure balance has been updated on Asset & PolygonAsset
+      const mainnet_balance = await mainnet.Asset['balanceOf(address,uint256)'](
+        mainnet.users[0].address,
+        tokenId
+      );
+      const polygon_balance = await polygon.Asset['balanceOf(address,uint256)'](
+        mainnet.users[0].address,
+        tokenId
+      );
+      expect(polygon_balance).to.be.equal(balance);
+      expect(mainnet_balance).to.be.equal(0);
+
+      // Ensure URI is same
+      const mainnet_URI = await mainnet.Asset['tokenURI(uint256)'](tokenId);
+      const polygon_URI = await polygon.Asset['tokenURI(uint256)'](tokenId);
+      expect(mainnet_URI).to.be.equal(polygon_URI);
+    });
+    it('can transfer L2 minted assets: L2 to L1', async function () {
+      const mainnet = await setupMainnetAsset();
+      const polygon = await setupPolygonAsset();
+      const tokenId = await polygon.mintAsset(polygon.users[0].address, 20);
+
+      const balance = await polygon.Asset['balanceOf(address,uint256)'](
+        polygon.users[0].address,
+        tokenId
+      );
+
+      // User withdraws tokens from Polygon
+      await waitFor(polygon.users[0].Asset.withdraw([tokenId], [balance]));
+
+      // Generate data to be passed to Polygon
+      const ipfshash =
+        '0x78b9f42c22c3c8b260b781578da3151e8200c741c6b7437bafaff5a9df9b403e';
+      const tokenData = abiCoder.encode(['bytes32'], [ipfshash]);
+
+      // Emulate exit call
+      await waitFor(
+        mainnet.predicate.exitTokens(
+          polygon.users[0].address,
+          [tokenId],
+          [balance],
+          tokenData
+        )
       );
 
       // Ensure balance has been updated on Asset & PolygonAsset
