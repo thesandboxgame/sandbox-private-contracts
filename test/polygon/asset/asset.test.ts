@@ -1,11 +1,16 @@
-import {setupAsset} from './fixtures';
-import {waitFor, getAssetChainIndex} from '../../utils';
-import {expect} from '../../chai-setup';
-import {sendMetaTx} from '../../sendMetaTx';
+import { setupAsset as setupPolygonAsset } from './fixtures';
+import { setupAsset as setupMainnetAsset } from '../../asset/fixtures';
+import { waitFor, getAssetChainIndex } from '../../utils';
+import { expect } from '../../chai-setup';
+import { sendMetaTx } from '../../sendMetaTx';
+import { ethers } from 'hardhat';
+import { AbiCoder } from 'ethers/lib/utils';
+
+const abiCoder = new AbiCoder();
 
 describe('PolygonAsset.sol', function () {
   it('user sending asset to itself keep the same balance', async function () {
-    const {Asset, users, mintAsset} = await setupAsset();
+    const { Asset, users, mintAsset } = await setupPolygonAsset();
     const tokenId = await mintAsset(users[0].address, 20);
     await waitFor(
       users[0].Asset['safeTransferFrom(address,address,uint256,uint256,bytes)'](
@@ -24,7 +29,7 @@ describe('PolygonAsset.sol', function () {
   });
 
   it('user batch sending asset to itself keep the same balance', async function () {
-    const {Asset, users, mintAsset} = await setupAsset();
+    const { Asset, users, mintAsset } = await setupPolygonAsset();
     const tokenId = await mintAsset(users[0].address, 20);
     await waitFor(
       users[0].Asset.safeBatchTransferFrom(
@@ -43,7 +48,7 @@ describe('PolygonAsset.sol', function () {
   });
 
   it('user batch sending in series whose total is more than its balance', async function () {
-    const {Asset, users, mintAsset} = await setupAsset();
+    const { Asset, users, mintAsset } = await setupPolygonAsset();
     const tokenId = await mintAsset(users[0].address, 20);
     await waitFor(
       users[0].Asset.safeBatchTransferFrom(
@@ -62,7 +67,7 @@ describe('PolygonAsset.sol', function () {
   });
 
   it('user batch sending more asset that it owns should fails', async function () {
-    const {users, mintAsset} = await setupAsset();
+    const { users, mintAsset } = await setupPolygonAsset();
     const tokenId = await mintAsset(users[0].address, 20);
     await expect(
       users[0].Asset.safeBatchTransferFrom(
@@ -76,14 +81,14 @@ describe('PolygonAsset.sol', function () {
   });
 
   it('can get the chainIndex from the tokenId', async function () {
-    const {users, mintAsset} = await setupAsset();
+    const { users, mintAsset } = await setupPolygonAsset();
     const tokenId = await mintAsset(users[1].address, 11);
     const chainIndex = getAssetChainIndex(tokenId);
     expect(chainIndex).to.be.equal(1);
   });
 
   it('can get the URI for an NFT', async function () {
-    const {Asset, users, mintAsset} = await setupAsset();
+    const { Asset, users, mintAsset } = await setupPolygonAsset();
     const tokenId = await mintAsset(users[1].address, 1);
     const URI = await Asset.callStatic.tokenURI(tokenId);
     expect(URI).to.be.equal(
@@ -92,7 +97,7 @@ describe('PolygonAsset.sol', function () {
   });
 
   it('can get the URI for a FT', async function () {
-    const {Asset, users, mintAsset} = await setupAsset();
+    const { Asset, users, mintAsset } = await setupPolygonAsset();
     const tokenId = await mintAsset(users[1].address, 11);
     const URI = await Asset.callStatic.tokenURI(tokenId);
     expect(URI).to.be.equal(
@@ -101,7 +106,7 @@ describe('PolygonAsset.sol', function () {
   });
 
   it('fails get the URI for an invalid tokeId', async function () {
-    const {Asset} = await setupAsset();
+    const { Asset } = await setupPolygonAsset();
     const tokenId = 42;
     await expect(Asset.callStatic.tokenURI(tokenId)).to.be.revertedWith(
       'NFT_!EXIST_||_FT_!MINTED'
@@ -109,7 +114,7 @@ describe('PolygonAsset.sol', function () {
   });
 
   it('can burn ERC1155 asset', async function () {
-    const {Asset, users, mintAsset} = await setupAsset();
+    const { Asset, users, mintAsset } = await setupPolygonAsset();
     const tokenId = await mintAsset(users[0].address, 20);
     await waitFor(
       users[0].Asset['burnFrom(address,uint256,uint256)'](
@@ -126,7 +131,7 @@ describe('PolygonAsset.sol', function () {
   });
 
   it('can burn ERC721 asset', async function () {
-    const {Asset, users, mintAsset} = await setupAsset();
+    const { Asset, users, mintAsset } = await setupPolygonAsset();
     const tokenId = await mintAsset(users[0].address, 1);
     await waitFor(
       users[0].Asset['burnFrom(address,uint256,uint256)'](
@@ -142,12 +147,12 @@ describe('PolygonAsset.sol', function () {
     expect(balance).to.be.equal(0);
   });
 
-  describe('Asset: MetaTransactions', function () {
+  describe('PolygonAsset: MetaTransactions', function () {
     it('can transfer by metaTx', async function () {
-      const {Asset, users, mintAsset, trustedForwarder} = await setupAsset();
+      const { Asset, users, mintAsset, trustedForwarder } = await setupPolygonAsset();
       const tokenId = await mintAsset(users[1].address, 11);
 
-      const {to, data} = await Asset.populateTransaction[
+      const { to, data } = await Asset.populateTransaction[
         'safeTransferFrom(address,address,uint256,uint256,bytes)'
       ](users[1].address, users[2].address, tokenId, 10, '0x');
 
@@ -161,10 +166,10 @@ describe('PolygonAsset.sol', function () {
     });
 
     it('fails to transfer someone else token by metaTx', async function () {
-      const {Asset, users, mintAsset, trustedForwarder} = await setupAsset();
+      const { Asset, users, mintAsset, trustedForwarder } = await setupPolygonAsset();
       const tokenId = await mintAsset(users[1].address, 11);
 
-      const {to, data} = await Asset.populateTransaction[
+      const { to, data } = await Asset.populateTransaction[
         'safeTransferFrom(address,address,uint256,uint256,bytes)'
       ](users[1].address, users[2].address, tokenId, 10, '0x');
 
@@ -180,13 +185,13 @@ describe('PolygonAsset.sol', function () {
     });
 
     it('can batch-transfer by metaTx', async function () {
-      const {Asset, users, mintAsset, trustedForwarder} = await setupAsset();
+      const { Asset, users, mintAsset, trustedForwarder } = await setupPolygonAsset();
       const tokenId1 = await mintAsset(users[1].address, 7);
       const tokenId2 = await mintAsset(users[1].address, 3);
       const tokenIds = [tokenId1, tokenId2];
       const values = [7, 3];
 
-      const {to, data} = await Asset.populateTransaction[
+      const { to, data } = await Asset.populateTransaction[
         'safeBatchTransferFrom(address,address,uint256[],uint256[],bytes)'
       ](users[1].address, users[2].address, tokenIds, values, '0x');
 
@@ -204,4 +209,57 @@ describe('PolygonAsset.sol', function () {
       expect(balance2).to.be.equal(3);
     });
   });
+
+  describe('Asset <> PolygonAsset: Transfer', function () {
+    it('can transfer assets from L1 to L2', async function () {
+      const mainnet = await setupMainnetAsset();
+      const polygon = await setupPolygonAsset();
+      const tokenId = await mainnet.mintAsset(mainnet.users[0].address, 20);
+
+      const balance = await mainnet.Asset['balanceOf(address,uint256)'](
+        mainnet.users[0].address,
+        tokenId
+      );
+
+      // @review - why does ownerOf(tokenId) throw "NFT_!EXIST"?
+      // const mainnet_owner = await mainnet.Asset['ownerOf(uint256)'](tokenId);
+
+      // Approve ERC1155 predicate contarct
+      const approvalReceipt = await waitFor(
+        mainnet.users[0].Asset.setApprovalForAll(mainnet.predicate.address, true)
+      );
+
+      // Generate data to be passed to Polygon
+      const ipfshash = "0x78b9f42c22c3c8b260b781578da3151e8200c741c6b7437bafaff5a9df9b403e";
+      const tokenData = abiCoder.encode(["bytes32"], [ipfshash]);
+      var data = abiCoder.encode(["uint256[]", "uint256[]", "bytes"], [[tokenId], [balance], tokenData]);
+
+      // Lock tokens on ERC1155 predicate contract
+      const lockTokensReceipt = await waitFor(
+        mainnet.predicate.lockTokens(mainnet.users[0].address, [tokenId], [20], data)
+      );
+
+      // Emulate the ChildChainManager call to deposit
+      const depositReceipt = await waitFor(
+        polygon.childChainManager.callDeposit(mainnet.users[0].address, data)
+      );
+
+      // Ensure balance has been updated on Asset & PolygonAsset
+      const mainnet_balance = await mainnet.Asset['balanceOf(address,uint256)'](
+        mainnet.users[0].address,
+        tokenId
+      );
+      const polygon_balance = await polygon.Asset['balanceOf(address,uint256)'](
+        mainnet.users[0].address,
+        tokenId
+      );
+      expect(polygon_balance).to.be.equal(balance);
+      expect(mainnet_balance).to.be.equal(0);
+
+      // Ensure URI is same
+      const mainnet_URI = await mainnet.Asset['tokenURI(uint256)'](tokenId);
+      const polygon_URI = await polygon.Asset['tokenURI(uint256)'](tokenId);
+      expect(mainnet_URI).to.be.equal(polygon_URI);      
+    });
+  })
 });
