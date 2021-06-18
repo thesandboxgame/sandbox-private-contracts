@@ -30,14 +30,14 @@ contract ERC1155Predicate is ERC1155Receiver {
     ) public {
         IERC1155(asset).safeBatchTransferFrom(address(this), withdrawer, ids, amounts, bytes(""));
     }
-    
+
     function onERC1155Received(
         address,
         address,
         uint256,
         uint256,
         bytes calldata
-    ) external override pure returns (bytes4) {
+    ) external pure override returns (bytes4) {
         return 0;
     }
 
@@ -47,7 +47,7 @@ contract ERC1155Predicate is ERC1155Receiver {
         uint256[] calldata,
         uint256[] calldata,
         bytes calldata
-    ) external override pure returns (bytes4) {
+    ) external pure override returns (bytes4) {
         return ERC1155Receiver(address(0)).onERC1155BatchReceived.selector;
     }
 }
