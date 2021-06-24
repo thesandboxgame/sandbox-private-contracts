@@ -18,13 +18,13 @@ contract AssetV2 is ERC1155ERC721 {
         bytes calldata data
     ) external {
         require(_msgSender() == _predicate, "!PREDICATE");
-        bytes32 hash = abi.decode(data, (bytes32));
+        bytes32[] memory hashes = abi.decode(data, (bytes32[]));
         for (uint256 i = 0; i < ids.length; i++) {
-            // @review -    any reason to have separate calls to _mint() for ERC721 & ERC1155?
+            // @review - any reason to have separate calls to _mint() for ERC721 & ERC1155?
             // ERC-721
             // if ((amounts[i] == 1) && (ids[i] & IS_NFT > 0)) {
             uint8 rarity = 0;
-            _mint(hash, amounts[i], rarity, _predicate, to, ids[i], data, false);
+            _mint(hashes[i], amounts[i], rarity, _predicate, to, ids[i], data, false);
             // }
             // ERC-1155
             // else {
