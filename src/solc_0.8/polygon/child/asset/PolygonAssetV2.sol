@@ -42,16 +42,8 @@ contract PolygonAssetV2 is ERC1155ERC721 {
         bytes32[] memory hashes = abi.decode(data, (bytes32[]));
         for (uint256 i = 0; i < ids.length; i++) {
             // @review - any reason to have separate calls to _mint() for ERC721 & ERC1155?
-            // ERC-721
-            // if ((amounts[i] == 1) && (ids[i] & IS_NFT > 0)) {
             uint8 rarity = 0;
             _mint(hashes[i], amounts[i], rarity, sender, user, ids[i], data, false);
-            // }
-            // ERC-1155
-            // else {
-            //     uint8 rarity = 0;
-            //     _mint(hashes[i], amounts[i], rarity, sender, user, ids[i], data, false);
-            // }
         }
     }
 
