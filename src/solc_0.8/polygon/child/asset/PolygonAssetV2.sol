@@ -36,10 +36,8 @@ contract PolygonAssetV2 is ERC1155ERC721 {
     function deposit(address user, bytes calldata depositData) external {
         require(_msgSender() == _childChainManager, "!DEPOSITOR");
         require(user != address(0), "INVALID_DEPOSIT_USER");
-        (uint256[] memory ids, uint256[] memory amounts, bytes memory data) = abi.decode(
-            depositData,
-            (uint256[], uint256[], bytes)
-        );
+        (uint256[] memory ids, uint256[] memory amounts, bytes memory data) =
+            abi.decode(depositData, (uint256[], uint256[], bytes));
         address sender = _msgSender();
         bytes32[] memory hashes = abi.decode(data, (bytes32[]));
         for (uint256 i = 0; i < ids.length; i++) {
