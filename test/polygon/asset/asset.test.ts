@@ -236,9 +236,6 @@ describe('PolygonAsset.sol', function () {
         tokenId
       );
 
-      // @review - why does ownerOf(tokenId) throw "NFT_!EXIST"?
-      // const mainnet_owner = await mainnet.Asset['ownerOf(uint256)'](tokenId);
-
       // Approve ERC1155 predicate contarct
       await waitFor(
         mainnet.users[0].Asset.setApprovalForAll(
@@ -334,6 +331,113 @@ describe('PolygonAsset.sol', function () {
       const mainnet_URI = await mainnet.Asset['tokenURI(uint256)'](tokenId);
       const polygon_URI = await polygon.Asset['tokenURI(uint256)'](tokenId);
       expect(mainnet_URI).to.be.equal(polygon_URI);
+    });
+    it('can transfer multiple L1 minted assets: L1 to L2', async function () {
+      const mainnet = await setupMainnetAsset();
+      const polygon = await setupPolygonAsset();
+      const hash_01 =
+        '0x78b9f42c22c3c8b260b781578da3151e8200c741c6b7437bafaff5a9df9b403e';
+      const hash_02 =
+        '0x83a68fc134ed86aed865454adbe76086adbe7609de987db432ab587ad7655a68';
+      // Format: <variable>_<hash_id>_<id>
+      const balance_01_01 = 20;
+      const balance_01_02 = 10;
+      const balance_02_01 = 5;
+      const balance_02_02 = 15;
+      const tokenId_01_01 = await mainnet.mintAsset(
+        mainnet.users[0].address,
+        balance_01_01,
+        hash_01
+      );
+      const tokenId_01_02 = await mainnet.mintAsset(
+        mainnet.users[0].address,
+        balance_01_02,
+        hash_01
+      );
+      const tokenId_02_01 = await mainnet.mintAsset(
+        mainnet.users[0].address,
+        balance_02_01,
+        hash_02
+      );
+      const tokenId_02_02 = await mainnet.mintAsset(
+        mainnet.users[0].address,
+        balance_02_02,
+        hash_02
+      );
+
+      // Approve ERC1155 predicate contarct
+      await waitFor(
+        mainnet.users[0].Asset.setApprovalForAll(
+          mainnet.predicate.address,
+          true
+        )
+      );
+
+      // Generate data to be passed to Polygon
+      const tokenIds = [
+        tokenId_01_01,
+        tokenId_01_02,
+        tokenId_02_01,
+        tokenId_02_02,
+      ];
+      const balances = [
+        balance_01_01,
+        balance_01_02,
+        balance_02_01,
+        balance_02_02,
+      ];
+      const ipfsHashes = [hash_01, hash_01, hash_02, hash_02];
+      const tokenData = abiCoder.encode(['bytes32[]'], [ipfsHashes]);
+      const data = abiCoder.encode(
+        ['uint256[]', 'uint256[]', 'bytes'],
+        [tokenIds, balances, tokenData]
+      );
+
+      // @temp - checking token URI
+      for (var i = 0; i < tokenIds.length; i++) {
+        const mainnet_URI = await mainnet.Asset['tokenURI(uint256)'](
+          tokenIds[i]
+        );
+        console.log(mainnet_URI);
+      }
+
+      // Lock tokens on ERC1155 predicate contract
+      await waitFor(
+        mainnet.predicate.lockTokens(
+          mainnet.users[0].address,
+          tokenIds,
+          balances,
+          data
+        )
+      );
+
+      // Emulate the ChildChainManager call to deposit
+      await waitFor(
+        polygon.childChainManager.callDeposit(mainnet.users[0].address, data)
+      );
+
+      // Ensure balance has been updated on Asset & PolygonAsset
+      for (var i = 0; i < tokenIds.length; i++) {
+        const mainnet_balance = await mainnet.Asset[
+          'balanceOf(address,uint256)'
+        ](mainnet.users[0].address, tokenIds[i]);
+        const polygon_balance = await polygon.Asset[
+          'balanceOf(address,uint256)'
+        ](mainnet.users[0].address, tokenIds[i]);
+        expect(polygon_balance).to.be.equal(balances[i]);
+        expect(mainnet_balance).to.be.equal(0);
+
+        // Ensure URI is same
+        const mainnet_URI = await mainnet.Asset['tokenURI(uint256)'](
+          tokenIds[i]
+        );
+        const polygon_URI = await polygon.Asset['tokenURI(uint256)'](
+          tokenIds[i]
+        );
+        expect(mainnet_URI).to.be.equal(polygon_URI);
+        // console.log(mainnet_URI);
+        // console.log(polygon_URI);
+      }
     });
   });
 });
