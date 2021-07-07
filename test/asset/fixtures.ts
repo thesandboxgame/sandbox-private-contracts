@@ -73,12 +73,40 @@ export const setupAsset = deployments.createFixture(async function () {
     return event.args?.id;
   }
 
+  async function mintMultiple(
+    to: string,
+    supplies: number[],
+    hash = ipfsHashString
+  ): Promise<number[]> {
+    const creator = to;
+    const packId = ++id;
+    const rarity = 0;
+    const owner = to;
+    const data = '0x';
+
+    const tx = await Asset.mintMultiple(
+      creator,
+      packId,
+      hash,
+      supplies,
+      rarity,
+      owner,
+      data
+    );
+    const receipt = await tx.wait();
+
+    return receipt.events.find(
+      (v: Event) => v.event === 'TransferBatch'
+    ).args[3];
+  }
+
   const users = await setupUsers(otherAccounts, {Asset});
 
   return {
     Asset,
     users,
     mintAsset,
+    mintMultiple,
     trustedForwarder,
     predicate,
   };
