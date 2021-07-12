@@ -1092,7 +1092,7 @@ contract ERC1155ERC721 is WithSuperOperators, IERC1155, IERC721, ERC2771Handler 
         if (_i == 0) {
             return "0";
         }
-
+        
         uint256 j = _i;
         uint256 len;
         while (j != 0) {
@@ -1101,9 +1101,9 @@ contract ERC1155ERC721 is WithSuperOperators, IERC1155, IERC721, ERC2771Handler 
         }
 
         bytes memory bstr = new bytes(len);
-        uint256 k = len - 1;
+        uint256 k = len;
         while (_i != 0) {
-            bstr[k--] = bytes1(uint8(48 + (_i % 10)));
+            bstr[--k] = bytes1(uint8(48 + uint8(_i % 10)));
             _i /= 10;
         }
 
