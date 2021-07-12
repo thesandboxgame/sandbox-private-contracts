@@ -344,6 +344,15 @@ describe('PolygonAsset.sol', function () {
         hash
       );
 
+      const initial_mainnet_balances = [];
+      for (let i = 0; i < tokenIds.length; i++) {
+        const balance = await mainnet.Asset['balanceOf(address,uint256)'](
+          mainnet.users[0].address,
+          tokenIds[i]
+        );
+        initial_mainnet_balances.push(balance);
+      }
+
       // Approve ERC1155 predicate contarct
       await waitFor(
         mainnet.users[0].Asset.setApprovalForAll(
@@ -353,59 +362,52 @@ describe('PolygonAsset.sol', function () {
       );
 
       // Generate data to be passed to Polygon
-      const ipfsHashes = [hash];
+      // @review - is this how we're expecting to pass hash?
+      const ipfsHashes = [hash, hash, hash];
       const tokenData = abiCoder.encode(['bytes32[]'], [ipfsHashes]);
       const data = abiCoder.encode(
         ['uint256[]', 'uint256[]', 'bytes'],
         [tokenIds, supplies, tokenData]
       );
 
-      // @temp - checking token URI
-      for (var i = 0; i < tokenIds.length; i++) {
-        console.log(tokenIds[i].toString());
+      // Lock tokens on ERC1155 predicate contract
+      await waitFor(
+        mainnet.predicate.lockTokens(
+          mainnet.users[0].address,
+          tokenIds,
+          supplies,
+          data
+        )
+      );
+
+      // Emulate the ChildChainManager call to deposit
+      await waitFor(
+        polygon.childChainManager.callDeposit(mainnet.users[0].address, data)
+      );
+
+      // Ensure balance has been updated on Asset & PolygonAsset
+      for (let i = 0; i < tokenIds.length; i++) {
+        const mainnet_balance = await mainnet.Asset[
+          'balanceOf(address,uint256)'
+        ](mainnet.users[0].address, tokenIds[i]);
+        const polygon_balance = await polygon.Asset[
+          'balanceOf(address,uint256)'
+        ](mainnet.users[0].address, tokenIds[i]);
+        // Check if balance is updated on L1 & L2
+        expect(polygon_balance).to.be.equal(supplies[i]);
+        expect(mainnet_balance).to.be.equal(0);
+        // Check if correct balance is reflected on L2
+        expect(polygon_balance).to.be.equal(initial_mainnet_balances[i]);
+
+        // Ensure URI is same
         const mainnet_URI = await mainnet.Asset['tokenURI(uint256)'](
           tokenIds[i]
         );
-        console.log(mainnet_URI);
+        const polygon_URI = await polygon.Asset['tokenURI(uint256)'](
+          tokenIds[i]
+        );
+        expect(mainnet_URI).to.be.equal(polygon_URI);
       }
-
-      // // Lock tokens on ERC1155 predicate contract
-      // await waitFor(
-      //   mainnet.predicate.lockTokens(
-      //     mainnet.users[0].address,
-      //     tokenIds,
-      //     supplies,
-      //     data
-      //   )
-      // );
-
-      // // Emulate the ChildChainManager call to deposit
-      // await waitFor(
-      //   polygon.childChainManager.callDeposit(mainnet.users[0].address, data)
-      // );
-
-      // // Ensure balance has been updated on Asset & PolygonAsset
-      // for (var i = 0; i < tokenIds.length; i++) {
-      //   const mainnet_balance = await mainnet.Asset[
-      //     'balanceOf(address,uint256)'
-      //   ](mainnet.users[0].address, tokenIds[i]);
-      //   const polygon_balance = await polygon.Asset[
-      //     'balanceOf(address,uint256)'
-      //   ](mainnet.users[0].address, tokenIds[i]);
-      //   expect(polygon_balance).to.be.equal(supplies[i]);
-      //   expect(mainnet_balance).to.be.equal(0);
-
-      //   // Ensure URI is same
-      //   const mainnet_URI = await mainnet.Asset['tokenURI(uint256)'](
-      //     tokenIds[i]
-      //   );
-      //   const polygon_URI = await polygon.Asset['tokenURI(uint256)'](
-      //     tokenIds[i]
-      //   );
-      //   expect(mainnet_URI).to.be.equal(polygon_URI);
-      //   // console.log(mainnet_URI);
-      //   // console.log(polygon_URI);
-      // }
     });
   });
 });
