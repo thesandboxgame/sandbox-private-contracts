@@ -40,14 +40,14 @@ contract PolygonAssetV2 is ERC1155ERC721 {
             abi.decode(depositData, (uint256[], uint256[], bytes));
         bytes32[] memory hashes = abi.decode(data, (bytes32[]));
         for (uint256 i = 0; i < ids.length; i++) {
-            uint256 uriId = ids[0] & URI_ID;
+            uint256 uriId = ids[i] & URI_ID;
             // @review - why does this fail even though nothing has been minted yet?
             // require(uint256(_metadataHash[uriId]) == 0, "ID_TAKEN");
             _metadataHash[uriId] = hashes[i];
             _rarityPacks[uriId] = "0x00";
-            // @todo - handle numNFTs
-            _mintBatches(amounts, user, ids, 0);
         }
+        // @todo - handle numNFTs
+        _mintBatches(amounts, user, ids, 0);
     }
 
     /// @notice called when user wants to withdraw tokens back to root chain
