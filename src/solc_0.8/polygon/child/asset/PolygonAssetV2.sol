@@ -38,12 +38,15 @@ contract PolygonAssetV2 is ERC1155ERC721 {
         require(user != address(0), "INVALID_DEPOSIT_USER");
         (uint256[] memory ids, uint256[] memory amounts, bytes memory data) =
             abi.decode(depositData, (uint256[], uint256[], bytes));
-        address sender = _msgSender();
         bytes32[] memory hashes = abi.decode(data, (bytes32[]));
         for (uint256 i = 0; i < ids.length; i++) {
-            // @review - any reason to have separate calls to _mint() for ERC721 & ERC1155?
-            uint8 rarity = 0;
-            _mint(hashes[i], amounts[i], rarity, sender, user, ids[i], data, false);
+            uint256 uriId = ids[0] & URI_ID;
+            // @review - why does this fail even though nothing has been minted yet?
+            // require(uint256(_metadataHash[uriId]) == 0, "ID_TAKEN");
+            _metadataHash[uriId] = hashes[i];
+            _rarityPacks[uriId] = "0x00";
+            // @todo - handle numNFTs
+            _mintBatches(amounts, user, ids, 0);
         }
     }
 
@@ -52,6 +55,8 @@ contract PolygonAssetV2 is ERC1155ERC721 {
     /// @param ids ids to withdraw
     /// @param amounts amounts to withdraw
     function withdraw(uint256[] calldata ids, uint256[] calldata amounts) external {
+        // @review - burn doesnt reset hash
+        // hash reset would need to be done to avoid failure when transferring the asset a second time
         bytes32[] memory hashes = new bytes32[](ids.length);
         for (uint256 i = 0; i < ids.length; i++) {
             bytes32 hash = _metadataHash[ids[i] & URI_ID];

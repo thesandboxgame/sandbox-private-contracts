@@ -50,7 +50,7 @@ contract ERC1155ERC721 is WithSuperOperators, IERC1155, IERC721, ERC2771Handler 
     mapping(address => mapping(address => bool)) private _operatorsForAll; // erc721 and erc1155
     mapping(uint256 => address) private _erc721operators; // erc721
     mapping(uint256 => bytes32) internal _metadataHash; // erc721 and erc1155
-    mapping(uint256 => bytes) private _rarityPacks; // rarity configuration per packs (2 bits per Asset)
+    mapping(uint256 => bytes) internal _rarityPacks; // rarity configuration per packs (2 bits per Asset)
     mapping(uint256 => uint32) private _nextCollectionIndex; // extraction
 
     mapping(address => address) private _creatorship; // creatorship transfer
@@ -1092,7 +1092,7 @@ contract ERC1155ERC721 is WithSuperOperators, IERC1155, IERC721, ERC2771Handler 
         if (_i == 0) {
             return "0";
         }
-        
+
         uint256 j = _i;
         uint256 len;
         while (j != 0) {
