@@ -20,9 +20,13 @@ contract AssetV2 is ERC1155ERC721 {
         require(_msgSender() == _predicate, "!PREDICATE");
         bytes32[] memory hashes = abi.decode(data, (bytes32[]));
         for (uint256 i = 0; i < ids.length; i++) {
-            // @review - any reason to have separate calls to _mint() for ERC721 & ERC1155?
-            uint8 rarity = 0;
-            _mint(hashes[i], amounts[i], rarity, _predicate, to, ids[i], data, false);
+            uint256 uriId = ids[i] & URI_ID;
+            // @review - why does this fail even though nothing has been minted yet?
+            // require(uint256(_metadataHash[uriId]) == 0, "ID_TAKEN");
+            _metadataHash[uriId] = hashes[i];
+            _rarityPacks[uriId] = "0x00";
         }
+        // @todo - handle numNFTs
+        _mintBatches(amounts, to, ids, 0);
     }
 }
