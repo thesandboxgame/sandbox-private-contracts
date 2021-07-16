@@ -14,7 +14,7 @@ export function createClaimMerkleTree(
   claimData: Array<MultiClaim>
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): any {
-  let secretPath = './.multi_giveaway_1_secret';
+  let secretPath = './secret/.multi_giveaway_1_secret';
   if (BigNumber.from(chainId).toString() === '1') {
     console.log('MAINNET secret');
     secretPath = './.multi_giveaway_1_secret.mainnet';
