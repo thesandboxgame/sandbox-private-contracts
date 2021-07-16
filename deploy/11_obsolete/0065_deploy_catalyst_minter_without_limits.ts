@@ -125,4 +125,4 @@ func.dependencies = [
   'OldCatalysts_deploy', // old Catalyst is assumed to be deployed
   'OldCatalystRegistry_deploy', // old CatalystRegistry is assumed to be deployed
 ];
-func.skip = async (hre) => hre.network.name === 'hardhat'; // skip running as this is not to be used, require putting the whole Gem/Catalyst deployment back
+func.skip = async () => true; // skip running as this is not to be used, require putting the whole Gem/Catalyst deployment back
