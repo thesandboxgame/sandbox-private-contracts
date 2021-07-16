@@ -26,7 +26,7 @@ const args = process.argv.slice(2);
   }
 
   const bouncer = await ethers.getContract(
-    'CatalystMinterLegendary220',
+    'OldCatalystMinterLegendary220',
     deployer
   );
   const tx = await bouncer.mint(

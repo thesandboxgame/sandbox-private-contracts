@@ -26,7 +26,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 };
 export default func;
 func.runAtTheEnd = true;
-func.tags = ['Asset', 'Asset_setup'];
-func.dependencies = ['Asset_deploy'];
+func.tags = ['AssetMinter', 'AssetMinter_setup'];
+func.dependencies = ['Asset', 'AssetMinter_deploy'];
 func.skip = skipUnlessTest; // disabled for now
 // TODO should move it as part of catalyst deploy scripts folder

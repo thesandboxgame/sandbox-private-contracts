@@ -10,7 +10,7 @@ const args = process.argv.slice(2);
   }
   const {genesisMinter, deployer} = await getNamedAccounts();
 
-  let to = deployer;
+  let to = genesisMinter;
   if (args.length > 0) {
     to = args[0];
   }
@@ -25,17 +25,19 @@ const args = process.argv.slice(2);
     }
   }
 
-  const genesisBouncer = await ethers.getContract(
-    'GenesisBouncer',
+  const defaultMinter = await ethers.getContract(
+    'DefaultMinter',
     genesisMinter
   );
-  const tx = await genesisBouncer.mintFor(
-    deployer,
+
+  const tx = await defaultMinter.mintFor(
+    genesisMinter,
     packId,
     '0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF',
     20000,
+    to,
     0,
-    to
+    0
   );
 
   console.log({txHash: tx.hash});

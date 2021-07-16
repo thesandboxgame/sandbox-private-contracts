@@ -63,4 +63,4 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 };
 export default func;
 func.tags = ['DefaultMinter', 'DefaultMinter_deploy'];
-func.dependencies = ['Asset_deploy', 'Sand_deploy'];
+func.dependencies = ['Asset', 'Sand'];

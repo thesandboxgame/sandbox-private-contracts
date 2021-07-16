@@ -1,4 +1,5 @@
 import {DeployFunction} from 'hardhat-deploy/types';
+import {skipUnlessTest} from '../../utils/network';
 
 const func: DeployFunction = async function (hre) {
   const {deployments, getNamedAccounts} = hre;
@@ -30,5 +31,6 @@ const func: DeployFunction = async function (hre) {
 export default func;
 func.runAtTheEnd = true;
 func.tags = ['ChildGameToken', 'ChildGameToken_setup'];
-func.dependencies = ['ChildGameToken_deploy'];
+func.dependencies = ['Asset', 'ChildGameToken_deploy'];
 // TODO: Setup deploy-polygon folder and network.
+func.skip = skipUnlessTest; // TODO enable

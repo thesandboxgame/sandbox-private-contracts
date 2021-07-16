@@ -115,4 +115,5 @@ func.dependencies = [
   'Asset_deploy',
   'OldCatalystRegistry_deploy',
 ];
+// comment to deploy old system
 func.skip = skipUnlessTest; // not meant to be redeployed

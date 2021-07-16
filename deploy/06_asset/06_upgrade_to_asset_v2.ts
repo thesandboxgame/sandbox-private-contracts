@@ -40,7 +40,7 @@ const func: DeployFunction = async function (
 };
 
 export default func;
-func.tags = ['AssetV2', 'AssetV2_deploy'];
+func.tags = ['Asset', 'AssetV2', 'AssetV2_deploy'];
 func.runAtTheEnd = true;
 func.dependencies = [
   'Asset_deploy',

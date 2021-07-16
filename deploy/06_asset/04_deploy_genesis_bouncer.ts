@@ -35,5 +35,5 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 };
 export default func;
 func.tags = ['GenesisBouncer', 'GenesisBouncer_deploy'];
-func.dependencies = ['Asset_Deploy'];
-func.skip = async (hre) => hre.network.name !== 'rinkeby';
+func.dependencies = ['Asset'];
+func.skip = async (hre) => !hre.network.tags.testnet;

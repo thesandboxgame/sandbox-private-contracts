@@ -6,6 +6,7 @@ import 'hardhat-gas-reporter';
 import '@openzeppelin/hardhat-upgrades';
 import 'solidity-coverage';
 import 'hardhat-contract-sizer';
+import '@nomiclabs/hardhat-etherscan';
 import {node_url, accounts} from './utils/network';
 
 const config: HardhatUserConfig = {
@@ -58,18 +59,32 @@ const config: HardhatUserConfig = {
         },
       },
     ],
+    overrides: {
+      'src/solc_0.8/polygon/child/asset/PolygonAssetV2.sol': {
+        version: '0.8.2',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 550,
+          },
+        },
+      },
+    },
   },
   namedAccounts: {
     deployer: {
       default: 1,
-      mainnet: '0x18dd4e0eb8699eA4FeE238dE41ECfb95e32272f8',
+      mainnet: '0xe19ae8F9B36Ca43D12741288D0e311396140DF6F',
       rinkeby: '0x8A0e83DE499d7543CF486974a6196a35B5F573E7',
+      goerli: '0xA796AE911621E00809E0E7C8f0AD6BF118E5139e',
+      mumbai: '0x5F890c9522dCE5670d741D4277BFCC2d9cA8Af02',
     }, // deploy contracts and make sure they are set up correctly
 
     sandAdmin: {
       default: 2,
       mainnet: '0xeaa0993e1d21c2103e4f172a20d29371fbaf6d06',
       rinkeby: '0xa4519D601F43D0b8f167842a367465681F652252',
+      goerli: '0x39D01ecc951C2c1f20ba0549e62212659c4d1e06',
     }, // can add super operators and change admin
 
     upgradeAdmin: 'sandAdmin',
@@ -104,6 +119,7 @@ const config: HardhatUserConfig = {
       default: 3,
       mainnet: '0x9695ed5020BB47880738Db356678fe8cBc8FF60b', // TODO use another wallet ?
       rinkeby: '0x60927eB036621b801491B6c5e9A60A8d2dEeD75A',
+      goerli: '0xF22455c7F2a81E197AecD951F588a9B650f5b282',
     },
 
     Foundation: {
@@ -119,12 +135,14 @@ const config: HardhatUserConfig = {
     treasury: {
       default: 'sandSaleBeneficiary',
       rinkeby: 'sandSaleBeneficiary',
+      goerli: 'sandSaleBeneficiary',
       mainnet: '0x4489590a116618B506F0EfE885432F6A8ED998E9',
     },
 
     landSaleBeneficiary: {
       default: 'sandSaleBeneficiary',
       rinkeby: 'sandSaleBeneficiary',
+      goerli: 'sandSaleBeneficiary',
       mainnet: 'treasury',
     }, // updated to company treasury wallet 9th September - collect funds from land sales
 
@@ -133,6 +151,7 @@ const config: HardhatUserConfig = {
     landSaleFeeRecipient: {
       default: 3,
       rinkeby: 5,
+      goerli: 5,
       mainnet: '0x0EB04462D69B1D267d269377E34f60b9De1c8510',
     }, // collect 5% fee from land sales (prior to implementation of FeeDistributor)
 
@@ -140,6 +159,7 @@ const config: HardhatUserConfig = {
       default: 2,
       mainnet: '0xeaa0993e1d21c2103e4f172a20d29371fbaf6d06',
       rinkeby: '0xa4519D601F43D0b8f167842a367465681F652252',
+      goerli: '0x39D01ecc951C2c1f20ba0549e62212659c4d1e06',
     }, // can add super operators and change admin
 
     gemsAndCatalystsAdmin: 'sandAdmin',
@@ -148,6 +168,7 @@ const config: HardhatUserConfig = {
       default: 2,
       mainnet: '0xeaa0993e1d21c2103e4f172a20d29371fbaf6d06',
       rinkeby: '0xa4519D601F43D0b8f167842a367465681F652252',
+      goerli: '0x39D01ecc951C2c1f20ba0549e62212659c4d1e06',
     },
 
     landSaleAdmin: 'sandAdmin', // can enable currencies
@@ -161,16 +182,19 @@ const config: HardhatUserConfig = {
       default: '0x17c5185167401eD00cF5F5b2fc97D9BBfDb7D025',
       mainnet: '0x3044719d139F866a44c988823513eCB93060bF1b',
       rinkeby: '0xB7060D3FeCAC3AE1F0A0AA416E3e8E472257950e',
+      goerli: '0xB7060D3FeCAC3AE1F0A0AA416E3e8E472257950e',
     },
     sandboxAccount: {
       default: 4,
       mainnet: '0x7A9fe22691c811ea339D9B73150e6911a5343DcA',
       rinkeby: '0x5BC3D5A39a50BE2348b9C529f81aE79f00945897', // Leon account on demo.sandbox
+      goerli: '0x5BC3D5A39a50BE2348b9C529f81aE79f00945897', // Leon account on demo.sandbox
     },
     extraCatalystAndGemMinter: {
       default: null,
       mainnet: null,
       rinkeby: '0x5BC3D5A39a50BE2348b9C529f81aE79f00945897', // Leon account on demo.sandbox
+      goerli: '0x5BC3D5A39a50BE2348b9C529f81aE79f00945897', // Leon account on demo.sandbox
     },
     collectionCatalystMigrationsAdmin: 'sandAdmin', // TODO use special account or deployer ?
     catalystMinter: 'sandAdmin', // account that can mint catalysts
@@ -187,8 +211,16 @@ const config: HardhatUserConfig = {
     gemsCatalystsRegistryAdmin: 'sandAdmin',
   },
   networks: {
+    /**
+     * TAGS:
+     *  - mainnet -> production networks
+     *  - testnet -> non production networks
+     *  - L1      -> Layer 1 networks
+     *  - L2      -> Layer 2 networks
+     */
     hardhat: {
       accounts: accounts(process.env.HARDHAT_FORK),
+      tags: ['testnet', 'L1', 'L2'],
       forking: process.env.HARDHAT_FORK
         ? {
             url: node_url(process.env.HARDHAT_FORK),
@@ -197,23 +229,46 @@ const config: HardhatUserConfig = {
               : undefined,
           }
         : undefined,
+      deploy: ['deploy_polygon', 'deploy'],
       // deploy: ['deploy-for-test', 'deploy'],
     },
     localhost: {
       url: 'http://localhost:8545',
       accounts: accounts(),
+      tags: ['testnet', 'L1', 'L2'],
     },
     rinkeby_test: {
       url: node_url('rinkeby'),
       accounts: accounts('rinkeby_test'),
+      tags: ['testnet'],
     },
     rinkeby: {
       url: node_url('rinkeby'),
       accounts: accounts('rinkeby'),
+      tags: ['testnet', 'L1'],
+    },
+    goerli: {
+      url: node_url('goerli'),
+      accounts: accounts('goerli'),
+      tags: ['testnet', 'L1'],
+      gasPrice: 600000000000,
     },
     mainnet: {
       url: node_url('mainnet'),
       accounts: accounts('mainnet'),
+      tags: ['mainnet', 'L1'],
+    },
+    mumbai: {
+      url: node_url('mumbai'),
+      accounts: accounts('mumbai'),
+      tags: ['testnet', 'L2'],
+      deploy: ['deploy_polygon'],
+    },
+    polygon: {
+      url: node_url('polygon'),
+      accounts: accounts('polygon'),
+      tags: ['mainnet', 'L2'],
+      deploy: ['deploy_polygon'],
     },
   },
   paths: {
@@ -227,6 +282,9 @@ const config: HardhatUserConfig = {
         },
       }
     : undefined,
+  etherscan: {
+    apiKey: process.env.ETHERSCAN_API_KEY || '',
+  },
 };
 
 export default config;

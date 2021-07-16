@@ -42,3 +42,5 @@ giveaway.json
 .proofs*
 
 .openzeppelin/unknown-*.json
+
+.idea/

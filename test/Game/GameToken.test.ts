@@ -228,7 +228,7 @@ describe('GameToken', function () {
         await gameToken.getStorageId(gameId)
       );
       expect(storageIdAsHex).to.be.equal(
-        '0xa0ee7a142d267c1f36714e4a8f75612f20a79720000000001672178700000000'
+        `${users[3].address.toLowerCase()}000000001672178700000000`
       );
     });
 

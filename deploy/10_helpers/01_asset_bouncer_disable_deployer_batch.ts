@@ -36,7 +36,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 };
 export default func;
 func.runAtTheEnd = true;
-func.tags = ['Asset', 'Asset_setup'];
-func.dependencies = ['Asset_deploy', 'DeployerBatch_deploy'];
+func.tags = ['DeployerBatch', 'DeployerBatch_setup'];
+func.dependencies = ['Asset', 'DeployerBatch_deploy'];
 
 func.skip = async () => true; // TODO

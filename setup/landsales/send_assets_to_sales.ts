@@ -1,36 +1,25 @@
-import fs from 'fs-extra';
 import hre from 'hardhat';
-import {SectorData} from '../../data/landSales/getLandSales';
+import {getLandSaleFiles} from '../../data/landSales/getLandSales';
+import {BigNumber} from '@ethersproject/bignumber';
 
 const {deployments} = hre;
-const {execute, catchUnknownSigner} = deployments;
+const {read, execute, catchUnknownSigner} = deployments;
 
 const args = process.argv.slice(2);
 const landSalePrefix = args[0];
 
 (async () => {
   const networkName = hre.network.name;
-
-  const bundleInfo: {[bundleId: string]: string[]} = JSON.parse(
-    fs
-      .readFileSync(
-        `data/landSales/${landSalePrefix}/bundles.${networkName}.json`
-      )
-      .toString()
-  );
-  const sectors: SectorData[] = JSON.parse(
-    fs
-      .readFileSync(
-        `data/landSales/${landSalePrefix}/sectors.${networkName}.json`
-      )
-      .toString()
+  const {sectors, bundles} = await getLandSaleFiles(
+    landSalePrefix,
+    networkName
   );
 
   for (const sector of sectors) {
     const assetIdsCount: {[assetId: string]: number} = {};
     const countBundleId = (bundleId?: string) => {
       if (bundleId && bundleId !== '') {
-        const bundle = bundleInfo[bundleId];
+        const bundle = bundles[bundleId];
         for (const assetId of bundle) {
           assetIdsCount[assetId] = (assetIdsCount[assetId] || 0) + 1;
         }
@@ -56,8 +45,17 @@ const landSalePrefix = args[0];
     const ids = [];
     const values = [];
     for (const assetId of Object.keys(assetIdsCount)) {
-      ids.push(assetId);
-      values.push(assetIdsCount[assetId]);
+      const balance: BigNumber = await read(
+        'Asset',
+        'balanceOf(address,uint256)',
+        presale.address,
+        assetId
+      );
+      const assetCount = BigNumber.from(assetIdsCount[assetId]);
+      if (balance.lt(assetCount)) {
+        ids.push(assetId);
+        values.push(assetCount.sub(balance).toNumber());
+      }
     }
     if (ids.length > 0) {
       console.log(landSaleName, JSON.stringify(assetIdsCount, null, '  '));

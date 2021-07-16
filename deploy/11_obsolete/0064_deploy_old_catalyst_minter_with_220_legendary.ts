@@ -8,15 +8,15 @@ const func: DeployFunction = async function (hre) {
 
   const {deployer, catalystMinterAdmin} = await getNamedAccounts();
 
-  const registry = await deployments.get('CatalystRegistry');
+  const registry = await deployments.get('OldCatalystRegistry');
   const sand = await deployments.get('Sand');
   const asset = await deployments.get('Asset');
-  const gem = await deployments.get('Gem');
-  const catalyst = await deployments.get('Catalyst');
+  const gem = await deployments.get('OldGems');
+  const catalyst = await deployments.get('OldCatalysts');
 
   const bakedMintData = [];
   for (let i = 0; i < 4; i++) {
-    const mintData = await read('Catalyst', 'getMintData', i);
+    const mintData = await read('OldCatalysts', 'getMintData', i);
     const maxGems = BigNumber.from(mintData.maxGems).mul(
       BigNumber.from(2).pow(240)
     );
@@ -45,7 +45,7 @@ const func: DeployFunction = async function (hre) {
     bakedMintData.push(bakedData);
   }
 
-  const catalystMinter = await deploy('CatalystMinterLegendary220', {
+  const catalystMinter = await deploy('OldCatalystMinterLegendary220', {
     contract: 'CatalystMinter',
     from: deployer,
     log: true,
@@ -118,21 +118,21 @@ const func: DeployFunction = async function (hre) {
   }
 
   await setSuperOperatorFor('Sand', catalystMinter.address);
-  await setSuperOperatorFor('Gem', catalystMinter.address);
+  await setSuperOperatorFor('OldGems', catalystMinter.address);
   await setSuperOperatorFor('Asset', catalystMinter.address);
-  await setSuperOperatorFor(`Catalyst`, catalystMinter.address);
+  await setSuperOperatorFor('OldCatalysts', catalystMinter.address);
 };
 export default func;
 func.tags = [
-  'CatalystMinterLegendary220',
-  'CatalystMinterLegendary220_setup',
-  'CatalystMinterLegendary220_deploy',
+  'OldCatalystMinterLegendary220',
+  'OldCatalystMinterLegendary220_setup',
+  'OldCatalystMinterLegendary220_deploy',
 ];
 func.dependencies = [
   'Sand_deploy',
   'Asset_deploy',
-  // 'Gems_deploy', // old Gem is assumed to be deployed
-  // 'Catalysts_deploy', // old Catalyst is assumed to be deployed
-  // 'CatalystRegistry_deploy', // old CatalystRegistry is assumed to be deployed
+  'OldGems_deploy', // old Gem is assumed to be deployed
+  'OldCatalysts_deploy', // old Catalyst is assumed to be deployed
+  'OldCatalystRegistry_deploy', // old CatalystRegistry is assumed to be deployed
 ];
-func.skip = async (hre) => hre.network.name === 'hardhat'; // skip running in test as this is not to be used, require putting the whole Gem/Catalyst deployment back
+func.skip = async () => true; // skip running as this is not to be used, require putting the whole Gem/Catalyst deployment back

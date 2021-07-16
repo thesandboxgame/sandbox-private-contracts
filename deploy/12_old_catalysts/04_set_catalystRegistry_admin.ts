@@ -21,4 +21,5 @@ export default func;
 func.tags = ['OldCatalystRegistry'];
 func.dependencies = ['OldCatalystRegistry_deploy'];
 func.runAtTheEnd = true;
+// comment to deploy old system
 func.skip = skipUnlessTest; // not meant to be redeployed

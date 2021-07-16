@@ -47,7 +47,12 @@ describe('ActualSANDRewardPool', function () {
 
   async function createFixture() {
     // TODO use deployments.createFixture()
-    await deployments.fixture('LandWeightedSANDRewardPool');
+    await deployments.fixture([
+      'LandWeightedSANDRewardPool',
+      'UNI_SAND_ETH',
+      'Sand',
+      'Land',
+    ]);
     await setupLandWeightedRewardPool();
 
     ({deployer, liquidityRewardAdmin, landAdmin} = await getNamedAccounts());

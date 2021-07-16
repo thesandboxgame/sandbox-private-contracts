@@ -13,7 +13,7 @@ function testAsset() {
     const otherAccounts = await getUnnamedAccounts();
     const minter = otherAccounts[0];
     const users = otherAccounts.slice(1);
-    await deployments.fixture();
+    await deployments.fixture('Asset');
 
     const assetContractAsBouncerAdmin = await ethers.getContract(
       'Asset',

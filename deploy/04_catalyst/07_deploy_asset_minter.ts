@@ -29,7 +29,7 @@ export default func;
 func.tags = ['AssetMinter', 'AssetMinter_deploy'];
 func.dependencies = [
   'AssetAttributesRegistry_deploy',
-  'Asset_Deploy',
+  'Asset_deploy',
   'GemsCatalystsRegistry_deploy',
 ];
 func.skip = skipUnlessTest; // disabled for now

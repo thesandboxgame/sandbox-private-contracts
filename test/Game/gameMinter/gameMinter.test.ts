@@ -65,7 +65,7 @@ const setupTest = deployments.createFixture(
     GameMinter: Contract;
     users: User[];
   }> => {
-    await deployments.fixture('GameMinter');
+    await deployments.fixture(['ChildGameToken', 'GameMinter']);
     const users = await getUnnamedAccounts();
     return {
       GameMinter: await ethers.getContract('GameMinter'),

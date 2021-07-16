@@ -1,0 +1,48 @@
+{
+  "address": "0x38B1a86fEf3e1F792E0e4F19D4625215cC15b03b",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "read",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x741f8285a623d98272454eddeee512f6994add63133e24080aebd1487af12fb5",
+  "receipt": {
+    "to": null,
+    "from": "0xA796AE911621E00809E0E7C8f0AD6BF118E5139e",
+    "contractAddress": "0x38B1a86fEf3e1F792E0e4F19D4625215cC15b03b",
+    "transactionIndex": 1,
+    "gasUsed": "82601",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x54af84625144d07c3b421ab535ae42c215d6dd560dcdec8c3de28d462b81f713",
+    "transactionHash": "0x741f8285a623d98272454eddeee512f6994add63133e24080aebd1487af12fb5",
+    "logs": [],
+    "blockNumber": 5030806,
+    "cumulativeGasUsed": "104113",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "solcInputHash": "58235aae2deeb8981db65b674173b16e",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.9+commit.c68bc34e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"read\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes32\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"From MakerDAO (https://etherscan.io/address/0x729D19f657BD0614b4985Cf1D82531c67569197B#code)\",\"methods\":{},\"title\":\"Fake Medianizer contract\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"src/solc_0.5/Test/FakeMedianizer.sol\":\"FakeMedianizer\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"metadata\":{\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":2000},\"remappings\":[]},\"sources\":{\"src/solc_0.5/Test/FakeMedianizer.sol\":{\"content\":\"pragma solidity ^0.5.2;\\n\\n\\n/**\\n * @title Fake Medianizer contract\\n * @dev From MakerDAO (https://etherscan.io/address/0x729D19f657BD0614b4985Cf1D82531c67569197B#code)\\n */\\ncontract FakeMedianizer {\\n    function read() external view returns (bytes32) {\\n        return 0x0000000000000000000000000000000000000000000000094adc6a4ded958000;\\n    }\\n}\\n\",\"keccak256\":\"0x5fcc60be37c153c19df25516c02b3aac192a88d6ee8786d9255761d04c33e202\"}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b5060878061001e6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c806357de26a414602d575b600080fd5b60336045565b60408051918252519081900360200190f35b68094adc6a4ded9580009056fea265627a7a7230582020f196f28fd52cd127f18ee832c9b4c52c102d669c01bf2f705c8b7bc708ae4d64736f6c63430005090032",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c806357de26a414602d575b600080fd5b60336045565b60408051918252519081900360200190f35b68094adc6a4ded9580009056fea265627a7a7230582020f196f28fd52cd127f18ee832c9b4c52c102d669c01bf2f705c8b7bc708ae4d64736f6c63430005090032",
+  "devdoc": {
+    "details": "From MakerDAO (https://etherscan.io/address/0x729D19f657BD0614b4985Cf1D82531c67569197B#code)",
+    "methods": {},
+    "title": "Fake Medianizer contract"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

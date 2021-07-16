@@ -1,22 +1,29 @@
 [
   {
+    "to": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
     "erc1155": [{
+      "contractAddress": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
       "ids": ["0", "1", "2"],
       "values": [5, 5, 5]
     }],
     "erc721": [{
+      "contractAddress": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
       "ids": [0, 1, 2, 3, 4, 5]
     }],
     "erc20": {
+      "contractAddresses": ["0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"],
       "amounts": [200]
     }
   },
   {
+    "to": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
     "erc1155": [{
+      "contractAddress": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
       "ids": ["3"],
       "values": [1]
     }],
     "erc721": [{
+      "contractAddress": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
       "ids": [6]
     }],
     "erc20": {
@@ -25,8 +32,10 @@
     }
   },
   {
+    "to": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
     "erc1155": [],
     "erc721": [{
+      "contractAddress": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
       "ids": [7]
     }],
     "erc20": {
@@ -35,7 +44,9 @@
     }
   },
   {
+    "to": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
     "erc1155": [{
+      "contractAddress": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
       "ids": ["4", "5", "6"],
       "values": [5, 5, 5]
     }],
@@ -46,9 +57,11 @@
     }
   },
   {
+    "to": "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
     "erc1155": [],
     "erc721": [],
     "erc20": {
+      "contractAddresses": ["0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"],
       "amounts": [300]
     }
   }

@@ -28,5 +28,5 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 export default func;
 func.runAtTheEnd = true;
 func.tags = ['GemsCatalystsRegistry', 'GemsCatalystsRegistry_setup'];
-func.dependencies = ['GemsCatalystsRegistry_deploy'];
+func.dependencies = ['GemsCatalystsRegistry_deploy', 'AssetMinter_deploy'];
 func.skip = skipUnlessTest; // disabled for now

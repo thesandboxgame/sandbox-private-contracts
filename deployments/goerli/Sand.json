@@ -1,0 +1,1045 @@
+{
+  "address": "0xccBF2aA6b762ed5fd6e2d819Ce16cBA9A32e793B",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "changeExecutionAdmin",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "burnFor",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "approveFor",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "decimals",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "name": "amountNeeded",
+          "type": "uint256"
+        }
+      ],
+      "name": "addAllowanceIfNeeded",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "burn",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "who",
+          "type": "address"
+        }
+      ],
+      "name": "isExecutionOperator",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "who",
+          "type": "address"
+        }
+      ],
+      "name": "isSuperOperator",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "executionOperator",
+          "type": "address"
+        },
+        {
+          "name": "enabled",
+          "type": "bool"
+        }
+      ],
+      "name": "setExecutionOperator",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getAdmin",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "name": "gasLimit",
+          "type": "uint256"
+        },
+        {
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "approveAndExecuteWithSpecificGas",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        },
+        {
+          "name": "returnData",
+          "type": "bytes"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "changeAdmin",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "symbol",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transfer",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "superOperator",
+          "type": "address"
+        },
+        {
+          "name": "enabled",
+          "type": "bool"
+        }
+      ],
+      "name": "setSuperOperator",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getExecutionAdmin",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "target",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "paidCall",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "target",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "approveAndCall",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "name": "gasLimit",
+          "type": "uint256"
+        },
+        {
+          "name": "tokenGasPrice",
+          "type": "uint256"
+        },
+        {
+          "name": "baseGasCharge",
+          "type": "uint256"
+        },
+        {
+          "name": "tokenReceiver",
+          "type": "address"
+        },
+        {
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "approveAndExecuteWithSpecificGasAndChargeForIt",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        },
+        {
+          "name": "returnData",
+          "type": "bytes"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "gasLimit",
+          "type": "uint256"
+        },
+        {
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "executeWithSpecificGas",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        },
+        {
+          "name": "returnData",
+          "type": "bytes"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "name": "spender",
+          "type": "address"
+        }
+      ],
+      "name": "allowance",
+      "outputs": [
+        {
+          "name": "remaining",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "name": "gasLimit",
+          "type": "uint256"
+        },
+        {
+          "name": "tokenGasPrice",
+          "type": "uint256"
+        },
+        {
+          "name": "baseGasCharge",
+          "type": "uint256"
+        },
+        {
+          "name": "tokenReceiver",
+          "type": "address"
+        }
+      ],
+      "name": "transferAndChargeForGas",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "sandAdmin",
+          "type": "address"
+        },
+        {
+          "name": "executionAdmin",
+          "type": "address"
+        },
+        {
+          "name": "beneficiary",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "superOperator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "enabled",
+          "type": "bool"
+        }
+      ],
+      "name": "SuperOperator",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "oldAdmin",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "AdminChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "oldAdmin",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "ExecutionAdminAdminChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "executionOperator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "enabled",
+          "type": "bool"
+        }
+      ],
+      "name": "ExecutionOperator",
+      "type": "event"
+    }
+  ],
+  "transactionHash": "0x31c21470b5bf0234210d41380eb465f8d9a1c7f7a4e5e24e988ddeb69d1788c7",
+  "receipt": {
+    "to": null,
+    "from": "0xA796AE911621E00809E0E7C8f0AD6BF118E5139e",
+    "contractAddress": "0xccBF2aA6b762ed5fd6e2d819Ce16cBA9A32e793B",
+    "transactionIndex": 0,
+    "gasUsed": "1722818",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000008000000000000000000000000000000000000000000000000020000000000000000000800000000000000000000000010000000000000000000000000000000000000000000000080000000000000000000000800000000000200000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000010000000000020000000800000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x78cf6c9c6e2b95633518b982173990ccc4d242cbad7337c6b4e7b3ff6de2e7d5",
+    "transactionHash": "0x31c21470b5bf0234210d41380eb465f8d9a1c7f7a4e5e24e988ddeb69d1788c7",
+    "logs": [
+      {
+        "transactionIndex": 0,
+        "blockNumber": 5030811,
+        "transactionHash": "0x31c21470b5bf0234210d41380eb465f8d9a1c7f7a4e5e24e988ddeb69d1788c7",
+        "address": "0xccBF2aA6b762ed5fd6e2d819Ce16cBA9A32e793B",
+        "topics": [
+          "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x00000000000000000000000039d01ecc951c2c1f20ba0549e62212659c4d1e06"
+        ],
+        "data": "0x000000000000000000000000000000000000000009b18ab5df7180b6b8000000",
+        "logIndex": 0,
+        "blockHash": "0x78cf6c9c6e2b95633518b982173990ccc4d242cbad7337c6b4e7b3ff6de2e7d5"
+      }
+    ],
+    "blockNumber": 5030811,
+    "cumulativeGasUsed": "1722818",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0xA796AE911621E00809E0E7C8f0AD6BF118E5139e",
+    "0xA796AE911621E00809E0E7C8f0AD6BF118E5139e",
+    "0x39D01ecc951C2c1f20ba0549e62212659c4d1e06"
+  ],
+  "solcInputHash": "a48eeaeaeaebd3f4efa2faa8e6d75af1",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.9+commit.c68bc34e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newAdmin\",\"type\":\"address\"}],\"name\":\"changeExecutionAdmin\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"spender\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"burnFor\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"from\",\"type\":\"address\"},{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"spender\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approveFor\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"spender\",\"type\":\"address\"},{\"name\":\"amountNeeded\",\"type\":\"uint256\"}],\"name\":\"addAllowanceIfNeeded\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"who\",\"type\":\"address\"}],\"name\":\"isExecutionOperator\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"who\",\"type\":\"address\"}],\"name\":\"isSuperOperator\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"executionOperator\",\"type\":\"address\"},{\"name\":\"enabled\",\"type\":\"bool\"}],\"name\":\"setExecutionOperator\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getAdmin\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"from\",\"type\":\"address\"},{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"gasLimit\",\"type\":\"uint256\"},{\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"approveAndExecuteWithSpecificGas\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"},{\"name\":\"returnData\",\"type\":\"bytes\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newAdmin\",\"type\":\"address\"}],\"name\":\"changeAdmin\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"name\":\"\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"superOperator\",\"type\":\"address\"},{\"name\":\"enabled\",\"type\":\"bool\"}],\"name\":\"setSuperOperator\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getExecutionAdmin\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"target\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"paidCall\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes\"}],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"target\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"approveAndCall\",\"outputs\":[{\"name\":\"\",\"type\":\"bytes\"}],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"from\",\"type\":\"address\"},{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"gasLimit\",\"type\":\"uint256\"},{\"name\":\"tokenGasPrice\",\"type\":\"uint256\"},{\"name\":\"baseGasCharge\",\"type\":\"uint256\"},{\"name\":\"tokenReceiver\",\"type\":\"address\"},{\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"approveAndExecuteWithSpecificGasAndChargeForIt\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"},{\"name\":\"returnData\",\"type\":\"bytes\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"gasLimit\",\"type\":\"uint256\"},{\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"executeWithSpecificGas\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"},{\"name\":\"returnData\",\"type\":\"bytes\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"name\":\"remaining\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"from\",\"type\":\"address\"},{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"},{\"name\":\"gasLimit\",\"type\":\"uint256\"},{\"name\":\"tokenGasPrice\",\"type\":\"uint256\"},{\"name\":\"baseGasCharge\",\"type\":\"uint256\"},{\"name\":\"tokenReceiver\",\"type\":\"address\"}],\"name\":\"transferAndChargeForGas\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"sandAdmin\",\"type\":\"address\"},{\"name\":\"executionAdmin\",\"type\":\"address\"},{\"name\":\"beneficiary\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"superOperator\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"enabled\",\"type\":\"bool\"}],\"name\":\"SuperOperator\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"oldAdmin\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"newAdmin\",\"type\":\"address\"}],\"name\":\"AdminChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"oldAdmin\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"newAdmin\",\"type\":\"address\"}],\"name\":\"ExecutionAdminAdminChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"executionOperator\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"enabled\",\"type\":\"bool\"}],\"name\":\"ExecutionOperator\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{\"allowance(address,address)\":{\"params\":{\"owner\":\"address whose token is allowed.\",\"spender\":\"address allowed to transfer.\"},\"return\":\"the amount of token `spender` is allowed to transfer on behalf of `owner`.\"},\"approve(address,uint256)\":{\"params\":{\"amount\":\"the number of tokens allowed.\",\"spender\":\"address to be given rights to transfer.\"},\"return\":\"true if success.\"},\"approveAndCall(address,uint256,bytes)\":{\"params\":{\"amount\":\"the number of tokens allowed.\",\"data\":\"bytes for the call.\",\"target\":\"address to be given rights to transfer and destination of the call.\"},\"return\":\"data of the call.\"},\"approveAndExecuteWithSpecificGas(address,address,uint256,uint256,bytes)\":{\"params\":{\"amount\":\"number of tokens allowed that can be transfer by the code at `to`.\",\"data\":\"the bytes sent to the destination address.\",\"from\":\"address of which token will be transfered.\",\"gasLimit\":\"exact amount of gas to be passed to the call.\",\"to\":\"destination address fo the call.\"},\"return\":\"success whether the execution was successful.returnData data resulting from the execution.\"},\"approveAndExecuteWithSpecificGasAndChargeForIt(address,address,uint256,uint256,uint256,uint256,address,bytes)\":{\"details\":\"the reason for this function is that charging for gas here is more gas-efficient than doing it in the caller.\",\"params\":{\"amount\":\"number of tokens allowed that can be transfer by the code at `to`.\",\"baseGasCharge\":\"amount of gas charged on top of the gas used for the call.\",\"data\":\"the bytes sent to the destination address.\",\"from\":\"address of which token will be transfered.\",\"gasLimit\":\"exact amount of gas to be passed to the call.\",\"to\":\"destination address fo the call.\",\"tokenGasPrice\":\"price in token for the gas to be charged.\",\"tokenReceiver\":\"recipient address of the token charged for the gas used.\"},\"return\":\"success whether the execution was successful.returnData data resulting from the execution.\"},\"approveFor(address,address,uint256)\":{\"params\":{\"amount\":\"the number of tokens allowed.\",\"owner\":\"address whose token is allowed.\",\"spender\":\"address to be given rights to transfer.\"},\"return\":\"true if success.\"},\"balanceOf(address)\":{\"params\":{\"owner\":\"The address to query the balance of.\"},\"return\":\"The amount owned by `owner`.\"},\"burn(uint256)\":{\"params\":{\"amount\":\"the number of tokens to burn.\"},\"return\":\"true if success.\"},\"burnFor(address,uint256)\":{\"params\":{\"amount\":\"the number of token to burn.\",\"owner\":\"address whose token is to burn.\"},\"return\":\"true if success.\"},\"changeAdmin(address)\":{\"params\":{\"newAdmin\":\"address of the new administrator.\"}},\"changeExecutionAdmin(address)\":{\"params\":{\"newAdmin\":\"address of the new administrator.\"}},\"decimals()\":{\"return\":\"the number of decimals.\"},\"executeWithSpecificGas(address,uint256,bytes)\":{\"params\":{\"data\":\"the bytes sent to the destination address.\",\"gasLimit\":\"exact amount of gas to be passed to the call.\",\"to\":\"destination address fo the call.\"},\"return\":\"success whether the execution was successful.returnData data resulting from the execution.\"},\"getAdmin()\":{\"return\":\"the current administrator of this contract.\"},\"getExecutionAdmin()\":{\"return\":\"address of the execution administrator.\"},\"isExecutionOperator(address)\":{\"params\":{\"who\":\"The address to query.\"},\"return\":\"whether the address has executionOperator rights.\"},\"isSuperOperator(address)\":{\"params\":{\"who\":\"The address to query.\"},\"return\":\"whether the address has superOperator rights.\"},\"name()\":{\"return\":\"name of the tokens\"},\"paidCall(address,uint256,bytes)\":{\"params\":{\"amount\":\"the number of tokens allowed to spend.\",\"data\":\"bytes for the call.\",\"target\":\"destination of the call, allowed to spend the amount specified\"},\"return\":\"data of the call.\"},\"setExecutionOperator(address,bool)\":{\"params\":{\"enabled\":\"set whether the executionOperator is enabled or disabled.\",\"executionOperator\":\"address that will be given/removed executionOperator right.\"}},\"setSuperOperator(address,bool)\":{\"params\":{\"enabled\":\"set whether the superOperator is enabled or disabled.\",\"superOperator\":\"address that will be given/removed superOperator right.\"}},\"symbol()\":{\"return\":\"symbol of the tokens\"},\"totalSupply()\":{\"return\":\"the total number of tokens in existence.\"},\"transfer(address,uint256)\":{\"params\":{\"amount\":\"the number of tokens transfered.\",\"to\":\"the recipient address of the tokens transfered.\"},\"return\":\"true if success.\"},\"transferAndChargeForGas(address,address,uint256,uint256,uint256,uint256,address)\":{\"params\":{\"amount\":\"number of tokens allowed that can be transfer by the code at `to`.\",\"baseGasCharge\":\"amount of gas charged on top of the gas used for the call.\",\"from\":\"address of which token will be transfered.\",\"gasLimit\":\"exact amount of gas to be passed to the call.\",\"to\":\"destination address fo the call.\",\"tokenGasPrice\":\"price in token for the gas to be charged.\",\"tokenReceiver\":\"recipient address of the token charged for the gas used.\"},\"return\":\"whether the transfer was successful.\"},\"transferFrom(address,address,uint256)\":{\"params\":{\"amount\":\"the number of tokens transfered.\",\"from\":\"whose token it is transferring from.\",\"to\":\"the recipient address of the tokens transfered.\"},\"return\":\"true if success.\"}}},\"userdoc\":{\"methods\":{\"allowance(address,address)\":{\"notice\":\"gets allowance of `spender` for `owner`'s tokens.\"},\"approve(address,uint256)\":{\"notice\":\"approve `spender` to transfer `amount` tokens.\"},\"approveAndCall(address,uint256,bytes)\":{\"notice\":\"approve `target` to spend `amount` and call it with data.\"},\"approveAndExecuteWithSpecificGas(address,address,uint256,uint256,bytes)\":{\"notice\":\"approve a specific amount of token for `from` and execute on behalf of the contract.\"},\"approveAndExecuteWithSpecificGasAndChargeForIt(address,address,uint256,uint256,uint256,uint256,address,bytes)\":{\"notice\":\"approve a specific amount of token for `from` and execute on behalf of the contract. Plus charge the gas required to perform it.\"},\"approveFor(address,address,uint256)\":{\"notice\":\"approve `spender` to transfer `amount` tokens from `owner`.\"},\"balanceOf(address)\":{\"notice\":\"Gets the balance of `owner`.\"},\"burn(uint256)\":{\"notice\":\"burn `amount` tokens.\"},\"burnFor(address,uint256)\":{\"notice\":\"burn `amount` tokens from `owner`.\"},\"changeAdmin(address)\":{\"notice\":\"change the administrator to be `newAdmin`.\"},\"changeExecutionAdmin(address)\":{\"notice\":\"change the execution adminstrator to be `newAdmin`.\"},\"decimals()\":{\"notice\":\"returns the number of decimals for that token.\"},\"executeWithSpecificGas(address,uint256,bytes)\":{\"notice\":\"execute on behalf of the contract.\"},\"getAdmin()\":{\"notice\":\"gives the current administrator of this contract.\"},\"getExecutionAdmin()\":{\"notice\":\"give the address responsible for adding execution rights.\"},\"isExecutionOperator(address)\":{\"notice\":\"check whether address `who` is given executionOperator rights.\"},\"isSuperOperator(address)\":{\"notice\":\"check whether address `who` is given superOperator rights.\"},\"name()\":{\"notice\":\"A descriptive name for the tokens\"},\"paidCall(address,uint256,bytes)\":{\"notice\":\"temporarly approve `target` to spend `amount` and call it with data. Previous approvals remains unchanged.\"},\"setExecutionOperator(address,bool)\":{\"notice\":\"set `executionOperator` as executionOperator: `enabled`.\"},\"setSuperOperator(address,bool)\":{\"notice\":\"Enable or disable the ability of `superOperator` to transfer tokens of all (superOperator rights).\"},\"symbol()\":{\"notice\":\"An abbreviated name for the tokens\"},\"totalSupply()\":{\"notice\":\"Gets the total number of tokens in existence.\"},\"transfer(address,uint256)\":{\"notice\":\"Transfer `amount` tokens to `to`.\"},\"transferAndChargeForGas(address,address,uint256,uint256,uint256,uint256,address)\":{\"notice\":\"transfer 1amount1 token from `from` to `to` and charge the gas required to perform that transfer.\"},\"transferFrom(address,address,uint256)\":{\"notice\":\"Transfer `amount` tokens from `from` to `to`.\"}}}},\"settings\":{\"compilationTarget\":{\"src/solc_0.5/Sand.sol\":\"Sand\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"metadata\":{\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":2000},\"remappings\":[]},\"sources\":{\"src/solc_0.5/Sand.sol\":{\"content\":\"pragma solidity 0.5.9;\\n\\nimport \\\"./Sand/erc20/ERC20ExecuteExtension.sol\\\";\\nimport \\\"./Sand/erc20/ERC20BaseToken.sol\\\";\\nimport \\\"./Sand/erc20/ERC20BasicApproveExtension.sol\\\";\\n\\ncontract Sand is ERC20ExecuteExtension, ERC20BasicApproveExtension, ERC20BaseToken {\\n\\n    constructor(address sandAdmin, address executionAdmin, address beneficiary) public {\\n        _admin = sandAdmin;\\n        _executionAdmin = executionAdmin;\\n        _mint(beneficiary, 3000000000000000000000000000);\\n    }\\n\\n    /// @notice A descriptive name for the tokens\\n    /// @return name of the tokens\\n    function name() public view returns (string memory) {\\n        return \\\"SAND\\\";\\n    }\\n\\n    /// @notice An abbreviated name for the tokens\\n    /// @return symbol of the tokens\\n    function symbol() public view returns (string memory) {\\n        return \\\"SAND\\\";\\n    }\\n\\n}\\n\",\"keccak256\":\"0xe05c8232fddc05f34648fa1db29cbfff2d163357e613425a925d80dbefff75eb\"},\"src/solc_0.5/Sand/erc20/ERC20BaseToken.sol\":{\"content\":\"pragma solidity 0.5.9;\\n\\nimport \\\"../../contracts_common/Interfaces/ERC20Events.sol\\\";\\nimport \\\"../../contracts_common/BaseWithStorage/SuperOperators.sol\\\";\\n\\ncontract ERC20BaseToken is SuperOperators, ERC20Events {\\n\\n    uint256 internal _totalSupply;\\n    mapping(address => uint256) internal _balances;\\n    mapping(address => mapping(address => uint256)) internal _allowances;\\n\\n    /// @notice Gets the total number of tokens in existence.\\n    /// @return the total number of tokens in existence.\\n    function totalSupply() public view returns (uint256) {\\n        return _totalSupply;\\n    }\\n\\n    /// @notice Gets the balance of `owner`.\\n    /// @param owner The address to query the balance of.\\n    /// @return The amount owned by `owner`.\\n    function balanceOf(address owner) public view returns (uint256) {\\n        return _balances[owner];\\n    }\\n\\n    /// @notice gets allowance of `spender` for `owner`'s tokens.\\n    /// @param owner address whose token is allowed.\\n    /// @param spender address allowed to transfer.\\n    /// @return the amount of token `spender` is allowed to transfer on behalf of `owner`.\\n    function allowance(address owner, address spender)\\n        public\\n        view\\n        returns (uint256 remaining)\\n    {\\n        return _allowances[owner][spender];\\n    }\\n\\n    /// @notice returns the number of decimals for that token.\\n    /// @return the number of decimals.\\n    function decimals() public view returns (uint8) {\\n        return uint8(18);\\n    }\\n\\n    /// @notice Transfer `amount` tokens to `to`.\\n    /// @param to the recipient address of the tokens transfered.\\n    /// @param amount the number of tokens transfered.\\n    /// @return true if success.\\n    function transfer(address to, uint256 amount)\\n        public\\n        returns (bool success)\\n    {\\n        _transfer(msg.sender, to, amount);\\n        return true;\\n    }\\n\\n    /// @notice Transfer `amount` tokens from `from` to `to`.\\n    /// @param from whose token it is transferring from.\\n    /// @param to the recipient address of the tokens transfered.\\n    /// @param amount the number of tokens transfered.\\n    /// @return true if success.\\n    function transferFrom(address from, address to, uint256 amount)\\n        public\\n        returns (bool success)\\n    {\\n        if (msg.sender != from && !_superOperators[msg.sender]) {\\n            uint256 currentAllowance = _allowances[from][msg.sender];\\n            if (currentAllowance != (2**256) - 1) {\\n                // save gas when allowance is maximal by not reducing it (see https://github.com/ethereum/EIPs/issues/717)\\n                require(currentAllowance >= amount, \\\"Not enough funds allowed\\\");\\n                _allowances[from][msg.sender] = currentAllowance - amount;\\n            }\\n        }\\n        _transfer(from, to, amount);\\n        return true;\\n    }\\n\\n    /// @notice burn `amount` tokens.\\n    /// @param amount the number of tokens to burn.\\n    /// @return true if success.\\n    function burn(uint256 amount) external returns (bool) {\\n        _burn(msg.sender, amount);\\n        return true;\\n    }\\n\\n    /// @notice burn `amount` tokens from `owner`.\\n    /// @param owner address whose token is to burn.\\n    /// @param amount the number of token to burn.\\n    /// @return true if success.\\n    function burnFor(address owner, uint256 amount) external returns (bool) {\\n        _burn(owner, amount);\\n        return true;\\n    }\\n\\n    /// @notice approve `spender` to transfer `amount` tokens.\\n    /// @param spender address to be given rights to transfer.\\n    /// @param amount the number of tokens allowed.\\n    /// @return true if success.\\n    function approve(address spender, uint256 amount)\\n        public\\n        returns (bool success)\\n    {\\n        _approveFor(msg.sender, spender, amount);\\n        return true;\\n    }\\n\\n    /// @notice approve `spender` to transfer `amount` tokens from `owner`.\\n    /// @param owner address whose token is allowed.\\n    /// @param spender  address to be given rights to transfer.\\n    /// @param amount the number of tokens allowed.\\n    /// @return true if success.\\n    function approveFor(address owner, address spender, uint256 amount)\\n        public\\n        returns (bool success)\\n    {\\n        require(\\n            msg.sender == owner || _superOperators[msg.sender],\\n            \\\"msg.sender != owner && !superOperator\\\"\\n        );\\n        _approveFor(owner, spender, amount);\\n        return true;\\n    }\\n\\n    function addAllowanceIfNeeded(address owner, address spender, uint256 amountNeeded)\\n        public\\n        returns (bool success)\\n    {\\n        require(\\n            msg.sender == owner || _superOperators[msg.sender],\\n            \\\"msg.sender != owner && !superOperator\\\"\\n        );\\n        _addAllowanceIfNeeded(owner, spender, amountNeeded);\\n        return true;\\n    }\\n\\n    function _addAllowanceIfNeeded(address owner, address spender, uint256 amountNeeded)\\n        internal\\n    {\\n        if(amountNeeded > 0 && !isSuperOperator(spender)) {\\n            uint256 currentAllowance = _allowances[owner][spender];\\n            if(currentAllowance < amountNeeded) {\\n                _approveFor(owner, spender, amountNeeded);\\n            }\\n        }\\n    }\\n\\n    function _approveFor(address owner, address spender, uint256 amount)\\n        internal\\n    {\\n        require(\\n            owner != address(0) && spender != address(0),\\n            \\\"Cannot approve with 0x0\\\"\\n        );\\n        _allowances[owner][spender] = amount;\\n        emit Approval(owner, spender, amount);\\n    }\\n\\n    function _transfer(address from, address to, uint256 amount) internal {\\n        require(to != address(0), \\\"Cannot send to 0x0\\\");\\n        uint256 currentBalance = _balances[from];\\n        require(currentBalance >= amount, \\\"not enough fund\\\");\\n        _balances[from] = currentBalance - amount;\\n        _balances[to] += amount;\\n        emit Transfer(from, to, amount);\\n    }\\n\\n    function _mint(address to, uint256 amount) internal {\\n        require(to != address(0), \\\"Cannot mint to 0x0\\\");\\n        require(amount > 0, \\\"cannot mint 0 tokens\\\");\\n        uint256 currentTotalSupply = _totalSupply;\\n        uint256 newTotalSupply = currentTotalSupply + amount;\\n        require(newTotalSupply > currentTotalSupply, \\\"overflow\\\");\\n        _totalSupply = newTotalSupply;\\n        _balances[to] += amount;\\n        emit Transfer(address(0), to, amount);\\n    }\\n\\n    function _burn(address from, uint256 amount) internal {\\n        require(amount > 0, \\\"cannot burn 0 tokens\\\");\\n        if (msg.sender != from && !_superOperators[msg.sender]) {\\n            uint256 currentAllowance = _allowances[from][msg.sender];\\n            require(\\n                currentAllowance >= amount,\\n                \\\"Not enough funds allowed\\\"\\n            );\\n            if (currentAllowance != (2**256) - 1) {\\n                // save gas when allowance is maximal by not reducing it (see https://github.com/ethereum/EIPs/issues/717)\\n                _allowances[from][msg.sender] = currentAllowance - amount;\\n            }\\n        }\\n\\n        uint256 currentBalance = _balances[from];\\n        require(currentBalance >= amount, \\\"Not enough funds\\\");\\n        _balances[from] = currentBalance - amount;\\n        _totalSupply -= amount;\\n        emit Transfer(from, address(0), amount);\\n    }\\n}\\n\",\"keccak256\":\"0xb3fd284ec0b98868d1529561ef95d0f499bce7526112518f944be51147237ce1\"},\"src/solc_0.5/Sand/erc20/ERC20BasicApproveExtension.sol\":{\"content\":\"pragma solidity 0.5.9;\\n\\nimport \\\"../../contracts_common/Libraries/BytesUtil.sol\\\";\\n\\ncontract ERC20BasicApproveExtension {\\n\\n    /// @notice approve `target` to spend `amount` and call it with data.\\n    /// @param target address to be given rights to transfer and destination of the call.\\n    /// @param amount the number of tokens allowed.\\n    /// @param data bytes for the call.\\n    /// @return data of the call.\\n    function approveAndCall(\\n        address target,\\n        uint256 amount,\\n        bytes calldata data\\n    ) external payable returns (bytes memory) {\\n        require(\\n            BytesUtil.doFirstParamEqualsAddress(data, msg.sender),\\n            \\\"first param != sender\\\"\\n        );\\n\\n        _approveFor(msg.sender, target, amount);\\n\\n        // solium-disable-next-line security/no-call-value\\n        (bool success, bytes memory returnData) = target.call.value(msg.value)(data);\\n        require(success, string(returnData));\\n        return returnData;\\n    }\\n\\n    /// @notice temporarly approve `target` to spend `amount` and call it with data. Previous approvals remains unchanged.\\n    /// @param target destination of the call, allowed to spend the amount specified\\n    /// @param amount the number of tokens allowed to spend.\\n    /// @param data bytes for the call.\\n    /// @return data of the call.\\n    function paidCall(\\n        address target,\\n        uint256 amount,\\n        bytes calldata data\\n    ) external payable returns (bytes memory) {\\n        require(\\n            BytesUtil.doFirstParamEqualsAddress(data, msg.sender),\\n            \\\"first param != sender\\\"\\n        );\\n\\n        if (amount > 0) {\\n            _addAllowanceIfNeeded(msg.sender, target, amount);\\n        }\\n\\n        // solium-disable-next-line security/no-call-value\\n        (bool success, bytes memory returnData) = target.call.value(msg.value)(data);\\n        require(success, string(returnData));\\n\\n        return returnData;\\n    }\\n\\n    function _approveFor(address owner, address target, uint256 amount) internal;\\n    function _addAllowanceIfNeeded(address owner, address spender, uint256 amountNeeded) internal;\\n}\\n\",\"keccak256\":\"0x16c784190db57c7836463cb3d5f1bca85a09ebf6ab46136ab702f044b7cc4dc4\"},\"src/solc_0.5/Sand/erc20/ERC20ExecuteExtension.sol\":{\"content\":\"pragma solidity 0.5.9;\\n\\n\\ncontract ERC20ExecuteExtension {\\n\\n    /// @dev _executionAdmin != _admin so that this super power can be disabled independently\\n    address internal _executionAdmin;\\n\\n    event ExecutionAdminAdminChanged(address oldAdmin, address newAdmin);\\n\\n    /// @notice give the address responsible for adding execution rights.\\n    /// @return address of the execution administrator.\\n    function getExecutionAdmin() external view returns (address) {\\n        return _executionAdmin;\\n    }\\n\\n    /// @notice change the execution adminstrator to be `newAdmin`.\\n    /// @param newAdmin address of the new administrator.\\n    function changeExecutionAdmin(address newAdmin) external {\\n        require(msg.sender == _executionAdmin, \\\"only executionAdmin can change executionAdmin\\\");\\n        emit ExecutionAdminAdminChanged(_executionAdmin, newAdmin);\\n        _executionAdmin = newAdmin;\\n    }\\n\\n    mapping(address => bool) internal _executionOperators;\\n    event ExecutionOperator(address executionOperator, bool enabled);\\n\\n    /// @notice set `executionOperator` as executionOperator: `enabled`.\\n    /// @param executionOperator address that will be given/removed executionOperator right.\\n    /// @param enabled set whether the executionOperator is enabled or disabled.\\n    function setExecutionOperator(address executionOperator, bool enabled) external {\\n        require(\\n            msg.sender == _executionAdmin,\\n            \\\"only execution admin is allowed to add execution operators\\\"\\n        );\\n        _executionOperators[executionOperator] = enabled;\\n        emit ExecutionOperator(executionOperator, enabled);\\n    }\\n\\n    /// @notice check whether address `who` is given executionOperator rights.\\n    /// @param who The address to query.\\n    /// @return whether the address has executionOperator rights.\\n    function isExecutionOperator(address who) public view returns (bool) {\\n        return _executionOperators[who];\\n    }\\n\\n    /// @notice execute on behalf of the contract.\\n    /// @param to destination address fo the call.\\n    /// @param gasLimit exact amount of gas to be passed to the call.\\n    /// @param data the bytes sent to the destination address.\\n    /// @return success whether the execution was successful.\\n    /// @return returnData data resulting from the execution.\\n    function executeWithSpecificGas(address to, uint256 gasLimit, bytes calldata data) external returns (bool success, bytes memory returnData) {\\n        require(_executionOperators[msg.sender], \\\"only execution operators allowed to execute on SAND behalf\\\");\\n        (success, returnData) = to.call.gas(gasLimit)(data);\\n        assert(gasleft() > gasLimit / 63); // not enough gas provided, assert to throw all gas // TODO use EIP-1930\\n    }\\n\\n    /// @notice approve a specific amount of token for `from` and execute on behalf of the contract.\\n    /// @param from address of which token will be transfered.\\n    /// @param to destination address fo the call.\\n    /// @param amount number of tokens allowed that can be transfer by the code at `to`.\\n    /// @param gasLimit exact amount of gas to be passed to the call.\\n    /// @param data the bytes sent to the destination address.\\n    /// @return success whether the execution was successful.\\n    /// @return returnData data resulting from the execution.\\n    function approveAndExecuteWithSpecificGas(\\n        address from,\\n        address to,\\n        uint256 amount,\\n        uint256 gasLimit,\\n        bytes calldata data\\n    ) external returns (bool success, bytes memory returnData) {\\n        require(_executionOperators[msg.sender], \\\"only execution operators allowed to execute on SAND behalf\\\");\\n        return _approveAndExecuteWithSpecificGas(from, to, amount, gasLimit, data);\\n    }\\n\\n    /// @dev the reason for this function is that charging for gas here is more gas-efficient than doing it in the caller.\\n    /// @notice approve a specific amount of token for `from` and execute on behalf of the contract. Plus charge the gas required to perform it.\\n    /// @param from address of which token will be transfered.\\n    /// @param to destination address fo the call.\\n    /// @param amount number of tokens allowed that can be transfer by the code at `to`.\\n    /// @param gasLimit exact amount of gas to be passed to the call.\\n    /// @param tokenGasPrice price in token for the gas to be charged.\\n    /// @param baseGasCharge amount of gas charged on top of the gas used for the call.\\n    /// @param tokenReceiver recipient address of the token charged for the gas used.\\n    /// @param data the bytes sent to the destination address.\\n    /// @return success whether the execution was successful.\\n    /// @return returnData data resulting from the execution.\\n    function approveAndExecuteWithSpecificGasAndChargeForIt(\\n        address from,\\n        address to,\\n        uint256 amount,\\n        uint256 gasLimit,\\n        uint256 tokenGasPrice,\\n        uint256 baseGasCharge,\\n        address tokenReceiver,\\n        bytes calldata data\\n    ) external returns (bool success, bytes memory returnData) {\\n        uint256 initialGas = gasleft();\\n        require(_executionOperators[msg.sender], \\\"only execution operators allowed to execute on SAND behalf\\\");\\n        (success, returnData) = _approveAndExecuteWithSpecificGas(from, to, amount, gasLimit, data);\\n        if (tokenGasPrice > 0) {\\n            _charge(from, gasLimit, tokenGasPrice, initialGas, baseGasCharge, tokenReceiver);\\n        }\\n    }\\n\\n    /// @notice transfer 1amount1 token from `from` to `to` and charge the gas required to perform that transfer.\\n    /// @param from address of which token will be transfered.\\n    /// @param to destination address fo the call.\\n    /// @param amount number of tokens allowed that can be transfer by the code at `to`.\\n    /// @param gasLimit exact amount of gas to be passed to the call.\\n    /// @param tokenGasPrice price in token for the gas to be charged.\\n    /// @param baseGasCharge amount of gas charged on top of the gas used for the call.\\n    /// @param tokenReceiver recipient address of the token charged for the gas used.\\n    /// @return whether the transfer was successful.\\n    function transferAndChargeForGas(\\n        address from,\\n        address to,\\n        uint256 amount,\\n        uint256 gasLimit,\\n        uint256 tokenGasPrice,\\n        uint256 baseGasCharge,\\n        address tokenReceiver\\n    ) external returns (bool) {\\n        uint256 initialGas = gasleft();\\n        require(_executionOperators[msg.sender], \\\"only execution operators allowed to perfrom transfer and charge\\\");\\n        _transfer(from, to, amount);\\n        if (tokenGasPrice > 0) {\\n            _charge(from, gasLimit, tokenGasPrice, initialGas, baseGasCharge, tokenReceiver);\\n        }\\n        return true;\\n    }\\n\\n    function _charge(\\n        address from,\\n        uint256 gasLimit,\\n        uint256 tokenGasPrice,\\n        uint256 initialGas,\\n        uint256 baseGasCharge,\\n        address tokenReceiver\\n    ) internal {\\n        uint256 gasCharge = initialGas - gasleft();\\n        if(gasCharge > gasLimit) {\\n            gasCharge = gasLimit;\\n        }\\n        gasCharge += baseGasCharge;\\n        uint256 tokensToCharge = gasCharge * tokenGasPrice;\\n        require(tokensToCharge / gasCharge == tokenGasPrice, \\\"overflow\\\");\\n        _transfer(from, tokenReceiver, tokensToCharge);\\n    }\\n\\n    function _approveAndExecuteWithSpecificGas(\\n        address from,\\n        address to,\\n        uint256 amount,\\n        uint256 gasLimit,\\n        bytes memory data\\n    ) internal returns (bool success, bytes memory returnData) {\\n\\n        if (amount > 0) {\\n            _addAllowanceIfNeeded(from, to, amount);\\n        }\\n        (success, returnData) = to.call.gas(gasLimit)(data);\\n        assert(gasleft() > gasLimit / 63); // not enough gas provided, assert to throw all gas // TODO use EIP-1930\\n    }\\n\\n\\n    function _transfer(address from, address to, uint256 amount) internal;\\n    function _addAllowanceIfNeeded(address owner, address spender, uint256 amountNeeded) internal;\\n}\",\"keccak256\":\"0x4b9a75299ab80e84aa287f2ecf2ef175e0feb074764e4a670f9397a2d2d4bda8\"},\"src/solc_0.5/contracts_common/BaseWithStorage/Admin.sol\":{\"content\":\"pragma solidity ^0.5.2;\\n\\ncontract Admin {\\n\\n    address internal _admin;\\n\\n    event AdminChanged(address oldAdmin, address newAdmin);\\n\\n    /// @notice gives the current administrator of this contract.\\n    /// @return the current administrator of this contract.\\n    function getAdmin() external view returns (address) {\\n        return _admin;\\n    }\\n\\n    /// @notice change the administrator to be `newAdmin`.\\n    /// @param newAdmin address of the new administrator.\\n    function changeAdmin(address newAdmin) external {\\n        require(msg.sender == _admin, \\\"only admin can change admin\\\");\\n        emit AdminChanged(_admin, newAdmin);\\n        _admin = newAdmin;\\n    }\\n\\n    modifier onlyAdmin() {\\n        require (msg.sender == _admin, \\\"only admin allowed\\\");\\n        _;\\n    }\\n\\n}\\n\",\"keccak256\":\"0xf3763fa108235379b48cf8fe9a708692fcb077250d9974351fd636ff0baf84bf\"},\"src/solc_0.5/contracts_common/BaseWithStorage/SuperOperators.sol\":{\"content\":\"pragma solidity ^0.5.2;\\n\\nimport \\\"./Admin.sol\\\";\\n\\ncontract SuperOperators is Admin {\\n\\n    mapping(address => bool) internal _superOperators;\\n\\n    event SuperOperator(address superOperator, bool enabled);\\n\\n    /// @notice Enable or disable the ability of `superOperator` to transfer tokens of all (superOperator rights).\\n    /// @param superOperator address that will be given/removed superOperator right.\\n    /// @param enabled set whether the superOperator is enabled or disabled.\\n    function setSuperOperator(address superOperator, bool enabled) external {\\n        require(\\n            msg.sender == _admin,\\n            \\\"only admin is allowed to add super operators\\\"\\n        );\\n        _superOperators[superOperator] = enabled;\\n        emit SuperOperator(superOperator, enabled);\\n    }\\n\\n    /// @notice check whether address `who` is given superOperator rights.\\n    /// @param who The address to query.\\n    /// @return whether the address has superOperator rights.\\n    function isSuperOperator(address who) public view returns (bool) {\\n        return _superOperators[who];\\n    }\\n}\\n\",\"keccak256\":\"0x22354cf60ccf77a6de61c13bdaf4e3094d115b960ae563b0527622c846a12abb\"},\"src/solc_0.5/contracts_common/Interfaces/ERC20Events.sol\":{\"content\":\"pragma solidity ^0.5.2;\\n\\n/* interface */\\ncontract ERC20Events {\\n    event Transfer(address indexed from, address indexed to, uint256 value);\\n    event Approval(\\n        address indexed owner,\\n        address indexed spender,\\n        uint256 value\\n    );\\n}\\n\",\"keccak256\":\"0xee09c10a3f9adc913227efdcd94ce44e05b59b04717f8f868153d356bd03f5d2\"},\"src/solc_0.5/contracts_common/Libraries/BytesUtil.sol\":{\"content\":\"pragma solidity ^0.5.2;\\n\\nlibrary BytesUtil {\\n    function memcpy(uint256 dest, uint256 src, uint256 len) internal pure {\\n        // Copy word-length chunks while possible\\n        for (; len >= 32; len -= 32) {\\n            assembly {\\n                mstore(dest, mload(src))\\n            }\\n            dest += 32;\\n            src += 32;\\n        }\\n\\n        // Copy remaining bytes\\n        uint256 mask = 256**(32 - len) - 1;\\n        assembly {\\n            let srcpart := and(mload(src), not(mask))\\n            let destpart := and(mload(dest), mask)\\n            mstore(dest, or(destpart, srcpart))\\n        }\\n    }\\n\\n    function pointerToBytes(uint256 src, uint256 len)\\n        internal\\n        pure\\n        returns (bytes memory)\\n    {\\n        bytes memory ret = new bytes(len);\\n        uint256 retptr;\\n        assembly {\\n            retptr := add(ret, 32)\\n        }\\n\\n        memcpy(retptr, src, len);\\n        return ret;\\n    }\\n\\n    function addressToBytes(address a) internal pure returns (bytes memory b) {\\n        assembly {\\n            let m := mload(0x40)\\n            mstore(\\n                add(m, 20),\\n                xor(0x140000000000000000000000000000000000000000, a)\\n            )\\n            mstore(0x40, add(m, 52))\\n            b := m\\n        }\\n    }\\n\\n    function uint256ToBytes(uint256 a) internal pure returns (bytes memory b) {\\n        assembly {\\n            let m := mload(0x40)\\n            mstore(add(m, 32), a)\\n            mstore(0x40, add(m, 64))\\n            b := m\\n        }\\n    }\\n\\n    function doFirstParamEqualsAddress(bytes memory data, address _address)\\n        internal\\n        pure\\n        returns (bool)\\n    {\\n        if (data.length < (36 + 32)) {\\n            return false;\\n        }\\n        uint256 value;\\n        assembly {\\n            value := mload(add(data, 36))\\n        }\\n        return value == uint256(_address);\\n    }\\n\\n    function doParamEqualsUInt256(bytes memory data, uint256 i, uint256 value)\\n        internal\\n        pure\\n        returns (bool)\\n    {\\n        if (data.length < (36 + (i + 1) * 32)) {\\n            return false;\\n        }\\n        uint256 offset = 36 + i * 32;\\n        uint256 valuePresent;\\n        assembly {\\n            valuePresent := mload(add(data, offset))\\n        }\\n        return valuePresent == value;\\n    }\\n\\n    function overrideFirst32BytesWithAddress(\\n        bytes memory data,\\n        address _address\\n    ) internal pure returns (bytes memory) {\\n        uint256 dest;\\n        assembly {\\n            dest := add(data, 48)\\n        } // 48 = 32 (offset) + 4 (func sig) + 12 (address is only 20 bytes)\\n\\n        bytes memory addressBytes = addressToBytes(_address);\\n        uint256 src;\\n        assembly {\\n            src := add(addressBytes, 32)\\n        }\\n\\n        memcpy(dest, src, 20);\\n        return data;\\n    }\\n\\n    function overrideFirstTwo32BytesWithAddressAndInt(\\n        bytes memory data,\\n        address _address,\\n        uint256 _value\\n    ) internal pure returns (bytes memory) {\\n        uint256 dest;\\n        uint256 src;\\n\\n        assembly {\\n            dest := add(data, 48)\\n        } // 48 = 32 (offset) + 4 (func sig) + 12 (address is only 20 bytes)\\n        bytes memory bbytes = addressToBytes(_address);\\n        assembly {\\n            src := add(bbytes, 32)\\n        }\\n        memcpy(dest, src, 20);\\n\\n        assembly {\\n            dest := add(data, 68)\\n        } // 48 = 32 (offset) + 4 (func sig) + 32 (next slot)\\n        bbytes = uint256ToBytes(_value);\\n        assembly {\\n            src := add(bbytes, 32)\\n        }\\n        memcpy(dest, src, 32);\\n\\n        return data;\\n    }\\n}\\n\",\"keccak256\":\"0xb5c236938e1f71524127371a015836e83103c5ac1b4ed7b7f22892a8c0429e10\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060405162001ed638038062001ed68339818101604052606081101561003557600080fd5b5080516020820151604090920151600280546001600160a01b038085166001600160a01b0319928316179092556000805492861692909116919091179055909190610095816b09b18ab5df7180b6b80000006001600160e01b0361009d16565b505050610253565b6001600160a01b03821661011257604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601260248201527f43616e6e6f74206d696e7420746f203078300000000000000000000000000000604482015290519081900360640190fd5b6000811161018157604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601460248201527f63616e6e6f74206d696e74203020746f6b656e73000000000000000000000000604482015290519081900360640190fd5b6004548181018181116101f557604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152600860248201527f6f766572666c6f77000000000000000000000000000000000000000000000000604482015290519081900360640190fd5b60048190556001600160a01b0384166000818152600560209081526040808320805488019055805187815290517fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef929181900390910190a350505050565b611c7380620002636000396000f3fe6080604052600436106101ac5760003560e01c80636e9960c3116100ec578063b01b0ef71161008a578063dc2173f311610064578063dc2173f31461082b578063dcdf5158146108e2578063dd62ed3e14610974578063e18aa335146109af576101ac565b8063b01b0ef71461070c578063bb1e23cb14610721578063cae9ca51146107a6576101ac565b80638f283970116100c65780638f2839701461066557806395d89b41146101b1578063a9059cbb14610698578063ac9fe421146106d1576101ac565b80636e9960c3146104dc57806370a082311461050d5780637dd711c414610540576101ac565b80632b9917461161015957806342966c681161013357806342966c681461041157806361247de31461043b578063654b748a1461046e578063699c834b146104a1576101ac565b80632b99174614610360578063313ce567146103a35780633b7b5a16146103ce576101ac565b806318160ddd1161018a57806318160ddd146102bd5780631dd319cb146102e457806323b872dd1461031d576101ac565b806306fdde03146101b15780630819ba741461023b578063095ea7b314610270575b600080fd5b3480156101bd57600080fd5b506101c6610a0c565b6040805160208082528351818301528351919283929083019185019080838360005b838110156102005781810151838201526020016101e8565b50505050905090810190601f16801561022d5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34801561024757600080fd5b5061026e6004803603602081101561025e57600080fd5b50356001600160a01b0316610a43565b005b34801561027c57600080fd5b506102a96004803603604081101561029357600080fd5b506001600160a01b038135169060200135610b0e565b604080519115158252519081900360200190f35b3480156102c957600080fd5b506102d2610b25565b60408051918252519081900360200190f35b3480156102f057600080fd5b506102a96004803603604081101561030757600080fd5b506001600160a01b038135169060200135610b2b565b34801561032957600080fd5b506102a96004803603606081101561034057600080fd5b506001600160a01b03813581169160208101359091169060400135610b37565b34801561036c57600080fd5b506102a96004803603606081101561038357600080fd5b506001600160a01b03813581169160208101359091169060400135610c29565b3480156103af57600080fd5b506103b8610c97565b6040805160ff9092168252519081900360200190f35b3480156103da57600080fd5b506102a9600480360360608110156103f157600080fd5b506001600160a01b03813581169160208101359091169060400135610c9c565b34801561041d57600080fd5b506102a96004803603602081101561043457600080fd5b5035610d0a565b34801561044757600080fd5b506102a96004803603602081101561045e57600080fd5b50356001600160a01b0316610d1e565b34801561047a57600080fd5b506102a96004803603602081101561049157600080fd5b50356001600160a01b0316610d3c565b3480156104ad57600080fd5b5061026e600480360360408110156104c457600080fd5b506001600160a01b0381351690602001351515610d5a565b3480156104e857600080fd5b506104f1610e07565b604080516001600160a01b039092168252519081900360200190f35b34801561051957600080fd5b506102d26004803603602081101561053057600080fd5b50356001600160a01b0316610e16565b34801561054c57600080fd5b506105e2600480360360a081101561056357600080fd5b6001600160a01b03823581169260208101359091169160408201359160608101359181019060a0810160808201356401000000008111156105a357600080fd5b8201836020820111156105b557600080fd5b803590602001918460018302840111640100000000831117156105d757600080fd5b509092509050610e31565b604051808315151515815260200180602001828103825283818151815260200191508051906020019080838360005b83811015610629578181015183820152602001610611565b50505050905090810190601f1680156106565780820380516001836020036101000a031916815260200191505b50935050505060405180910390f35b34801561067157600080fd5b5061026e6004803603602081101561068857600080fd5b50356001600160a01b0316610ed4565b3480156106a457600080fd5b506102a9600480360360408110156106bb57600080fd5b506001600160a01b038135169060200135610fb5565b3480156106dd57600080fd5b5061026e600480360360408110156106f457600080fd5b506001600160a01b0381351690602001351515610fc2565b34801561071857600080fd5b506104f161106f565b6101c66004803603606081101561073757600080fd5b6001600160a01b038235169160208101359181019060608101604082013564010000000081111561076757600080fd5b82018360208201111561077957600080fd5b8035906020019184600183028401116401000000008311171561079b57600080fd5b50909250905061107e565b6101c6600480360360608110156107bc57600080fd5b6001600160a01b03823516916020810135918101906060810160408201356401000000008111156107ec57600080fd5b8201836020820111156107fe57600080fd5b8035906020019184600183028401116401000000008311171561082057600080fd5b509092509050611225565b34801561083757600080fd5b506105e2600480360361010081101561084f57600080fd5b6001600160a01b038235811692602081013582169260408201359260608301359260808101359260a08201359260c0830135169190810190610100810160e08201356401000000008111156108a357600080fd5b8201836020820111156108b557600080fd5b803590602001918460018302840111640100000000831117156108d757600080fd5b5090925090506112c4565b3480156108ee57600080fd5b506105e26004803603606081101561090557600080fd5b6001600160a01b038235169160208101359181019060608101604082013564010000000081111561093557600080fd5b82018360208201111561094757600080fd5b8035906020019184600183028401116401000000008311171561096957600080fd5b509092509050611387565b34801561098057600080fd5b506102d26004803603604081101561099757600080fd5b506001600160a01b0381358116916020013516611456565b3480156109bb57600080fd5b506102a9600480360360e08110156109d257600080fd5b506001600160a01b038135811691602081013582169160408201359160608101359160808201359160a08101359160c09091013516611481565b60408051808201909152600481527f53414e4400000000000000000000000000000000000000000000000000000000602082015290565b6000546001600160a01b03163314610a8c5760405162461bcd60e51b815260040180806020018281038252602d815260200180611bd8602d913960400191505060405180910390fd5b600054604080516001600160a01b039283168152918316602083015280517fb2b670b34860515166c00eba5e2e5fa8116d57091604f37ba24ac8021c7fa1659281900390910190a1600080547fffffffffffffffffffffffff0000000000000000000000000000000000000000166001600160a01b0392909216919091179055565b6000610b1b338484611504565b5060015b92915050565b60045490565b6000610b1b83836115d7565b6000336001600160a01b03851614801590610b6257503360009081526003602052604090205460ff16155b15610c14576001600160a01b03841660009081526006602090815260408083203384529091529020546000198114610c125782811015610be9576040805162461bcd60e51b815260206004820152601860248201527f4e6f7420656e6f7567682066756e647320616c6c6f7765640000000000000000604482015290519081900360640190fd5b6001600160a01b0385166000908152600660209081526040808320338452909152902083820390555b505b610c1f8484846117d8565b5060019392505050565b6000336001600160a01b0385161480610c5157503360009081526003602052604090205460ff165b610c8c5760405162461bcd60e51b8152600401808060200182810382526025815260200180611b0e6025913960400191505060405180910390fd5b610c1f848484611504565b601290565b6000336001600160a01b0385161480610cc457503360009081526003602052604090205460ff165b610cff5760405162461bcd60e51b8152600401808060200182810382526025815260200180611b0e6025913960400191505060405180910390fd5b610c1f84848461190c565b6000610d1633836115d7565b506001919050565b6001600160a01b031660009081526001602052604090205460ff1690565b6001600160a01b031660009081526003602052604090205460ff1690565b6000546001600160a01b03163314610da35760405162461bcd60e51b815260040180806020018281038252603a815260200180611b72603a913960400191505060405180910390fd5b6001600160a01b038216600081815260016020908152604091829020805460ff191685151590811790915582519384529083015280517ffcebaa973ed84808fb785c92941aa4798f3f66923f5a2ff544382db3a9b3a3a29281900390910190a15050565b6002546001600160a01b031690565b6001600160a01b031660009081526005602052604090205490565b3360009081526001602052604081205460609060ff16610e825760405162461bcd60e51b815260040180806020018281038252603a815260200180611c05603a913960400191505060405180910390fd5b610ec58888888888888080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525061196792505050565b91509150965096945050505050565b6002546001600160a01b03163314610f33576040805162461bcd60e51b815260206004820152601b60248201527f6f6e6c792061646d696e2063616e206368616e67652061646d696e0000000000604482015290519081900360640190fd5b600254604080516001600160a01b039283168152918316602083015280517f7e644d79422f17c01e4894b5f4f588d331ebfa28653d42ae832dc59e38c9798f9281900390910190a1600280547fffffffffffffffffffffffff0000000000000000000000000000000000000000166001600160a01b0392909216919091179055565b6000610b1b3384846117d8565b6002546001600160a01b0316331461100b5760405162461bcd60e51b815260040180806020018281038252602c815260200180611bac602c913960400191505060405180910390fd5b6001600160a01b038216600081815260036020908152604091829020805460ff191685151590811790915582519384529083015280517f44f92d27abdf4cfb6a7d712c3af68f3be086d4ca747ab802c36f67d6790060d89281900390910190a15050565b6000546001600160a01b031690565b60606110c183838080601f016020809104026020016040519081016040528093929190818152602001838380828437600092019190915250339250611a59915050565b611112576040805162461bcd60e51b815260206004820152601560248201527f666972737420706172616d20213d2073656e6465720000000000000000000000604482015290519081900360640190fd5b83156111235761112333868661190c565b60006060866001600160a01b0316348686604051808383808284376040519201945060009350909150508083038185875af1925050503d8060008114611185576040519150601f19603f3d011682016040523d82523d6000602084013e61118a565b606091505b509150915081819061121a5760405162461bcd60e51b81526004018080602001828103825283818151815260200191508051906020019080838360005b838110156111df5781810151838201526020016111c7565b50505050905090810190601f16801561120c5780820380516001836020036101000a031916815260200191505b509250505060405180910390fd5b509695505050505050565b606061126883838080601f016020809104026020016040519081016040528093929190818152602001838380828437600092019190915250339250611a59915050565b6112b9576040805162461bcd60e51b815260206004820152601560248201527f666972737420706172616d20213d2073656e6465720000000000000000000000604482015290519081900360640190fd5b611123338686611504565b6000606060005a3360009081526001602052604090205490915060ff1661131c5760405162461bcd60e51b815260040180806020018281038252603a815260200180611c05603a913960400191505060405180910390fd5b61135f8c8c8c8c89898080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525061196792505050565b90935091508715611378576113788c8a8a848b8b611a84565b50995099975050505050505050565b3360009081526001602052604081205460609060ff166113d85760405162461bcd60e51b815260040180806020018281038252603a815260200180611c05603a913960400191505060405180910390fd5b856001600160a01b03168585856040518083838082843760405192019450600093509091505080830381838787f1925050503d8060008114611436576040519150601f19603f3d011682016040523d82523d6000602084013e61143b565b606091505b509092509050603f85045a1161144d57fe5b94509492505050565b6001600160a01b03918216600090815260066020908152604080832093909416825291909152205490565b6000805a3360009081526001602052604090205490915060ff166114d65760405162461bcd60e51b815260040180806020018281038252603f815260200180611b33603f913960400191505060405180910390fd5b6114e18989896117d8565b84156114f5576114f5898787848888611a84565b50600198975050505050505050565b6001600160a01b0383161580159061152457506001600160a01b03821615155b611575576040805162461bcd60e51b815260206004820152601760248201527f43616e6e6f7420617070726f7665207769746820307830000000000000000000604482015290519081900360640190fd5b6001600160a01b03808416600081815260066020908152604080832094871680845294825291829020859055815185815291517f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b9259281900390910190a3505050565b6000811161162c576040805162461bcd60e51b815260206004820152601460248201527f63616e6e6f74206275726e203020746f6b656e73000000000000000000000000604482015290519081900360640190fd5b336001600160a01b0383161480159061165557503360009081526003602052604090205460ff16155b15611707576001600160a01b0382166000908152600660209081526040808320338452909152902054818110156116d3576040805162461bcd60e51b815260206004820152601860248201527f4e6f7420656e6f7567682066756e647320616c6c6f7765640000000000000000604482015290519081900360640190fd5b8060001914611705576001600160a01b0383166000908152600660209081526040808320338452909152902082820390555b505b6001600160a01b03821660009081526005602052604090205481811015611775576040805162461bcd60e51b815260206004820152601060248201527f4e6f7420656e6f7567682066756e647300000000000000000000000000000000604482015290519081900360640190fd5b6001600160a01b03831660008181526005602090815260408083208686039055600480548790039055805186815290519293927fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef929181900390910190a3505050565b6001600160a01b038216611833576040805162461bcd60e51b815260206004820152601260248201527f43616e6e6f742073656e6420746f203078300000000000000000000000000000604482015290519081900360640190fd5b6001600160a01b038316600090815260056020526040902054818110156118a1576040805162461bcd60e51b815260206004820152600f60248201527f6e6f7420656e6f7567682066756e640000000000000000000000000000000000604482015290519081900360640190fd5b6001600160a01b0380851660008181526005602090815260408083208787039055938716808352918490208054870190558351868152935191937fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef929081900390910190a350505050565b600081118015611922575061192082610d3c565b155b15611962576001600160a01b038084166000908152600660209081526040808320938616835292905220548181101561196057611960848484611504565b505b505050565b60006060841561197c5761197c87878761190c565b856001600160a01b031684846040518082805190602001908083835b602083106119d557805182527fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe09092019160209182019101611998565b6001836020036101000a03801982511681845116808217855250505050505090500191505060006040518083038160008787f1925050503d8060008114611a38576040519150601f19603f3d011682016040523d82523d6000602084013e611a3d565b606091505b509092509050603f84045a11611a4f57fe5b9550959350505050565b6000604483511015611a6d57506000610b1f565b5060248201516001600160a01b0382161492915050565b60005a8403905085811115611a965750845b820184810285828281611aa557fe5b0414611af8576040805162461bcd60e51b815260206004820152600860248201527f6f766572666c6f77000000000000000000000000000000000000000000000000604482015290519081900360640190fd5b611b038884836117d8565b505050505050505056fe6d73672e73656e64657220213d206f776e6572202626202173757065724f70657261746f726f6e6c7920657865637574696f6e206f70657261746f727320616c6c6f77656420746f2070657266726f6d207472616e7366657220616e64206368617267656f6e6c7920657865637574696f6e2061646d696e20697320616c6c6f77656420746f2061646420657865637574696f6e206f70657261746f72736f6e6c792061646d696e20697320616c6c6f77656420746f20616464207375706572206f70657261746f72736f6e6c7920657865637574696f6e41646d696e2063616e206368616e676520657865637574696f6e41646d696e6f6e6c7920657865637574696f6e206f70657261746f727320616c6c6f77656420746f2065786563757465206f6e2053414e4420626568616c66a265627a7a72305820ec9dd42f1e1d6287a198b7c8f5b3766bafb6480c4b3cdde2cd6a94f087900acb64736f6c63430005090032",
+  "deployedBytecode": "0x6080604052600436106101ac5760003560e01c80636e9960c3116100ec578063b01b0ef71161008a578063dc2173f311610064578063dc2173f31461082b578063dcdf5158146108e2578063dd62ed3e14610974578063e18aa335146109af576101ac565b8063b01b0ef71461070c578063bb1e23cb14610721578063cae9ca51146107a6576101ac565b80638f283970116100c65780638f2839701461066557806395d89b41146101b1578063a9059cbb14610698578063ac9fe421146106d1576101ac565b80636e9960c3146104dc57806370a082311461050d5780637dd711c414610540576101ac565b80632b9917461161015957806342966c681161013357806342966c681461041157806361247de31461043b578063654b748a1461046e578063699c834b146104a1576101ac565b80632b99174614610360578063313ce567146103a35780633b7b5a16146103ce576101ac565b806318160ddd1161018a57806318160ddd146102bd5780631dd319cb146102e457806323b872dd1461031d576101ac565b806306fdde03146101b15780630819ba741461023b578063095ea7b314610270575b600080fd5b3480156101bd57600080fd5b506101c6610a0c565b6040805160208082528351818301528351919283929083019185019080838360005b838110156102005781810151838201526020016101e8565b50505050905090810190601f16801561022d5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34801561024757600080fd5b5061026e6004803603602081101561025e57600080fd5b50356001600160a01b0316610a43565b005b34801561027c57600080fd5b506102a96004803603604081101561029357600080fd5b506001600160a01b038135169060200135610b0e565b604080519115158252519081900360200190f35b3480156102c957600080fd5b506102d2610b25565b60408051918252519081900360200190f35b3480156102f057600080fd5b506102a96004803603604081101561030757600080fd5b506001600160a01b038135169060200135610b2b565b34801561032957600080fd5b506102a96004803603606081101561034057600080fd5b506001600160a01b03813581169160208101359091169060400135610b37565b34801561036c57600080fd5b506102a96004803603606081101561038357600080fd5b506001600160a01b03813581169160208101359091169060400135610c29565b3480156103af57600080fd5b506103b8610c97565b6040805160ff9092168252519081900360200190f35b3480156103da57600080fd5b506102a9600480360360608110156103f157600080fd5b506001600160a01b03813581169160208101359091169060400135610c9c565b34801561041d57600080fd5b506102a96004803603602081101561043457600080fd5b5035610d0a565b34801561044757600080fd5b506102a96004803603602081101561045e57600080fd5b50356001600160a01b0316610d1e565b34801561047a57600080fd5b506102a96004803603602081101561049157600080fd5b50356001600160a01b0316610d3c565b3480156104ad57600080fd5b5061026e600480360360408110156104c457600080fd5b506001600160a01b0381351690602001351515610d5a565b3480156104e857600080fd5b506104f1610e07565b604080516001600160a01b039092168252519081900360200190f35b34801561051957600080fd5b506102d26004803603602081101561053057600080fd5b50356001600160a01b0316610e16565b34801561054c57600080fd5b506105e2600480360360a081101561056357600080fd5b6001600160a01b03823581169260208101359091169160408201359160608101359181019060a0810160808201356401000000008111156105a357600080fd5b8201836020820111156105b557600080fd5b803590602001918460018302840111640100000000831117156105d757600080fd5b509092509050610e31565b604051808315151515815260200180602001828103825283818151815260200191508051906020019080838360005b83811015610629578181015183820152602001610611565b50505050905090810190601f1680156106565780820380516001836020036101000a031916815260200191505b50935050505060405180910390f35b34801561067157600080fd5b5061026e6004803603602081101561068857600080fd5b50356001600160a01b0316610ed4565b3480156106a457600080fd5b506102a9600480360360408110156106bb57600080fd5b506001600160a01b038135169060200135610fb5565b3480156106dd57600080fd5b5061026e600480360360408110156106f457600080fd5b506001600160a01b0381351690602001351515610fc2565b34801561071857600080fd5b506104f161106f565b6101c66004803603606081101561073757600080fd5b6001600160a01b038235169160208101359181019060608101604082013564010000000081111561076757600080fd5b82018360208201111561077957600080fd5b8035906020019184600183028401116401000000008311171561079b57600080fd5b50909250905061107e565b6101c6600480360360608110156107bc57600080fd5b6001600160a01b03823516916020810135918101906060810160408201356401000000008111156107ec57600080fd5b8201836020820111156107fe57600080fd5b8035906020019184600183028401116401000000008311171561082057600080fd5b509092509050611225565b34801561083757600080fd5b506105e2600480360361010081101561084f57600080fd5b6001600160a01b038235811692602081013582169260408201359260608301359260808101359260a08201359260c0830135169190810190610100810160e08201356401000000008111156108a357600080fd5b8201836020820111156108b557600080fd5b803590602001918460018302840111640100000000831117156108d757600080fd5b5090925090506112c4565b3480156108ee57600080fd5b506105e26004803603606081101561090557600080fd5b6001600160a01b038235169160208101359181019060608101604082013564010000000081111561093557600080fd5b82018360208201111561094757600080fd5b8035906020019184600183028401116401000000008311171561096957600080fd5b509092509050611387565b34801561098057600080fd5b506102d26004803603604081101561099757600080fd5b506001600160a01b0381358116916020013516611456565b3480156109bb57600080fd5b506102a9600480360360e08110156109d257600080fd5b506001600160a01b038135811691602081013582169160408201359160608101359160808201359160a08101359160c09091013516611481565b60408051808201909152600481527f53414e4400000000000000000000000000000000000000000000000000000000602082015290565b6000546001600160a01b03163314610a8c5760405162461bcd60e51b815260040180806020018281038252602d815260200180611bd8602d913960400191505060405180910390fd5b600054604080516001600160a01b039283168152918316602083015280517fb2b670b34860515166c00eba5e2e5fa8116d57091604f37ba24ac8021c7fa1659281900390910190a1600080547fffffffffffffffffffffffff0000000000000000000000000000000000000000166001600160a01b0392909216919091179055565b6000610b1b338484611504565b5060015b92915050565b60045490565b6000610b1b83836115d7565b6000336001600160a01b03851614801590610b6257503360009081526003602052604090205460ff16155b15610c14576001600160a01b03841660009081526006602090815260408083203384529091529020546000198114610c125782811015610be9576040805162461bcd60e51b815260206004820152601860248201527f4e6f7420656e6f7567682066756e647320616c6c6f7765640000000000000000604482015290519081900360640190fd5b6001600160a01b0385166000908152600660209081526040808320338452909152902083820390555b505b610c1f8484846117d8565b5060019392505050565b6000336001600160a01b0385161480610c5157503360009081526003602052604090205460ff165b610c8c5760405162461bcd60e51b8152600401808060200182810382526025815260200180611b0e6025913960400191505060405180910390fd5b610c1f848484611504565b601290565b6000336001600160a01b0385161480610cc457503360009081526003602052604090205460ff165b610cff5760405162461bcd60e51b8152600401808060200182810382526025815260200180611b0e6025913960400191505060405180910390fd5b610c1f84848461190c565b6000610d1633836115d7565b506001919050565b6001600160a01b031660009081526001602052604090205460ff1690565b6001600160a01b031660009081526003602052604090205460ff1690565b6000546001600160a01b03163314610da35760405162461bcd60e51b815260040180806020018281038252603a815260200180611b72603a913960400191505060405180910390fd5b6001600160a01b038216600081815260016020908152604091829020805460ff191685151590811790915582519384529083015280517ffcebaa973ed84808fb785c92941aa4798f3f66923f5a2ff544382db3a9b3a3a29281900390910190a15050565b6002546001600160a01b031690565b6001600160a01b031660009081526005602052604090205490565b3360009081526001602052604081205460609060ff16610e825760405162461bcd60e51b815260040180806020018281038252603a815260200180611c05603a913960400191505060405180910390fd5b610ec58888888888888080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525061196792505050565b91509150965096945050505050565b6002546001600160a01b03163314610f33576040805162461bcd60e51b815260206004820152601b60248201527f6f6e6c792061646d696e2063616e206368616e67652061646d696e0000000000604482015290519081900360640190fd5b600254604080516001600160a01b039283168152918316602083015280517f7e644d79422f17c01e4894b5f4f588d331ebfa28653d42ae832dc59e38c9798f9281900390910190a1600280547fffffffffffffffffffffffff0000000000000000000000000000000000000000166001600160a01b0392909216919091179055565b6000610b1b3384846117d8565b6002546001600160a01b0316331461100b5760405162461bcd60e51b815260040180806020018281038252602c815260200180611bac602c913960400191505060405180910390fd5b6001600160a01b038216600081815260036020908152604091829020805460ff191685151590811790915582519384529083015280517f44f92d27abdf4cfb6a7d712c3af68f3be086d4ca747ab802c36f67d6790060d89281900390910190a15050565b6000546001600160a01b031690565b60606110c183838080601f016020809104026020016040519081016040528093929190818152602001838380828437600092019190915250339250611a59915050565b611112576040805162461bcd60e51b815260206004820152601560248201527f666972737420706172616d20213d2073656e6465720000000000000000000000604482015290519081900360640190fd5b83156111235761112333868661190c565b60006060866001600160a01b0316348686604051808383808284376040519201945060009350909150508083038185875af1925050503d8060008114611185576040519150601f19603f3d011682016040523d82523d6000602084013e61118a565b606091505b509150915081819061121a5760405162461bcd60e51b81526004018080602001828103825283818151815260200191508051906020019080838360005b838110156111df5781810151838201526020016111c7565b50505050905090810190601f16801561120c5780820380516001836020036101000a031916815260200191505b509250505060405180910390fd5b509695505050505050565b606061126883838080601f016020809104026020016040519081016040528093929190818152602001838380828437600092019190915250339250611a59915050565b6112b9576040805162461bcd60e51b815260206004820152601560248201527f666972737420706172616d20213d2073656e6465720000000000000000000000604482015290519081900360640190fd5b611123338686611504565b6000606060005a3360009081526001602052604090205490915060ff1661131c5760405162461bcd60e51b815260040180806020018281038252603a815260200180611c05603a913960400191505060405180910390fd5b61135f8c8c8c8c89898080601f01602080910402602001604051908101604052809392919081815260200183838082843760009201919091525061196792505050565b90935091508715611378576113788c8a8a848b8b611a84565b50995099975050505050505050565b3360009081526001602052604081205460609060ff166113d85760405162461bcd60e51b815260040180806020018281038252603a815260200180611c05603a913960400191505060405180910390fd5b856001600160a01b03168585856040518083838082843760405192019450600093509091505080830381838787f1925050503d8060008114611436576040519150601f19603f3d011682016040523d82523d6000602084013e61143b565b606091505b509092509050603f85045a1161144d57fe5b94509492505050565b6001600160a01b03918216600090815260066020908152604080832093909416825291909152205490565b6000805a3360009081526001602052604090205490915060ff166114d65760405162461bcd60e51b815260040180806020018281038252603f815260200180611b33603f913960400191505060405180910390fd5b6114e18989896117d8565b84156114f5576114f5898787848888611a84565b50600198975050505050505050565b6001600160a01b0383161580159061152457506001600160a01b03821615155b611575576040805162461bcd60e51b815260206004820152601760248201527f43616e6e6f7420617070726f7665207769746820307830000000000000000000604482015290519081900360640190fd5b6001600160a01b03808416600081815260066020908152604080832094871680845294825291829020859055815185815291517f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b9259281900390910190a3505050565b6000811161162c576040805162461bcd60e51b815260206004820152601460248201527f63616e6e6f74206275726e203020746f6b656e73000000000000000000000000604482015290519081900360640190fd5b336001600160a01b0383161480159061165557503360009081526003602052604090205460ff16155b15611707576001600160a01b0382166000908152600660209081526040808320338452909152902054818110156116d3576040805162461bcd60e51b815260206004820152601860248201527f4e6f7420656e6f7567682066756e647320616c6c6f7765640000000000000000604482015290519081900360640190fd5b8060001914611705576001600160a01b0383166000908152600660209081526040808320338452909152902082820390555b505b6001600160a01b03821660009081526005602052604090205481811015611775576040805162461bcd60e51b815260206004820152601060248201527f4e6f7420656e6f7567682066756e647300000000000000000000000000000000604482015290519081900360640190fd5b6001600160a01b03831660008181526005602090815260408083208686039055600480548790039055805186815290519293927fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef929181900390910190a3505050565b6001600160a01b038216611833576040805162461bcd60e51b815260206004820152601260248201527f43616e6e6f742073656e6420746f203078300000000000000000000000000000604482015290519081900360640190fd5b6001600160a01b038316600090815260056020526040902054818110156118a1576040805162461bcd60e51b815260206004820152600f60248201527f6e6f7420656e6f7567682066756e640000000000000000000000000000000000604482015290519081900360640190fd5b6001600160a01b0380851660008181526005602090815260408083208787039055938716808352918490208054870190558351868152935191937fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef929081900390910190a350505050565b600081118015611922575061192082610d3c565b155b15611962576001600160a01b038084166000908152600660209081526040808320938616835292905220548181101561196057611960848484611504565b505b505050565b60006060841561197c5761197c87878761190c565b856001600160a01b031684846040518082805190602001908083835b602083106119d557805182527fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe09092019160209182019101611998565b6001836020036101000a03801982511681845116808217855250505050505090500191505060006040518083038160008787f1925050503d8060008114611a38576040519150601f19603f3d011682016040523d82523d6000602084013e611a3d565b606091505b509092509050603f84045a11611a4f57fe5b9550959350505050565b6000604483511015611a6d57506000610b1f565b5060248201516001600160a01b0382161492915050565b60005a8403905085811115611a965750845b820184810285828281611aa557fe5b0414611af8576040805162461bcd60e51b815260206004820152600860248201527f6f766572666c6f77000000000000000000000000000000000000000000000000604482015290519081900360640190fd5b611b038884836117d8565b505050505050505056fe6d73672e73656e64657220213d206f776e6572202626202173757065724f70657261746f726f6e6c7920657865637574696f6e206f70657261746f727320616c6c6f77656420746f2070657266726f6d207472616e7366657220616e64206368617267656f6e6c7920657865637574696f6e2061646d696e20697320616c6c6f77656420746f2061646420657865637574696f6e206f70657261746f72736f6e6c792061646d696e20697320616c6c6f77656420746f20616464207375706572206f70657261746f72736f6e6c7920657865637574696f6e41646d696e2063616e206368616e676520657865637574696f6e41646d696e6f6e6c7920657865637574696f6e206f70657261746f727320616c6c6f77656420746f2065786563757465206f6e2053414e4420626568616c66a265627a7a72305820ec9dd42f1e1d6287a198b7c8f5b3766bafb6480c4b3cdde2cd6a94f087900acb64736f6c63430005090032",
+  "devdoc": {
+    "methods": {
+      "allowance(address,address)": {
+        "params": {
+          "owner": "address whose token is allowed.",
+          "spender": "address allowed to transfer."
+        },
+        "return": "the amount of token `spender` is allowed to transfer on behalf of `owner`."
+      },
+      "approve(address,uint256)": {
+        "params": {
+          "amount": "the number of tokens allowed.",
+          "spender": "address to be given rights to transfer."
+        },
+        "return": "true if success."
+      },
+      "approveAndCall(address,uint256,bytes)": {
+        "params": {
+          "amount": "the number of tokens allowed.",
+          "data": "bytes for the call.",
+          "target": "address to be given rights to transfer and destination of the call."
+        },
+        "return": "data of the call."
+      },
+      "approveAndExecuteWithSpecificGas(address,address,uint256,uint256,bytes)": {
+        "params": {
+          "amount": "number of tokens allowed that can be transfer by the code at `to`.",
+          "data": "the bytes sent to the destination address.",
+          "from": "address of which token will be transfered.",
+          "gasLimit": "exact amount of gas to be passed to the call.",
+          "to": "destination address fo the call."
+        },
+        "return": "success whether the execution was successful.returnData data resulting from the execution."
+      },
+      "approveAndExecuteWithSpecificGasAndChargeForIt(address,address,uint256,uint256,uint256,uint256,address,bytes)": {
+        "details": "the reason for this function is that charging for gas here is more gas-efficient than doing it in the caller.",
+        "params": {
+          "amount": "number of tokens allowed that can be transfer by the code at `to`.",
+          "baseGasCharge": "amount of gas charged on top of the gas used for the call.",
+          "data": "the bytes sent to the destination address.",
+          "from": "address of which token will be transfered.",
+          "gasLimit": "exact amount of gas to be passed to the call.",
+          "to": "destination address fo the call.",
+          "tokenGasPrice": "price in token for the gas to be charged.",
+          "tokenReceiver": "recipient address of the token charged for the gas used."
+        },
+        "return": "success whether the execution was successful.returnData data resulting from the execution."
+      },
+      "approveFor(address,address,uint256)": {
+        "params": {
+          "amount": "the number of tokens allowed.",
+          "owner": "address whose token is allowed.",
+          "spender": "address to be given rights to transfer."
+        },
+        "return": "true if success."
+      },
+      "balanceOf(address)": {
+        "params": {
+          "owner": "The address to query the balance of."
+        },
+        "return": "The amount owned by `owner`."
+      },
+      "burn(uint256)": {
+        "params": {
+          "amount": "the number of tokens to burn."
+        },
+        "return": "true if success."
+      },
+      "burnFor(address,uint256)": {
+        "params": {
+          "amount": "the number of token to burn.",
+          "owner": "address whose token is to burn."
+        },
+        "return": "true if success."
+      },
+      "changeAdmin(address)": {
+        "params": {
+          "newAdmin": "address of the new administrator."
+        }
+      },
+      "changeExecutionAdmin(address)": {
+        "params": {
+          "newAdmin": "address of the new administrator."
+        }
+      },
+      "decimals()": {
+        "return": "the number of decimals."
+      },
+      "executeWithSpecificGas(address,uint256,bytes)": {
+        "params": {
+          "data": "the bytes sent to the destination address.",
+          "gasLimit": "exact amount of gas to be passed to the call.",
+          "to": "destination address fo the call."
+        },
+        "return": "success whether the execution was successful.returnData data resulting from the execution."
+      },
+      "getAdmin()": {
+        "return": "the current administrator of this contract."
+      },
+      "getExecutionAdmin()": {
+        "return": "address of the execution administrator."
+      },
+      "isExecutionOperator(address)": {
+        "params": {
+          "who": "The address to query."
+        },
+        "return": "whether the address has executionOperator rights."
+      },
+      "isSuperOperator(address)": {
+        "params": {
+          "who": "The address to query."
+        },
+        "return": "whether the address has superOperator rights."
+      },
+      "name()": {
+        "return": "name of the tokens"
+      },
+      "paidCall(address,uint256,bytes)": {
+        "params": {
+          "amount": "the number of tokens allowed to spend.",
+          "data": "bytes for the call.",
+          "target": "destination of the call, allowed to spend the amount specified"
+        },
+        "return": "data of the call."
+      },
+      "setExecutionOperator(address,bool)": {
+        "params": {
+          "enabled": "set whether the executionOperator is enabled or disabled.",
+          "executionOperator": "address that will be given/removed executionOperator right."
+        }
+      },
+      "setSuperOperator(address,bool)": {
+        "params": {
+          "enabled": "set whether the superOperator is enabled or disabled.",
+          "superOperator": "address that will be given/removed superOperator right."
+        }
+      },
+      "symbol()": {
+        "return": "symbol of the tokens"
+      },
+      "totalSupply()": {
+        "return": "the total number of tokens in existence."
+      },
+      "transfer(address,uint256)": {
+        "params": {
+          "amount": "the number of tokens transfered.",
+          "to": "the recipient address of the tokens transfered."
+        },
+        "return": "true if success."
+      },
+      "transferAndChargeForGas(address,address,uint256,uint256,uint256,uint256,address)": {
+        "params": {
+          "amount": "number of tokens allowed that can be transfer by the code at `to`.",
+          "baseGasCharge": "amount of gas charged on top of the gas used for the call.",
+          "from": "address of which token will be transfered.",
+          "gasLimit": "exact amount of gas to be passed to the call.",
+          "to": "destination address fo the call.",
+          "tokenGasPrice": "price in token for the gas to be charged.",
+          "tokenReceiver": "recipient address of the token charged for the gas used."
+        },
+        "return": "whether the transfer was successful."
+      },
+      "transferFrom(address,address,uint256)": {
+        "params": {
+          "amount": "the number of tokens transfered.",
+          "from": "whose token it is transferring from.",
+          "to": "the recipient address of the tokens transfered."
+        },
+        "return": "true if success."
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {
+      "allowance(address,address)": {
+        "notice": "gets allowance of `spender` for `owner`'s tokens."
+      },
+      "approve(address,uint256)": {
+        "notice": "approve `spender` to transfer `amount` tokens."
+      },
+      "approveAndCall(address,uint256,bytes)": {
+        "notice": "approve `target` to spend `amount` and call it with data."
+      },
+      "approveAndExecuteWithSpecificGas(address,address,uint256,uint256,bytes)": {
+        "notice": "approve a specific amount of token for `from` and execute on behalf of the contract."
+      },
+      "approveAndExecuteWithSpecificGasAndChargeForIt(address,address,uint256,uint256,uint256,uint256,address,bytes)": {
+        "notice": "approve a specific amount of token for `from` and execute on behalf of the contract. Plus charge the gas required to perform it."
+      },
+      "approveFor(address,address,uint256)": {
+        "notice": "approve `spender` to transfer `amount` tokens from `owner`."
+      },
+      "balanceOf(address)": {
+        "notice": "Gets the balance of `owner`."
+      },
+      "burn(uint256)": {
+        "notice": "burn `amount` tokens."
+      },
+      "burnFor(address,uint256)": {
+        "notice": "burn `amount` tokens from `owner`."
+      },
+      "changeAdmin(address)": {
+        "notice": "change the administrator to be `newAdmin`."
+      },
+      "changeExecutionAdmin(address)": {
+        "notice": "change the execution adminstrator to be `newAdmin`."
+      },
+      "decimals()": {
+        "notice": "returns the number of decimals for that token."
+      },
+      "executeWithSpecificGas(address,uint256,bytes)": {
+        "notice": "execute on behalf of the contract."
+      },
+      "getAdmin()": {
+        "notice": "gives the current administrator of this contract."
+      },
+      "getExecutionAdmin()": {
+        "notice": "give the address responsible for adding execution rights."
+      },
+      "isExecutionOperator(address)": {
+        "notice": "check whether address `who` is given executionOperator rights."
+      },
+      "isSuperOperator(address)": {
+        "notice": "check whether address `who` is given superOperator rights."
+      },
+      "name()": {
+        "notice": "A descriptive name for the tokens"
+      },
+      "paidCall(address,uint256,bytes)": {
+        "notice": "temporarly approve `target` to spend `amount` and call it with data. Previous approvals remains unchanged."
+      },
+      "setExecutionOperator(address,bool)": {
+        "notice": "set `executionOperator` as executionOperator: `enabled`."
+      },
+      "setSuperOperator(address,bool)": {
+        "notice": "Enable or disable the ability of `superOperator` to transfer tokens of all (superOperator rights)."
+      },
+      "symbol()": {
+        "notice": "An abbreviated name for the tokens"
+      },
+      "totalSupply()": {
+        "notice": "Gets the total number of tokens in existence."
+      },
+      "transfer(address,uint256)": {
+        "notice": "Transfer `amount` tokens to `to`."
+      },
+      "transferAndChargeForGas(address,address,uint256,uint256,uint256,uint256,address)": {
+        "notice": "transfer 1amount1 token from `from` to `to` and charge the gas required to perform that transfer."
+      },
+      "transferFrom(address,address,uint256)": {
+        "notice": "Transfer `amount` tokens from `from` to `to`."
+      }
+    }
+  }
+}

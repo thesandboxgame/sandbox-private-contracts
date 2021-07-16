@@ -39,7 +39,7 @@ const catalysts = [
 ];
 
 const func: DeployFunction = async function (hre) {
-  const {deployments, getNamedAccounts} = hre;
+  const {deployments, getNamedAccounts, ethers} = hre;
   const {execute, deploy} = deployments;
 
   const {deployer} = await getNamedAccounts();
@@ -92,18 +92,26 @@ const func: DeployFunction = async function (hre) {
         maxGems: catalyst.maxGems,
       });
     }
-    return execute(
-      'OldCatalysts',
-      {from: deployer},
-      'addCatalysts',
-      erc20s,
-      data,
-      []
-    );
+    const contract = await ethers.getContract('OldCatalysts');
+    const filter = contract.filters['SubToken']();
+    const res = await contract.queryFilter(filter);
+    if (res.length === 0) {
+      return execute(
+        'OldCatalysts',
+        {from: deployer},
+        'addCatalysts',
+        erc20s,
+        data,
+        []
+      );
+    } else {
+      console.log('Catalyst already setup');
+    }
   }
   await addCatalysts(catalysts);
 };
 export default func;
 func.tags = ['OldCatalysts', 'OldCatalysts_deploy'];
 func.dependencies = ['Sand'];
+// comment to deploy old system
 func.skip = skipUnlessTest; // not meant to be redeployed

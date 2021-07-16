@@ -28,7 +28,7 @@ const erc721Tests = require('../erc721')(
   async () => {
     const {gameTokenAdmin} = await getNamedAccounts();
     const others = await getUnnamedAccounts();
-    await deployments.fixture();
+    await deployments.fixture(['ChildGameToken']);
 
     const contract = await ethers.getContract('ChildGameToken');
 

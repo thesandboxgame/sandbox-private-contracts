@@ -30,7 +30,7 @@ func.tags = ['GameMinter', 'GameMinter_deploy'];
 func.dependencies = [
   'ChildGameToken_deploy',
   'Sand_deploy',
-  'TestMetaTxForwarder_deploy',
+  'TRUSTED_FORWARDER',
 ];
 // TODO: Setup deploy-polygon folder and network.
 func.skip = skipUnlessTest; // TODO enable

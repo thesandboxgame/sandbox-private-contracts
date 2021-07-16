@@ -32,7 +32,7 @@ contract ERC1155ERC721 is WithSuperOperators, IERC1155, IERC721, ERC2771Handler 
     uint256 private constant PACK_NUM_FT_TYPES_OFFSET_MULTIPLIER = uint256(2)**(256 - 160 - 1 - 32 - 40 - 12);
     uint256 private constant NFT_INDEX_OFFSET = 63;
 
-    uint256 private constant IS_NFT = 0x0000000000000000000000000000000000000000800000000000000000000000;
+    uint256 internal constant IS_NFT = 0x0000000000000000000000000000000000000000800000000000000000000000;
     uint256 private constant NOT_IS_NFT = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7FFFFFFFFFFFFFFFFFFFFFFF;
     uint256 private constant NFT_INDEX = 0x00000000000000000000000000000000000000007FFFFFFF8000000000000000;
     uint256 private constant NOT_NFT_INDEX = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF800000007FFFFFFFFFFFFFFF;
@@ -772,6 +772,34 @@ contract ERC1155ERC721 is WithSuperOperators, IERC1155, IERC721, ERC2771Handler 
             require(amount > 0 && amount <= MAX_SUPPLY, "INVALID_AMOUNT");
             _burnERC1155(isTrustedForwarder(msg.sender) ? from : sender, from, id, uint32(amount));
         }
+    }
+
+    function _burnBatch(
+        address from,
+        uint256[] memory ids,
+        uint256[] memory amounts
+    ) internal {
+        address operator = isTrustedForwarder(msg.sender) ? from : _msgSender();
+        for (uint256 i = 0; i < ids.length; i++) {
+            uint256 id = ids[i];
+            uint256 amount = amounts[i];
+            if ((id & IS_NFT) > 0) {
+                require(amount == 1, "AMOUNT!=1");
+                require(from == _ownerOf(id), "OWNER!=FROM");
+                _owners[id] = 2**160; // equivalent to zero address when casted but ensure we track minted status
+                _numNFTPerAddress[from]--;
+                emit Transfer(from, address(0), id);
+            } else {
+                require(amount > 0 && amount <= MAX_SUPPLY, "INVALID_AMOUNT");
+                (uint256 bin, uint256 index) = (id).getTokenBinIndex();
+                _packedTokenBalance[from][bin] = _packedTokenBalance[from][bin].updateTokenBalance(
+                    index,
+                    amount,
+                    ObjectLib32.Operations.SUB
+                );
+            }
+        }
+        emit TransferBatch(operator, from, address(0), ids, amounts);
     }
 
     function _allocateIds(

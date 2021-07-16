@@ -1,0 +1,97 @@
+{
+  "address": "0x589995224F0eC8dE56a67a68C6E1bA6ae26610C6",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "gas",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes",
+              "name": "data",
+              "type": "bytes"
+            }
+          ],
+          "internalType": "struct FakePredicateForwarder.Request",
+          "name": "req",
+          "type": "tuple"
+        }
+      ],
+      "name": "forward",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x2324df0e026e1d0af56fbf69396183ea826e4473ad09304f1dc6ab3f27772d16",
+  "receipt": {
+    "to": null,
+    "from": "0x8A0e83DE499d7543CF486974a6196a35B5F573E7",
+    "contractAddress": "0x589995224F0eC8dE56a67a68C6E1bA6ae26610C6",
+    "transactionIndex": 16,
+    "gasUsed": "218384",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x11a953a3624cb88953246cb03dbe134f6cf58c5844a639d0ef9785b14ff8cad7",
+    "transactionHash": "0x2324df0e026e1d0af56fbf69396183ea826e4473ad09304f1dc6ab3f27772d16",
+    "logs": [],
+    "blockNumber": 8618408,
+    "cumulativeGasUsed": "2143157",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "solcInputHash": "e63993e0be97f3a53a1de2d8f51a10f7",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.2+commit.661d1103\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"gas\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"internalType\":\"struct FakePredicateForwarder.Request\",\"name\":\"req\",\"type\":\"tuple\"}],\"name\":\"forward\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"},{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"This is NOT a secure forwarder contract implementation! DO NOT USE in production.\",\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/solc_0.8/test/FakePredicateForwarder.sol\":\"FakePredicateForwarder\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":2000},\"remappings\":[]},\"sources\":{\"src/solc_0.8/test/FakePredicateForwarder.sol\":{\"content\":\"//SPDX-License-Identifier: MIT\\n\\npragma solidity 0.8.2;\\n\\n/// @dev This is NOT a secure forwarder contract implementation!\\n/// DO NOT USE in production.\\ncontract FakePredicateForwarder {\\n    struct Request {\\n        address from;\\n        address to;\\n        uint256 value;\\n        uint256 gas;\\n        bytes data;\\n    }\\n\\n    // solhint-disable-next-line no-empty-blocks\\n    constructor() {}\\n\\n    function forward(Request calldata req) public returns (bool, bytes memory) {\\n        // solhint-disable avoid-low-level-calls\\n        (bool success, bytes memory returndata) =\\n            req.to.call{gas: req.gas, value: req.value}(abi.encodePacked(req.data, req.from));\\n        // solhint-enable avoid-low-level-calls\\n\\n        return (success, returndata);\\n    }\\n}\\n\",\"keccak256\":\"0x26710c805ae3f63d34e67f0acad749df3bf337eaae3b3b19427abd236674240e\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506102fd806100206000396000f3fe608060405234801561001057600080fd5b506004361061002b5760003560e01c806316e7ad3614610030575b600080fd5b61004361003e366004610161565b61005a565b6040516100519291906101f1565b60405180910390f35b6000606081806100706040860160208701610126565b73ffffffffffffffffffffffffffffffffffffffff166060860135604087013561009d608089018961022d565b6100aa60208b018b610126565b6040516020016100bc93929190610199565b60408051601f19818403018152908290526100d6916101d5565b600060405180830381858888f193505050503d8060008114610114576040519150601f19603f3d011682016040523d82523d6000602084013e610119565b606091505b5090945092505050915091565b600060208284031215610137578081fd5b813573ffffffffffffffffffffffffffffffffffffffff8116811461015a578182fd5b9392505050565b600060208284031215610172578081fd5b813567ffffffffffffffff811115610188578182fd5b820160a0818503121561015a578182fd5b6000838583375060609190911b7fffffffffffffffffffffffffffffffffffffffff000000000000000000000000169101908152601401919050565b600082516101e7818460208701610297565b9190910192915050565b60008315158252604060208301528251806040840152610218816060850160208701610297565b601f01601f1916919091016060019392505050565b60008083357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe1843603018112610261578283fd5b83018035915067ffffffffffffffff82111561027b578283fd5b60200191503681900382131561029057600080fd5b9250929050565b60005b838110156102b257818101518382015260200161029a565b838111156102c1576000848401525b5050505056fea264697066735822122048f93ec253d0f443bfdc42be6dd646483949f608bb66633efc14705ce8cf9bd064736f6c63430008020033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061002b5760003560e01c806316e7ad3614610030575b600080fd5b61004361003e366004610161565b61005a565b6040516100519291906101f1565b60405180910390f35b6000606081806100706040860160208701610126565b73ffffffffffffffffffffffffffffffffffffffff166060860135604087013561009d608089018961022d565b6100aa60208b018b610126565b6040516020016100bc93929190610199565b60408051601f19818403018152908290526100d6916101d5565b600060405180830381858888f193505050503d8060008114610114576040519150601f19603f3d011682016040523d82523d6000602084013e610119565b606091505b5090945092505050915091565b600060208284031215610137578081fd5b813573ffffffffffffffffffffffffffffffffffffffff8116811461015a578182fd5b9392505050565b600060208284031215610172578081fd5b813567ffffffffffffffff811115610188578182fd5b820160a0818503121561015a578182fd5b6000838583375060609190911b7fffffffffffffffffffffffffffffffffffffffff000000000000000000000000169101908152601401919050565b600082516101e7818460208701610297565b9190910192915050565b60008315158252604060208301528251806040840152610218816060850160208701610297565b601f01601f1916919091016060019392505050565b60008083357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe1843603018112610261578283fd5b83018035915067ffffffffffffffff82111561027b578283fd5b60200191503681900382131561029057600080fd5b9250929050565b60005b838110156102b257818101518382015260200161029a565b838111156102c1576000848401525b5050505056fea264697066735822122048f93ec253d0f443bfdc42be6dd646483949f608bb66633efc14705ce8cf9bd064736f6c63430008020033",
+  "devdoc": {
+    "details": "This is NOT a secure forwarder contract implementation! DO NOT USE in production.",
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}

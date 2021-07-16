@@ -2,6 +2,7 @@ import {getLandSales, LandSale} from '../../data/landSales/getLandSales';
 import deadlines from '../../data/landSales/deadlines';
 import fs from 'fs';
 import helpers, {SaltedSaleLandInfo} from '../../lib/merkleTreeHelper';
+import {skipUnlessTest} from '../../utils/network';
 const {calculateLandHash} = helpers;
 
 const LANDSALE_PREFIX = 'LandPreSale_5';
@@ -33,9 +34,9 @@ const func: DeployFunction = async function (hre) {
       throw new Error(`no deadline for sector ${sector}`);
     }
 
-    if (hre.network.name !== 'mainnet') {
+    if (hre.network.tags.testnet) {
       log('increasing deadline by 1 year');
-      deadline += 365 * 24 * 60 * 60; //add 1 year on rinkeby
+      deadline += 365 * 24 * 60 * 60; //add 1 year on testnets
     }
 
     const landSaleDeployment = await deploy(landSaleName, {
@@ -46,7 +47,7 @@ const func: DeployFunction = async function (hre) {
         landContract.address,
         sandContract.address,
         sandContract.address,
-        deployer,
+        landSaleAdmin,
         landSaleBeneficiary,
         merkleRootHash,
         deadline,
@@ -60,7 +61,7 @@ const func: DeployFunction = async function (hre) {
       log: true,
     });
 
-    if (hre.network.name !== 'hardat') {
+    if (hre.network.name !== 'hardhat') {
       const landsWithProof: (SaltedSaleLandInfo & {proof: string[]})[] = [];
       for (const land of saltedLands) {
         const proof = tree.getProof(calculateLandHash(land));
@@ -86,18 +87,7 @@ const func: DeployFunction = async function (hre) {
       );
     }
 
-    const currentAdmin = await read(landSaleName, 'getAdmin');
-    if (currentAdmin.toLowerCase() !== landSaleAdmin.toLowerCase()) {
-      await catchUnknownSigner(
-        execute(
-          landSaleName,
-          {from: currentAdmin, log: true},
-          'changeAdmin',
-          landSaleAdmin
-        )
-      );
-    }
-
+    // TODO remove that step for next Land Sale, use Sand.paidCall on the frontend
     const isSandSuperOperator = await read(
       'Sand',
       'isSuperOperator',
@@ -131,3 +121,4 @@ const func: DeployFunction = async function (hre) {
 export default func;
 func.tags = ['LandPreSale_5', 'LandPreSale_5_deploy'];
 func.dependencies = ['Sand_deploy', 'Land_deploy', 'Asset_deploy'];
+func.skip = skipUnlessTest;

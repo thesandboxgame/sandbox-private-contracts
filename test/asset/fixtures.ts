@@ -10,7 +10,11 @@ import {waitFor, setupUsers} from '../utils';
 // import asset_regenerate_and_distribute from '../../setup/asset_regenerate_and_distribute';
 
 export const setupAsset = deployments.createFixture(async function () {
-  await deployments.fixture(['Asset']);
+  await deployments.fixture([
+    'Asset',
+    'ERC1155_PREDICATE',
+    'TRUSTED_FORWARDER',
+  ]);
   // await asset_regenerate_and_distribute(hre);
   const otherAccounts = await getUnnamedAccounts();
   const minter = otherAccounts[0];

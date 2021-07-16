@@ -1,7 +1,7 @@
 import fs from "fs";
 import MerkleTree from "../../lib/merkleTree";
 import addresses from "../addresses.json";
-import helpers, { SaleLandInfo, SaltedSaleLandInfo } from "../../lib/merkleTreeHelper";
+import helpers, {SaleLandInfo, SaltedSaleLandInfo} from "../../lib/merkleTreeHelper";
 const {createDataArray, saltLands} = helpers;
 
 export type LandSale = {
@@ -12,8 +12,9 @@ export type LandSale = {
   tree: MerkleTree;
 };
 
-export type SectorLand = { coordinateX: number, coordinateY: number, ownerAddress: string; bundleId?: string };
-export type SectorEstate = { coordinateX: number, coordinateY: number, ownerAddress: string; type: number, lands: {coordinateX: number, coordinateY: number}[]; bundleId?: string };
+export type SectorFiles = {secret: string, sectors: SectorData[], bundles: {[id: string]: string[]}, prices: {[priceId: string]: string}};
+export type SectorLand = {coordinateX: number, coordinateY: number, ownerAddress: string; bundleId?: string};
+export type SectorEstate = {coordinateX: number, coordinateY: number, ownerAddress: string; type: number, lands: {coordinateX: number, coordinateY: number}[]; bundleId?: string};
 
 export type SectorData = {
   sector: number;
@@ -112,13 +113,13 @@ async function generateLandsForMerkleTree(sectorData: SectorData, bundles: {[id:
     if (!(landGroup.x % size === 0 && landGroup.y % size === 0)) {
       reportError(
         "invalid coordinates: " +
-          JSON.stringify({
-            x: landGroup.x,
-            originalX: landGroup.originalX,
-            y: landGroup.y,
-            originalY: landGroup.originalY,
-            size,
-          })
+        JSON.stringify({
+          x: landGroup.x,
+          originalX: landGroup.originalX,
+          y: landGroup.y,
+          originalY: landGroup.originalY,
+          size,
+        })
       );
       return;
     }
@@ -220,29 +221,8 @@ async function generateLandsForMerkleTree(sectorData: SectorData, bundles: {[id:
   return {lands, partnersLands};
 }
 
-export async function getLandSales(presale: string, networkName: string, expose?: boolean): Promise<LandSale[]>{
-  const secretPath = `./secret/.${presale}_${networkName}_secret`;
-  let secret;
-  try {
-    secret = fs.readFileSync(secretPath).toString();
-  } catch (e) {
-    if (networkName === 'mainnet' || networkName === 'rinkeby') {
-      throw e;
-    }
-    secret = "0x4467363716526536535425451427798982881775318563547751090997863683";
-  }
-
-  let name = networkName;
-  if (networkName === 'hardhat') {
-    name = 'rinkeby'; // use rinkeby data for tests
-  }
-
-  const sectorPath = `./${presale}/sectors.${name}.json`;
-  const bundlesPath = `./${presale}/bundles.${name}.json`;
-
-  const sectors = (await import(sectorPath)).default;
-  const bundles = (await import(bundlesPath)).default;
-  const prices = (await import(`./${presale}/prices`)).default;
+export async function getLandSales(presale: string, networkName: string, expose?: boolean): Promise<LandSale[]> {
+  const {secret, sectors, bundles, prices} = await getLandSaleFiles(presale, networkName)
 
   const landSales = [];
   for (const sectorData of sectors) {
@@ -270,3 +250,25 @@ export async function getLandSales(presale: string, networkName: string, expose?
   return landSales;
 }
 
+export async function getLandSaleFiles(presale: string, networkName: string): Promise<SectorFiles> {
+  const networkNameMap: {[name: string]: string} = {
+    mainnet: 'mainnet',
+    rinkeby: 'testnet',
+    goerli: 'testnet',
+    hardhat: 'testnet'
+  }
+  const name = networkNameMap[networkName];
+  const secretPath = `./secret/.${presale}_${name}_secret`;
+  const sectorPath = `./${presale}/sectors.${name}.json`;
+  const bundlesPath = `./${presale}/bundles.${name}.json`;
+  let secret;
+  if (networkName === 'hardhat') {
+    secret = "0x4467363716526536535425451427798982881775318563547751090997863683";
+  } else {
+    secret = fs.readFileSync(secretPath).toString();
+  }
+  const sectors = (await import(sectorPath)).default;
+  const bundles = (await import(bundlesPath)).default;
+  const prices = (await import(`./${presale}/prices`)).default;
+  return {secret, sectors, bundles, prices}
+}

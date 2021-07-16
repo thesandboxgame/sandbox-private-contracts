@@ -1,0 +1,435 @@
+{
+  "address": "0xB718B72e8D203503b59786cC7D703Ce9bf2c3950",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract ERC20Group",
+          "name": "group",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "tokenName",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "tokenSymbol",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        }
+      ],
+      "name": "allowance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "remaining",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "approveFor",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "who",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "decimals",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "emitTransferEvent",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "groupAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "groupTokenId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "symbol",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transfer",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x7a9bdf1ee48bf6fa206b8622684e1ddee1bda5e25b9209f40741dce417f3815e",
+  "receipt": {
+    "to": null,
+    "from": "0xA796AE911621E00809E0E7C8f0AD6BF118E5139e",
+    "contractAddress": "0xB718B72e8D203503b59786cC7D703Ce9bf2c3950",
+    "transactionIndex": 0,
+    "gasUsed": "749931",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xd18785653bc006e67655358a49c15921eaaccfe6aedf3bb50f63434e6126c188",
+    "transactionHash": "0x7a9bdf1ee48bf6fa206b8622684e1ddee1bda5e25b9209f40741dce417f3815e",
+    "logs": [],
+    "blockNumber": 5072061,
+    "cumulativeGasUsed": "749931",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x0c71dE81F3c98dFE43D84eaDA9AcE3325BFf4eE1",
+    3,
+    "Sandbox's LEGENDARY Catalysts",
+    "LEGENDARY"
+  ],
+  "solcInputHash": "313f455adab9ae93096e43acc50d7d38",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.5+commit.f956cc89\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract ERC20Group\",\"name\":\"group\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"tokenName\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"tokenSymbol\",\"type\":\"string\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"remaining\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approveFor\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"who\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"emitTransferEvent\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"groupAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"groupTokenId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{\"groupAddress()\":{\"notice\":\"the ERC20Group address\"},\"groupTokenId()\":{\"notice\":\"the tokenId in ERC20Group\"},\"name()\":{\"notice\":\"A descriptive name for the tokens\"},\"symbol()\":{\"notice\":\"An abbreviated name for the tokens\"}}}},\"settings\":{\"compilationTarget\":{\"src/solc_0.6/BaseWithStorage/ERC20SubToken.sol\":\"ERC20SubToken\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":2000},\"remappings\":[]},\"sources\":{\"src/solc_0.6/BaseWithStorage/ERC20Group.sol\":{\"content\":\"pragma solidity 0.6.5;\\npragma experimental ABIEncoderV2;\\n\\nimport \\\"./ERC20SubToken.sol\\\";\\nimport \\\"../common/Libraries/SafeMath.sol\\\";\\nimport \\\"../common/Libraries/AddressUtils.sol\\\";\\nimport \\\"../common/Libraries/ObjectLib32.sol\\\";\\nimport \\\"../common/Libraries/BytesUtil.sol\\\";\\n\\nimport \\\"../common/BaseWithStorage/SuperOperators.sol\\\";\\nimport \\\"../common/BaseWithStorage/MetaTransactionReceiver.sol\\\";\\n\\n\\ncontract ERC20Group is SuperOperators, MetaTransactionReceiver {\\n    uint256 internal constant MAX_UINT256 = ~uint256(0);\\n\\n    /// @notice emitted when a new Token is added to the group.\\n    /// @param subToken the token added, its id will be its index in the array.\\n    event SubToken(ERC20SubToken subToken);\\n\\n    /// @notice emitted when `owner` is allowing or disallowing `operator` to transfer tokens on its behalf.\\n    /// @param owner the address approving.\\n    /// @param operator the address being granted (or revoked) permission to transfer.\\n    /// @param approved whether the operator is granted transfer right or not.\\n    event ApprovalForAll(address indexed owner, address indexed operator, bool approved);\\n\\n    event Minter(address minter, bool enabled);\\n\\n    /// @notice Enable or disable the ability of `minter` to mint tokens\\n    /// @param minter address that will be given/removed minter right.\\n    /// @param enabled set whether the minter is enabled or disabled.\\n    function setMinter(address minter, bool enabled) external {\\n        require(msg.sender == _admin, \\\"NOT_AUTHORIZED_ADMIN\\\");\\n        _setMinter(minter, enabled);\\n    }\\n\\n    /// @notice check whether address `who` is given minter rights.\\n    /// @param who The address to query.\\n    /// @return whether the address has minter rights.\\n    function isMinter(address who) public view returns (bool) {\\n        return _minters[who];\\n    }\\n\\n    /// @dev mint more tokens of a specific subToken .\\n    /// @param to address receiving the tokens.\\n    /// @param id subToken id (also the index at which it was added).\\n    /// @param amount of token minted.\\n    function mint(\\n        address to,\\n        uint256 id,\\n        uint256 amount\\n    ) external {\\n        require(_minters[msg.sender], \\\"NOT_AUTHORIZED_MINTER\\\");\\n        (uint256 bin, uint256 index) = id.getTokenBinIndex();\\n        mapping(uint256 => uint256) storage toPack = _packedTokenBalance[to];\\n        toPack[bin] = toPack[bin].updateTokenBalance(index, amount, ObjectLib32.Operations.ADD);\\n        _packedSupplies[bin] = _packedSupplies[bin].updateTokenBalance(index, amount, ObjectLib32.Operations.ADD);\\n        _erc20s[id].emitTransferEvent(address(0), to, amount);\\n    }\\n\\n    /// @dev mint more tokens of a several subToken .\\n    /// @param to address receiving the tokens.\\n    /// @param ids subToken ids (also the index at which it was added).\\n    /// @param amounts for each token minted.\\n    function batchMint(\\n        address to,\\n        uint256[] calldata ids,\\n        uint256[] calldata amounts\\n    ) external {\\n        require(_minters[msg.sender], \\\"NOT_AUTHORIZED_MINTER\\\");\\n        require(ids.length == amounts.length, \\\"INVALID_INCONSISTENT_LENGTH\\\");\\n        _batchMint(to, ids, amounts);\\n    }\\n\\n    function _batchMint(\\n        address to,\\n        uint256[] memory ids,\\n        uint256[] memory amounts\\n    ) internal {\\n        uint256 lastBin = MAX_UINT256;\\n        uint256 bal = 0;\\n        uint256 supply = 0;\\n        mapping(uint256 => uint256) storage toPack = _packedTokenBalance[to];\\n        for (uint256 i = 0; i < ids.length; i++) {\\n            if (amounts[i] != 0) {\\n                (uint256 bin, uint256 index) = ids[i].getTokenBinIndex();\\n                if (lastBin == MAX_UINT256) {\\n                    lastBin = bin;\\n                    bal = toPack[bin].updateTokenBalance(index, amounts[i], ObjectLib32.Operations.ADD);\\n                    supply = _packedSupplies[bin].updateTokenBalance(index, amounts[i], ObjectLib32.Operations.ADD);\\n                } else {\\n                    if (bin != lastBin) {\\n                        toPack[lastBin] = bal;\\n                        bal = toPack[bin];\\n                        _packedSupplies[lastBin] = supply;\\n                        supply = _packedSupplies[bin];\\n                        lastBin = bin;\\n                    }\\n                    bal = bal.updateTokenBalance(index, amounts[i], ObjectLib32.Operations.ADD);\\n                    supply = supply.updateTokenBalance(index, amounts[i], ObjectLib32.Operations.ADD);\\n                }\\n                _erc20s[ids[i]].emitTransferEvent(address(0), to, amounts[i]);\\n            }\\n        }\\n        if (lastBin != MAX_UINT256) {\\n            toPack[lastBin] = bal;\\n            _packedSupplies[lastBin] = supply;\\n        }\\n    }\\n\\n    /// @notice return the current total supply of a specific subToken.\\n    /// @param id subToken id.\\n    /// @return supply current total number of tokens.\\n    function supplyOf(uint256 id) external view returns (uint256 supply) {\\n        (uint256 bin, uint256 index) = id.getTokenBinIndex();\\n        return _packedSupplies[bin].getValueInBin(index);\\n    }\\n\\n    /// @notice return the balance of a particular owner for a particular subToken.\\n    /// @param owner whose balance it is of.\\n    /// @param id subToken id.\\n    /// @return balance of the owner\\n    function balanceOf(address owner, uint256 id) public view returns (uint256 balance) {\\n        (uint256 bin, uint256 index) = id.getTokenBinIndex();\\n        return _packedTokenBalance[owner][bin].getValueInBin(index);\\n    }\\n\\n    /// @notice return the balances of a list of owners / subTokens.\\n    /// @param owners list of addresses to which we want to know the balance.\\n    /// @param ids list of subTokens's addresses.\\n    /// @return balances list of balances for each request.\\n    function balanceOfBatch(address[] calldata owners, uint256[] calldata ids) external view returns (uint256[] memory balances) {\\n        require(owners.length == ids.length, \\\"INVALID_INCONSISTENT_LENGTH\\\");\\n        balances = new uint256[](ids.length);\\n        for (uint256 i = 0; i < ids.length; i++) {\\n            balances[i] = balanceOf(owners[i], ids[i]);\\n        }\\n    }\\n\\n    /// @notice transfer a number of subToken from one address to another.\\n    /// @param from owner to transfer from.\\n    /// @param to destination address that will receive the tokens.\\n    /// @param id subToken id.\\n    /// @param value amount of tokens to transfer.\\n    function singleTransferFrom(\\n        address from,\\n        address to,\\n        uint256 id,\\n        uint256 value\\n    ) external {\\n        require(to != address(0), \\\"INVALID_TO_ZERO_ADDRESS\\\");\\n        ERC20SubToken erc20 = _erc20s[id];\\n        require(\\n            from == msg.sender ||\\n                msg.sender == address(erc20) ||\\n                _metaTransactionContracts[msg.sender] ||\\n                _superOperators[msg.sender] ||\\n                _operatorsForAll[from][msg.sender],\\n            \\\"NOT_AUTHORIZED\\\"\\n        );\\n\\n        (uint256 bin, uint256 index) = id.getTokenBinIndex();\\n        mapping(uint256 => uint256) storage fromPack = _packedTokenBalance[from];\\n        mapping(uint256 => uint256) storage toPack = _packedTokenBalance[to];\\n        fromPack[bin] = fromPack[bin].updateTokenBalance(index, value, ObjectLib32.Operations.SUB);\\n        toPack[bin] = toPack[bin].updateTokenBalance(index, value, ObjectLib32.Operations.ADD);\\n        erc20.emitTransferEvent(from, to, value);\\n    }\\n\\n    /// @notice transfer a number of different subTokens from one address to another.\\n    /// @param from owner to transfer from.\\n    /// @param to destination address that will receive the tokens.\\n    /// @param ids list of subToken ids to transfer.\\n    /// @param values list of amount for eacg subTokens to transfer.\\n    function batchTransferFrom(\\n        address from,\\n        address to,\\n        uint256[] calldata ids,\\n        uint256[] calldata values\\n    ) external {\\n        require(ids.length == values.length, \\\"INVALID_INCONSISTENT_LENGTH\\\");\\n        require(to != address(0), \\\"INVALID_TO_ZERO_ADDRESS\\\");\\n        require(\\n            from == msg.sender || _superOperators[msg.sender] || _operatorsForAll[from][msg.sender] || _metaTransactionContracts[msg.sender],\\n            \\\"NOT_AUTHORIZED\\\"\\n        );\\n        _batchTransferFrom(from, to, ids, values);\\n    }\\n\\n    function _batchTransferFrom(\\n        address from,\\n        address to,\\n        uint256[] memory ids,\\n        uint256[] memory values\\n    ) internal {\\n        uint256 lastBin = MAX_UINT256;\\n        uint256 balFrom;\\n        uint256 balTo;\\n        mapping(uint256 => uint256) storage fromPack = _packedTokenBalance[from];\\n        mapping(uint256 => uint256) storage toPack = _packedTokenBalance[to];\\n        for (uint256 i = 0; i < ids.length; i++) {\\n            if (values[i] != 0) {\\n                (uint256 bin, uint256 index) = ids[i].getTokenBinIndex();\\n                if (lastBin == MAX_UINT256) {\\n                    lastBin = bin;\\n                    balFrom = ObjectLib32.updateTokenBalance(fromPack[bin], index, values[i], ObjectLib32.Operations.SUB);\\n                    balTo = ObjectLib32.updateTokenBalance(toPack[bin], index, values[i], ObjectLib32.Operations.ADD);\\n                } else {\\n                    if (bin != lastBin) {\\n                        fromPack[lastBin] = balFrom;\\n                        toPack[lastBin] = balTo;\\n                        balFrom = fromPack[bin];\\n                        balTo = toPack[bin];\\n                        lastBin = bin;\\n                    }\\n                    balFrom = balFrom.updateTokenBalance(index, values[i], ObjectLib32.Operations.SUB);\\n                    balTo = balTo.updateTokenBalance(index, values[i], ObjectLib32.Operations.ADD);\\n                }\\n                ERC20SubToken erc20 = _erc20s[ids[i]];\\n                erc20.emitTransferEvent(from, to, values[i]);\\n            }\\n        }\\n        if (lastBin != MAX_UINT256) {\\n            fromPack[lastBin] = balFrom;\\n            toPack[lastBin] = balTo;\\n        }\\n    }\\n\\n    /// @notice grant or revoke the ability for an address to transfer token on behalf of another address.\\n    /// @param sender address granting/revoking the approval.\\n    /// @param operator address being granted/revoked ability to transfer.\\n    /// @param approved whether the operator is revoked or approved.\\n    function setApprovalForAllFor(\\n        address sender,\\n        address operator,\\n        bool approved\\n    ) external {\\n        require(msg.sender == sender || _metaTransactionContracts[msg.sender] || _superOperators[msg.sender], \\\"NOT_AUTHORIZED\\\");\\n        _setApprovalForAll(sender, operator, approved);\\n    }\\n\\n    /// @notice grant or revoke the ability for an address to transfer token on your behalf.\\n    /// @param operator address being granted/revoked ability to transfer.\\n    /// @param approved whether the operator is revoked or approved.\\n    function setApprovalForAll(address operator, bool approved) external {\\n        _setApprovalForAll(msg.sender, operator, approved);\\n    }\\n\\n    /// @notice return whether an oeprator has the ability to transfer on behalf of another address.\\n    /// @param owner address who would have granted the rights.\\n    /// @param operator address being given the ability to transfer.\\n    /// @return isOperator whether the operator has approval rigths or not.\\n    function isApprovedForAll(address owner, address operator) external view returns (bool isOperator) {\\n        return _operatorsForAll[owner][operator] || _superOperators[operator];\\n    }\\n\\n    function isAuthorizedToTransfer(address owner, address sender) external view returns (bool) {\\n        return _metaTransactionContracts[sender] || _superOperators[sender] || _operatorsForAll[owner][sender];\\n    }\\n\\n    function isAuthorizedToApprove(address sender) external view returns (bool) {\\n        return _metaTransactionContracts[sender] || _superOperators[sender];\\n    }\\n\\n    function batchBurnFrom(\\n        address from,\\n        uint256[] calldata ids,\\n        uint256[] calldata amounts\\n    ) external {\\n        require(from != address(0), \\\"INVALID_FROM_ZERO_ADDRESS\\\");\\n        require(\\n            from == msg.sender || _metaTransactionContracts[msg.sender] || _superOperators[msg.sender] || _operatorsForAll[from][msg.sender],\\n            \\\"NOT_AUTHORIZED\\\"\\n        );\\n\\n        _batchBurnFrom(from, ids, amounts);\\n    }\\n\\n    /// @notice burn token for a specific owner and subToken.\\n    /// @param from fron which address the token are burned from.\\n    /// @param id subToken id.\\n    /// @param value amount of tokens to burn.\\n    function burnFrom(\\n        address from,\\n        uint256 id,\\n        uint256 value\\n    ) external {\\n        require(\\n            from == msg.sender || _superOperators[msg.sender] || _operatorsForAll[from][msg.sender] || _metaTransactionContracts[msg.sender],\\n            \\\"NOT_AUTHORIZED\\\"\\n        );\\n        _burn(from, id, value);\\n    }\\n\\n    /// @notice burn token for a specific subToken.\\n    /// @param id subToken id.\\n    /// @param value amount of tokens to burn.\\n    function burn(uint256 id, uint256 value) external {\\n        _burn(msg.sender, id, value);\\n    }\\n\\n    // ///////////////// INTERNAL //////////////////////////\\n\\n    function _batchBurnFrom(\\n        address from,\\n        uint256[] memory ids,\\n        uint256[] memory amounts\\n    ) internal {\\n        uint256 balFrom = 0;\\n        uint256 supply = 0;\\n        uint256 lastBin = MAX_UINT256;\\n        mapping(uint256 => uint256) storage fromPack = _packedTokenBalance[from];\\n        for (uint256 i = 0; i < ids.length; i++) {\\n            if (amounts[i] != 0) {\\n                (uint256 bin, uint256 index) = ids[i].getTokenBinIndex();\\n                if (lastBin == MAX_UINT256) {\\n                    lastBin = bin;\\n                    balFrom = fromPack[bin].updateTokenBalance(index, amounts[i], ObjectLib32.Operations.SUB);\\n                    supply = _packedSupplies[bin].updateTokenBalance(index, amounts[i], ObjectLib32.Operations.SUB);\\n                } else {\\n                    if (bin != lastBin) {\\n                        fromPack[lastBin] = balFrom;\\n                        balFrom = fromPack[bin];\\n                        _packedSupplies[lastBin] = supply;\\n                        supply = _packedSupplies[bin];\\n                        lastBin = bin;\\n                    }\\n\\n                    balFrom = balFrom.updateTokenBalance(index, amounts[i], ObjectLib32.Operations.SUB);\\n                    supply = supply.updateTokenBalance(index, amounts[i], ObjectLib32.Operations.SUB);\\n                }\\n                _erc20s[ids[i]].emitTransferEvent(from, address(0), amounts[i]);\\n            }\\n        }\\n        if (lastBin != MAX_UINT256) {\\n            fromPack[lastBin] = balFrom;\\n            _packedSupplies[lastBin] = supply;\\n        }\\n    }\\n\\n    function _burn(\\n        address from,\\n        uint256 id,\\n        uint256 value\\n    ) internal {\\n        ERC20SubToken erc20 = _erc20s[id];\\n        (uint256 bin, uint256 index) = id.getTokenBinIndex();\\n        mapping(uint256 => uint256) storage fromPack = _packedTokenBalance[from];\\n        fromPack[bin] = ObjectLib32.updateTokenBalance(fromPack[bin], index, value, ObjectLib32.Operations.SUB);\\n        _packedSupplies[bin] = ObjectLib32.updateTokenBalance(_packedSupplies[bin], index, value, ObjectLib32.Operations.SUB);\\n        erc20.emitTransferEvent(from, address(0), value);\\n    }\\n\\n    function _addSubToken(ERC20SubToken subToken) internal returns (uint256 id) {\\n        id = _erc20s.length;\\n        require(subToken.groupAddress() == address(this), \\\"INVALID_GROUP\\\");\\n        require(subToken.groupTokenId() == id, \\\"INVALID_ID\\\");\\n        _erc20s.push(subToken);\\n        emit SubToken(subToken);\\n    }\\n\\n    function _setApprovalForAll(\\n        address sender,\\n        address operator,\\n        bool approved\\n    ) internal {\\n        require(!_superOperators[operator], \\\"INVALID_SUPER_OPERATOR\\\");\\n        _operatorsForAll[sender][operator] = approved;\\n        emit ApprovalForAll(sender, operator, approved);\\n    }\\n\\n    function _setMinter(address minter, bool enabled) internal {\\n        _minters[minter] = enabled;\\n        emit Minter(minter, enabled);\\n    }\\n\\n    // ///////////////// UTILITIES /////////////////////////\\n    using AddressUtils for address;\\n    using ObjectLib32 for ObjectLib32.Operations;\\n    using ObjectLib32 for uint256;\\n    using SafeMath for uint256;\\n\\n    // ////////////////// DATA ///////////////////////////////\\n    mapping(uint256 => uint256) internal _packedSupplies;\\n    mapping(address => mapping(uint256 => uint256)) internal _packedTokenBalance;\\n    mapping(address => mapping(address => bool)) internal _operatorsForAll;\\n    ERC20SubToken[] internal _erc20s;\\n    mapping(address => bool) internal _minters;\\n\\n    // ////////////// CONSTRUCTOR ////////////////////////////\\n\\n    struct SubTokenData {\\n        string name;\\n        string symbol;\\n    }\\n\\n    constructor(\\n        address metaTransactionContract,\\n        address admin,\\n        address initialMinter\\n    ) internal {\\n        _admin = admin;\\n        _setMetaTransactionProcessor(metaTransactionContract, true);\\n        _setMinter(initialMinter, true);\\n    }\\n}\\n\",\"keccak256\":\"0x3d7f5e87a6b374bf194ffcfcb5ea4fabc93ab3acf15177c9a787fba274c5870f\"},\"src/solc_0.6/BaseWithStorage/ERC20SubToken.sol\":{\"content\":\"pragma solidity 0.6.5;\\n\\nimport \\\"../common/Libraries/SafeMathWithRequire.sol\\\";\\nimport \\\"../common/BaseWithStorage/SuperOperators.sol\\\";\\nimport \\\"../common/BaseWithStorage/MetaTransactionReceiver.sol\\\";\\n\\nimport \\\"./ERC20Group.sol\\\";\\n\\n\\ncontract ERC20SubToken {\\n    // TODO add natspec, currently blocked by solidity compiler issue\\n    event Transfer(address indexed from, address indexed to, uint256 value);\\n\\n    // TODO add natspec, currently blocked by solidity compiler issue\\n    event Approval(address indexed owner, address indexed spender, uint256 value);\\n\\n    /// @notice A descriptive name for the tokens\\n    /// @return name of the tokens\\n    function name() public view returns (string memory) {\\n        return _name;\\n    }\\n\\n    /// @notice An abbreviated name for the tokens\\n    /// @return symbol of the tokens\\n    function symbol() public view returns (string memory) {\\n        return _symbol;\\n    }\\n\\n    /// @notice the tokenId in ERC20Group\\n    /// @return the tokenId in ERC20Group\\n    function groupTokenId() external view returns (uint256) {\\n        return _index;\\n    }\\n\\n    /// @notice the ERC20Group address\\n    /// @return the address of the group\\n    function groupAddress() external view returns (address) {\\n        return address(_group);\\n    }\\n\\n    function totalSupply() external view returns (uint256) {\\n        return _group.supplyOf(_index);\\n    }\\n\\n    function balanceOf(address who) external view returns (uint256) {\\n        return _group.balanceOf(who, _index);\\n    }\\n\\n    function decimals() external pure returns (uint8) {\\n        return uint8(0);\\n    }\\n\\n    function transfer(address to, uint256 amount) external returns (bool success) {\\n        _transfer(msg.sender, to, amount);\\n        return true;\\n    }\\n\\n    function transferFrom(\\n        address from,\\n        address to,\\n        uint256 amount\\n    ) external returns (bool success) {\\n        if (msg.sender != from && !_group.isAuthorizedToTransfer(from, msg.sender)) {\\n            uint256 allowance = _mAllowed[from][msg.sender];\\n            if (allowance != ~uint256(0)) {\\n                // save gas when allowance is maximal by not reducing it (see https://github.com/ethereum/EIPs/issues/717)\\n                require(allowance >= amount, \\\"NOT_AUTHOIZED_ALLOWANCE\\\");\\n                _mAllowed[from][msg.sender] = allowance - amount;\\n            }\\n        }\\n        _transfer(from, to, amount);\\n        return true;\\n    }\\n\\n    function approve(address spender, uint256 amount) external returns (bool success) {\\n        _approveFor(msg.sender, spender, amount);\\n        return true;\\n    }\\n\\n    function approveFor(\\n        address from,\\n        address spender,\\n        uint256 amount\\n    ) external returns (bool success) {\\n        require(msg.sender == from || _group.isAuthorizedToApprove(msg.sender), \\\"NOT_AUTHORIZED\\\");\\n        _approveFor(from, spender, amount);\\n        return true;\\n    }\\n\\n    function emitTransferEvent(\\n        address from,\\n        address to,\\n        uint256 amount\\n    ) external {\\n        require(msg.sender == address(_group), \\\"NOT_AUTHORIZED_GROUP_ONLY\\\");\\n        emit Transfer(from, to, amount);\\n    }\\n\\n    // /////////////////// INTERNAL ////////////////////////\\n\\n    function _approveFor(\\n        address owner,\\n        address spender,\\n        uint256 amount\\n    ) internal {\\n        require(owner != address(0) && spender != address(0), \\\"INVALID_FROM_OR_SPENDER\\\");\\n        _mAllowed[owner][spender] = amount;\\n        emit Approval(owner, spender, amount);\\n    }\\n\\n    function allowance(address owner, address spender) external view returns (uint256 remaining) {\\n        return _mAllowed[owner][spender];\\n    }\\n\\n    function _transfer(\\n        address from,\\n        address to,\\n        uint256 amount\\n    ) internal {\\n        _group.singleTransferFrom(from, to, _index, amount);\\n    }\\n\\n    // ///////////////////// UTILITIES ///////////////////////\\n    using SafeMathWithRequire for uint256;\\n\\n    // //////////////////// CONSTRUCTOR /////////////////////\\n    constructor(\\n        ERC20Group group,\\n        uint256 index,\\n        string memory tokenName,\\n        string memory tokenSymbol\\n    ) public {\\n        _group = group;\\n        _index = index;\\n        _name = tokenName;\\n        _symbol = tokenSymbol;\\n    }\\n\\n    // ////////////////////// DATA ///////////////////////////\\n    ERC20Group internal immutable _group;\\n    uint256 internal immutable _index;\\n    mapping(address => mapping(address => uint256)) internal _mAllowed;\\n    string internal _name;\\n    string internal _symbol;\\n}\\n\",\"keccak256\":\"0x41d76191a6491e9ec7ed2a77fcf8ff13ce6751d682cfa9822eb0dac09a25d87b\"},\"src/solc_0.6/common/BaseWithStorage/Admin.sol\":{\"content\":\"pragma solidity 0.6.5;\\n\\n\\ncontract Admin {\\n    address internal _admin;\\n\\n    /// @dev emitted when the contract administrator is changed.\\n    /// @param oldAdmin address of the previous administrator.\\n    /// @param newAdmin address of the new administrator.\\n    event AdminChanged(address oldAdmin, address newAdmin);\\n\\n    /// @dev gives the current administrator of this contract.\\n    /// @return the current administrator of this contract.\\n    function getAdmin() external view returns (address) {\\n        return _admin;\\n    }\\n\\n    /// @dev change the administrator to be `newAdmin`.\\n    /// @param newAdmin address of the new administrator.\\n    function changeAdmin(address newAdmin) external {\\n        require(msg.sender == _admin, \\\"only admin can change admin\\\");\\n        emit AdminChanged(_admin, newAdmin);\\n        _admin = newAdmin;\\n    }\\n\\n    modifier onlyAdmin() {\\n        require(msg.sender == _admin, \\\"only admin allowed\\\");\\n        _;\\n    }\\n}\\n\",\"keccak256\":\"0x21ddf217d83b4c1b8c3fa7240ff1d1fcedb902003a65d455d2101b95f40f6db8\"},\"src/solc_0.6/common/BaseWithStorage/MetaTransactionReceiver.sol\":{\"content\":\"pragma solidity 0.6.5;\\n\\nimport \\\"./Admin.sol\\\";\\n\\n\\ncontract MetaTransactionReceiver is Admin {\\n    mapping(address => bool) internal _metaTransactionContracts;\\n\\n    /// @dev emiited when a meta transaction processor is enabled/disabled\\n    /// @param metaTransactionProcessor address that will be given/removed metaTransactionProcessor rights.\\n    /// @param enabled set whether the metaTransactionProcessor is enabled or disabled.\\n    event MetaTransactionProcessor(address metaTransactionProcessor, bool enabled);\\n\\n    /// @dev Enable or disable the ability of `metaTransactionProcessor` to perform meta-tx (metaTransactionProcessor rights).\\n    /// @param metaTransactionProcessor address that will be given/removed metaTransactionProcessor rights.\\n    /// @param enabled set whether the metaTransactionProcessor is enabled or disabled.\\n    function setMetaTransactionProcessor(address metaTransactionProcessor, bool enabled) public {\\n        require(msg.sender == _admin, \\\"only admin can setup metaTransactionProcessors\\\");\\n        _setMetaTransactionProcessor(metaTransactionProcessor, enabled);\\n    }\\n\\n    function _setMetaTransactionProcessor(address metaTransactionProcessor, bool enabled) internal {\\n        _metaTransactionContracts[metaTransactionProcessor] = enabled;\\n        emit MetaTransactionProcessor(metaTransactionProcessor, enabled);\\n    }\\n\\n    /// @dev check whether address `who` is given meta-transaction execution rights.\\n    /// @param who The address to query.\\n    /// @return whether the address has meta-transaction execution rights.\\n    function isMetaTransactionProcessor(address who) external view returns (bool) {\\n        return _metaTransactionContracts[who];\\n    }\\n}\\n\",\"keccak256\":\"0x980c70427ff48a30d894b48b0900342020816b057bdc8fa4e258221b809ef670\"},\"src/solc_0.6/common/BaseWithStorage/SuperOperators.sol\":{\"content\":\"pragma solidity 0.6.5;\\n\\nimport \\\"./Admin.sol\\\";\\n\\n\\ncontract SuperOperators is Admin {\\n    mapping(address => bool) internal _superOperators;\\n\\n    event SuperOperator(address superOperator, bool enabled);\\n\\n    /// @notice Enable or disable the ability of `superOperator` to transfer tokens of all (superOperator rights).\\n    /// @param superOperator address that will be given/removed superOperator right.\\n    /// @param enabled set whether the superOperator is enabled or disabled.\\n    function setSuperOperator(address superOperator, bool enabled) external {\\n        require(msg.sender == _admin, \\\"only admin is allowed to add super operators\\\");\\n        _superOperators[superOperator] = enabled;\\n        emit SuperOperator(superOperator, enabled);\\n    }\\n\\n    /// @notice check whether address `who` is given superOperator rights.\\n    /// @param who The address to query.\\n    /// @return whether the address has superOperator rights.\\n    function isSuperOperator(address who) public view returns (bool) {\\n        return _superOperators[who];\\n    }\\n}\\n\",\"keccak256\":\"0x838a48c9e8890617ee3bb80d74aa4c0390d8c78e69c307e5a4ced0a7b8729abc\"},\"src/solc_0.6/common/Libraries/AddressUtils.sol\":{\"content\":\"pragma solidity 0.6.5;\\n\\n\\nlibrary AddressUtils {\\n    function toPayable(address _address) internal pure returns (address payable _payable) {\\n        return address(uint160(_address));\\n    }\\n\\n    function isContract(address addr) internal view returns (bool) {\\n        // for accounts without code, i.e. `keccak256('')`:\\n        bytes32 accountHash = 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470;\\n\\n        bytes32 codehash;\\n        // solium-disable-next-line security/no-inline-assembly\\n        assembly {\\n            codehash := extcodehash(addr)\\n        }\\n        return (codehash != 0x0 && codehash != accountHash);\\n    }\\n}\\n\",\"keccak256\":\"0xf2531405f46e9615a1972b587126999401380d970a4ac80bfb4df49908d3ba47\"},\"src/solc_0.6/common/Libraries/BytesUtil.sol\":{\"content\":\"pragma solidity 0.6.5;\\n\\n\\nlibrary BytesUtil {\\n    function memcpy(\\n        uint256 dest,\\n        uint256 src,\\n        uint256 len\\n    ) internal pure {\\n        // Copy word-length chunks while possible\\n        for (; len >= 32; len -= 32) {\\n            assembly {\\n                mstore(dest, mload(src))\\n            }\\n            dest += 32;\\n            src += 32;\\n        }\\n\\n        // Copy remaining bytes\\n        uint256 mask = 256**(32 - len) - 1;\\n        assembly {\\n            let srcpart := and(mload(src), not(mask))\\n            let destpart := and(mload(dest), mask)\\n            mstore(dest, or(destpart, srcpart))\\n        }\\n    }\\n\\n    function pointerToBytes(uint256 src, uint256 len) internal pure returns (bytes memory) {\\n        bytes memory ret = new bytes(len);\\n        uint256 retptr;\\n        assembly {\\n            retptr := add(ret, 32)\\n        }\\n\\n        memcpy(retptr, src, len);\\n        return ret;\\n    }\\n\\n    function addressToBytes(address a) internal pure returns (bytes memory b) {\\n        assembly {\\n            let m := mload(0x40)\\n            mstore(add(m, 20), xor(0x140000000000000000000000000000000000000000, a))\\n            mstore(0x40, add(m, 52))\\n            b := m\\n        }\\n    }\\n\\n    function uint256ToBytes(uint256 a) internal pure returns (bytes memory b) {\\n        assembly {\\n            let m := mload(0x40)\\n            mstore(add(m, 32), a)\\n            mstore(0x40, add(m, 64))\\n            b := m\\n        }\\n    }\\n\\n    function doFirstParamEqualsAddress(bytes memory data, address _address) internal pure returns (bool) {\\n        if (data.length < (36 + 32)) {\\n            return false;\\n        }\\n        uint256 value;\\n        assembly {\\n            value := mload(add(data, 36))\\n        }\\n        return value == uint256(_address);\\n    }\\n\\n    function doParamEqualsUInt256(\\n        bytes memory data,\\n        uint256 i,\\n        uint256 value\\n    ) internal pure returns (bool) {\\n        if (data.length < (36 + (i + 1) * 32)) {\\n            return false;\\n        }\\n        uint256 offset = 36 + i * 32;\\n        uint256 valuePresent;\\n        assembly {\\n            valuePresent := mload(add(data, offset))\\n        }\\n        return valuePresent == value;\\n    }\\n\\n    function overrideFirst32BytesWithAddress(bytes memory data, address _address) internal pure returns (bytes memory) {\\n        uint256 dest;\\n        assembly {\\n            dest := add(data, 48)\\n        } // 48 = 32 (offset) + 4 (func sig) + 12 (address is only 20 bytes)\\n\\n        bytes memory addressBytes = addressToBytes(_address);\\n        uint256 src;\\n        assembly {\\n            src := add(addressBytes, 32)\\n        }\\n\\n        memcpy(dest, src, 20);\\n        return data;\\n    }\\n\\n    function overrideFirstTwo32BytesWithAddressAndInt(\\n        bytes memory data,\\n        address _address,\\n        uint256 _value\\n    ) internal pure returns (bytes memory) {\\n        uint256 dest;\\n        uint256 src;\\n\\n        assembly {\\n            dest := add(data, 48)\\n        } // 48 = 32 (offset) + 4 (func sig) + 12 (address is only 20 bytes)\\n        bytes memory bbytes = addressToBytes(_address);\\n        assembly {\\n            src := add(bbytes, 32)\\n        }\\n        memcpy(dest, src, 20);\\n\\n        assembly {\\n            dest := add(data, 68)\\n        } // 48 = 32 (offset) + 4 (func sig) + 32 (next slot)\\n        bbytes = uint256ToBytes(_value);\\n        assembly {\\n            src := add(bbytes, 32)\\n        }\\n        memcpy(dest, src, 32);\\n\\n        return data;\\n    }\\n}\\n\",\"keccak256\":\"0x5e014bd6bbd3abd5847d7cd6189adeb7262d49a662195cdabbdb63aeafa8f867\"},\"src/solc_0.6/common/Libraries/ObjectLib32.sol\":{\"content\":\"pragma solidity 0.6.5;\\n\\nimport \\\"./SafeMathWithRequire.sol\\\";\\n\\n\\nlibrary ObjectLib32 {\\n    using SafeMathWithRequire for uint256;\\n    enum Operations {ADD, SUB, REPLACE}\\n    // Constants regarding bin or chunk sizes for balance packing\\n    uint256 constant TYPES_BITS_SIZE = 32; // Max size of each object\\n    uint256 constant TYPES_PER_UINT256 = 256 / TYPES_BITS_SIZE; // Number of types per uint256\\n\\n    //\\n    // Objects and Tokens Functions\\n    //\\n\\n    /**\\n     * @dev Return the bin number and index within that bin where ID is\\n     * @param tokenId Object type\\n     * @return bin Bin number\\n     * @return index ID's index within that bin\\n     */\\n    function getTokenBinIndex(uint256 tokenId) internal pure returns (uint256 bin, uint256 index) {\\n        bin = (tokenId * TYPES_BITS_SIZE) / 256;\\n        index = tokenId % TYPES_PER_UINT256;\\n        return (bin, index);\\n    }\\n\\n    /**\\n     * @dev update the balance of a type provided in binBalances\\n     * @param binBalances Uint256 containing the balances of objects\\n     * @param index Index of the object in the provided bin\\n     * @param amount Value to update the type balance\\n     * @param operation Which operation to conduct :\\n     *     Operations.REPLACE : Replace type balance with amount\\n     *     Operations.ADD     : ADD amount to type balance\\n     *     Operations.SUB     : Substract amount from type balance\\n     */\\n    function updateTokenBalance(\\n        uint256 binBalances,\\n        uint256 index,\\n        uint256 amount,\\n        Operations operation\\n    ) internal pure returns (uint256 newBinBalance) {\\n        uint256 objectBalance = 0;\\n        if (operation == Operations.ADD) {\\n            objectBalance = getValueInBin(binBalances, index);\\n            newBinBalance = writeValueInBin(binBalances, index, objectBalance.add(amount));\\n        } else if (operation == Operations.SUB) {\\n            objectBalance = getValueInBin(binBalances, index);\\n            require(objectBalance >= amount, \\\"can't substract more than there is\\\");\\n            newBinBalance = writeValueInBin(binBalances, index, objectBalance.sub(amount));\\n        } else if (operation == Operations.REPLACE) {\\n            newBinBalance = writeValueInBin(binBalances, index, amount);\\n        } else {\\n            revert(\\\"Invalid operation\\\"); // Bad operation\\n        }\\n\\n        return newBinBalance;\\n    }\\n\\n    /*\\n     * @dev return value in binValue at position index\\n     * @param binValue uint256 containing the balances of TYPES_PER_UINT256 types\\n     * @param index index at which to retrieve value\\n     * @return Value at given index in bin\\n     */\\n    function getValueInBin(uint256 binValue, uint256 index) internal pure returns (uint256) {\\n        // Mask to retrieve data for a given binData\\n        uint256 mask = (uint256(1) << TYPES_BITS_SIZE) - 1;\\n\\n        // Shift amount\\n        uint256 rightShift = 256 - TYPES_BITS_SIZE * (index + 1);\\n        return (binValue >> rightShift) & mask;\\n    }\\n\\n    /**\\n     * @dev return the updated binValue after writing amount at index\\n     * @param binValue uint256 containing the balances of TYPES_PER_UINT256 types\\n     * @param index Index at which to retrieve value\\n     * @param amount Value to store at index in bin\\n     * @return Value at given index in bin\\n     */\\n    function writeValueInBin(\\n        uint256 binValue,\\n        uint256 index,\\n        uint256 amount\\n    ) internal pure returns (uint256) {\\n        require(amount < 2**TYPES_BITS_SIZE, \\\"Amount to write in bin is too large\\\");\\n\\n        // Mask to retrieve data for a given binData\\n        uint256 mask = (uint256(1) << TYPES_BITS_SIZE) - 1;\\n\\n        // Shift amount\\n        uint256 leftShift = 256 - TYPES_BITS_SIZE * (index + 1);\\n        return (binValue & ~(mask << leftShift)) | (amount << leftShift);\\n    }\\n}\\n\",\"keccak256\":\"0x1eb0fc9e4e368eb1ef18aff815a51a0ef13e49a1dcc76f20b5c19be0f64a2e8e\"},\"src/solc_0.6/common/Libraries/SafeMath.sol\":{\"content\":\"pragma solidity 0.6.5;\\n\\n\\n/**\\n * @title SafeMath\\n * @dev Math operations with safety checks that throw on error\\n */\\nlibrary SafeMath {\\n    /**\\n     * @dev Multiplies two numbers, throws on overflow.\\n     */\\n    function mul(uint256 a, uint256 b) internal pure returns (uint256 c) {\\n        // Gas optimization: this is cheaper than asserting 'a' not being zero, but the\\n        // benefit is lost if 'b' is also tested.\\n        // See: https://github.com/OpenZeppelin/openzeppelin-solidity/pull/522\\n        if (a == 0) {\\n            return 0;\\n        }\\n\\n        c = a * b;\\n        assert(c / a == b);\\n        return c;\\n    }\\n\\n    /**\\n     * @dev Integer division of two numbers, truncating the quotient.\\n     */\\n    function div(uint256 a, uint256 b) internal pure returns (uint256) {\\n        // assert(b > 0); // Solidity automatically throws when dividing by 0\\n        // uint256 c = a / b;\\n        // assert(a == b * c + a % b); // There is no case in which this doesn't hold\\n        return a / b;\\n    }\\n\\n    /**\\n     * @dev Subtracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).\\n     */\\n    function sub(uint256 a, uint256 b) internal pure returns (uint256) {\\n        assert(b <= a);\\n        return a - b;\\n    }\\n\\n    /**\\n     * @dev Adds two numbers, throws on overflow.\\n     */\\n    function add(uint256 a, uint256 b) internal pure returns (uint256 c) {\\n        c = a + b;\\n        assert(c >= a);\\n        return c;\\n    }\\n}\\n\",\"keccak256\":\"0x07120adab516bacfd7128a7bb99643e039a9826298228526bb07e6b09cd47760\"},\"src/solc_0.6/common/Libraries/SafeMathWithRequire.sol\":{\"content\":\"pragma solidity 0.6.5;\\n\\n\\n/**\\n * @title SafeMath\\n * @dev Math operations with safety checks that revert\\n */\\nlibrary SafeMathWithRequire {\\n    using SafeMathWithRequire for uint256;\\n\\n    uint256 constant DECIMALS_18 = 1000000000000000000;\\n    uint256 constant DECIMALS_12 = 1000000000000;\\n    uint256 constant DECIMALS_9 = 1000000000;\\n    uint256 constant DECIMALS_6 = 1000000;\\n\\n    /**\\n     * @dev Multiplies two numbers, throws on overflow.\\n     */\\n    function mul(uint256 a, uint256 b) internal pure returns (uint256 c) {\\n        // Gas optimization: this is cheaper than asserting 'a' not being zero, but the\\n        // benefit is lost if 'b' is also tested.\\n        // See: https://github.com/OpenZeppelin/openzeppelin-solidity/pull/522\\n        if (a == 0) {\\n            return 0;\\n        }\\n\\n        c = a * b;\\n        require(c / a == b, \\\"overflow\\\");\\n        return c;\\n    }\\n\\n    /**\\n     * @dev Integer division of two numbers, truncating the quotient.\\n     */\\n    function div(uint256 a, uint256 b) internal pure returns (uint256) {\\n        require(b != 0, \\\"divbyzero\\\");\\n        // uint256 c = a / b;\\n        // assert(a == b * c + a % b); // There is no case in which this doesn't hold\\n        return a / b;\\n    }\\n\\n    /**\\n     * @dev Subtracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).\\n     */\\n    function sub(uint256 a, uint256 b) internal pure returns (uint256) {\\n        require(b <= a, \\\"undeflow\\\");\\n        return a - b;\\n    }\\n\\n    /**\\n     * @dev Adds two numbers, throws on overflow.\\n     */\\n    function add(uint256 a, uint256 b) internal pure returns (uint256 c) {\\n        c = a + b;\\n        require(c >= a, \\\"overflow\\\");\\n        return c;\\n    }\\n\\n    function sqrt6(uint256 a) internal pure returns (uint256 c) {\\n        a = a.mul(DECIMALS_12);\\n        uint256 tmp = a.add(1) / 2;\\n        c = a;\\n        // tmp cannot be zero unless a = 0 which skip the loop\\n        while (tmp < c) {\\n            c = tmp;\\n            tmp = ((a / tmp) + tmp) / 2;\\n        }\\n    }\\n\\n    function sqrt3(uint256 a) internal pure returns (uint256 c) {\\n        a = a.mul(DECIMALS_6);\\n        uint256 tmp = a.add(1) / 2;\\n        c = a;\\n        // tmp cannot be zero unless a = 0 which skip the loop\\n        while (tmp < c) {\\n            c = tmp;\\n            tmp = ((a / tmp) + tmp) / 2;\\n        }\\n    }\\n\\n    function cbrt6(uint256 a) internal pure returns (uint256 c) {\\n        a = a.mul(DECIMALS_18);\\n        uint256 tmp = a.add(2) / 3;\\n        c = a;\\n        // tmp cannot be zero unless a = 0 which skip the loop\\n        while (tmp < c) {\\n            c = tmp;\\n            uint256 tmpSquare = tmp**2;\\n            require(tmpSquare > tmp, \\\"overflow\\\");\\n            tmp = ((a / tmpSquare) + (tmp * 2)) / 3;\\n        }\\n        return c;\\n    }\\n\\n    function cbrt3(uint256 a) internal pure returns (uint256 c) {\\n        a = a.mul(DECIMALS_9);\\n        uint256 tmp = a.add(2) / 3;\\n        c = a;\\n        // tmp cannot be zero unless a = 0 which skip the loop\\n        while (tmp < c) {\\n            c = tmp;\\n            uint256 tmpSquare = tmp**2;\\n            require(tmpSquare > tmp, \\\"overflow\\\");\\n            tmp = ((a / tmpSquare) + (tmp * 2)) / 3;\\n        }\\n        return c;\\n    }\\n\\n    // TODO test\\n    function rt6_3(uint256 a) internal pure returns (uint256 c) {\\n        a = a.mul(DECIMALS_18);\\n        uint256 tmp = a.add(5) / 6;\\n        c = a;\\n        // tmp cannot be zero unless a = 0 which skip the loop\\n        while (tmp < c) {\\n            c = tmp;\\n            uint256 tmpFive = tmp**5;\\n            require(tmpFive > tmp, \\\"overflow\\\");\\n            tmp = ((a / tmpFive) + (tmp * 5)) / 6;\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0xbe4011624c0a2a6c8947fe7759924da4a4ed2c6b97befc3b379d14b8e31570eb\"}},\"version\":1}",
+  "bytecode": "0x60c06040523480156200001157600080fd5b5060405162000e9638038062000e96833981810160405260808110156200003757600080fd5b815160208301516040808501805191519395929483019291846401000000008211156200006357600080fd5b9083019060208201858111156200007957600080fd5b82516401000000008111828201881017156200009457600080fd5b82525081516020918201929091019080838360005b83811015620000c3578181015183820152602001620000a9565b50505050905090810190601f168015620000f15780820380516001836020036101000a031916815260200191505b50604052602001805160405193929190846401000000008211156200011557600080fd5b9083019060208201858111156200012b57600080fd5b82516401000000008111828201881017156200014657600080fd5b82525081516020918201929091019080838360005b83811015620001755781810151838201526020016200015b565b50505050905090810190601f168015620001a35780820380516001836020036101000a031916815260200191505b506040525050506001600160601b0319606085901b1660805260a08390528151620001d6906001906020850190620001f7565b508051620001ec906002906020840190620001f7565b50505050506200029c565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106200023a57805160ff19168380011785556200026a565b828001600101855582156200026a579182015b828111156200026a5782518255916020019190600101906200024d565b50620002789291506200027c565b5090565b6200029991905b8082111562000278576000815560010162000283565b90565b60805160601c60a051610ba6620002f06000398061040f528061077d528061097d5280610ada5250806103e052806104ea528061067152806107a8528061082152806108ac5280610b095250610ba66000f3fe608060405234801561001057600080fd5b50600436106100df5760003560e01c806370a082311161008c578063a6d49dca11610066578063a6d49dca14610297578063a9059cbb146102cf578063b8f9260b146102fb578063dd62ed3e14610303576100df565b806370a08231146102455780638b7b59d01461026b57806395d89b411461028f576100df565b806323b872dd116100bd57806323b872dd146101bb5780632b991746146101f1578063313ce56714610227576100df565b806306fdde03146100e4578063095ea7b31461016157806318160ddd146101a1575b600080fd5b6100ec610331565b6040805160208082528351818301528351919283929083019185019080838360005b8381101561012657818101518382015260200161010e565b50505050905090810190601f1680156101535780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b61018d6004803603604081101561017757600080fd5b506001600160a01b0381351690602001356103c6565b604080519115158252519081900360200190f35b6101a96103dc565b60408051918252519081900360200190f35b61018d600480360360608110156101d157600080fd5b506001600160a01b03813581169160208101359091169060400135610493565b61018d6004803603606081101561020757600080fd5b506001600160a01b03813581169160208101359091169060400135610624565b61022f610740565b6040805160ff9092168252519081900360200190f35b6101a96004803603602081101561025b57600080fd5b50356001600160a01b0316610745565b61027361081f565b604080516001600160a01b039092168252519081900360200190f35b6100ec610843565b6102cd600480360360608110156102ad57600080fd5b506001600160a01b038135811691602081013590911690604001356108a1565b005b61018d600480360360408110156102e557600080fd5b506001600160a01b03813516906020013561096e565b6101a961097b565b6101a96004803603604081101561031957600080fd5b506001600160a01b038135811691602001351661099f565b60018054604080516020601f600260001961010087891615020190951694909404938401819004810282018101909252828152606093909290918301828280156103bc5780601f10610391576101008083540402835291602001916103bc565b820191906000526020600020905b81548152906001019060200180831161039f57829003601f168201915b5050505050905090565b60006103d33384846109c8565b50600192915050565b60007f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316638806792f7f00000000000000000000000000000000000000000000000000000000000000006040518263ffffffff1660e01b81526004018082815260200191505060206040518083038186803b15801561046257600080fd5b505afa158015610476573d6000803e3d6000fd5b505050506040513d602081101561048c57600080fd5b5051905090565b6000336001600160a01b038516148015906105615750604080517f0d70e29c0000000000000000000000000000000000000000000000000000000081526001600160a01b03868116600483015233602483015291517f000000000000000000000000000000000000000000000000000000000000000090921691630d70e29c91604480820192602092909190829003018186803b15801561053357600080fd5b505afa158015610547573d6000803e3d6000fd5b505050506040513d602081101561055d57600080fd5b5051155b1561060f576001600160a01b038416600090815260208181526040808320338452909152902054600019811461060d57828110156105e6576040805162461bcd60e51b815260206004820152601760248201527f4e4f545f415554484f495a45445f414c4c4f57414e4345000000000000000000604482015290519081900360640190fd5b6001600160a01b038516600090815260208181526040808320338452909152902083820390555b505b61061a848484610a99565b5060019392505050565b6000336001600160a01b03851614806106e45750604080517feaa5125100000000000000000000000000000000000000000000000000000000815233600482015290516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000169163eaa51251916024808301926020929190829003018186803b1580156106b757600080fd5b505afa1580156106cb573d6000803e3d6000fd5b505050506040513d60208110156106e157600080fd5b50515b610735576040805162461bcd60e51b815260206004820152600e60248201527f4e4f545f415554484f52495a4544000000000000000000000000000000000000604482015290519081900360640190fd5b61061a8484846109c8565b600090565b604080517efdd58e0000000000000000000000000000000000000000000000000000000081526001600160a01b0383811660048301527f0000000000000000000000000000000000000000000000000000000000000000602483015291516000927f0000000000000000000000000000000000000000000000000000000000000000169162fdd58e916044808301926020929190829003018186803b1580156107ed57600080fd5b505afa158015610801573d6000803e3d6000fd5b505050506040513d602081101561081757600080fd5b505192915050565b7f000000000000000000000000000000000000000000000000000000000000000090565b60028054604080516020601f60001961010060018716150201909416859004938401819004810282018101909252828152606093909290918301828280156103bc5780601f10610391576101008083540402835291602001916103bc565b336001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000161461091e576040805162461bcd60e51b815260206004820152601960248201527f4e4f545f415554484f52495a45445f47524f55505f4f4e4c5900000000000000604482015290519081900360640190fd5b816001600160a01b0316836001600160a01b03167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef836040518082815260200191505060405180910390a3505050565b60006103d3338484610a99565b7f000000000000000000000000000000000000000000000000000000000000000090565b6001600160a01b0391821660009081526020818152604080832093909416825291909152205490565b6001600160a01b038316158015906109e857506001600160a01b03821615155b610a39576040805162461bcd60e51b815260206004820152601760248201527f494e56414c49445f46524f4d5f4f525f5350454e444552000000000000000000604482015290519081900360640190fd5b6001600160a01b0380841660008181526020818152604080832094871680845294825291829020859055815185815291517f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b9259281900390910190a3505050565b604080517fa531e0fa0000000000000000000000000000000000000000000000000000000081526001600160a01b03858116600483015284811660248301527f000000000000000000000000000000000000000000000000000000000000000060448301526064820184905291517f00000000000000000000000000000000000000000000000000000000000000009092169163a531e0fa9160848082019260009290919082900301818387803b158015610b5357600080fd5b505af1158015610b67573d6000803e3d6000fd5b5050505050505056fea264697066735822122030c9e29fbacfe4e0144a74fb6b2ce085a13de2c3d6e6e11d7391a80053f8e93a64736f6c63430006050033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100df5760003560e01c806370a082311161008c578063a6d49dca11610066578063a6d49dca14610297578063a9059cbb146102cf578063b8f9260b146102fb578063dd62ed3e14610303576100df565b806370a08231146102455780638b7b59d01461026b57806395d89b411461028f576100df565b806323b872dd116100bd57806323b872dd146101bb5780632b991746146101f1578063313ce56714610227576100df565b806306fdde03146100e4578063095ea7b31461016157806318160ddd146101a1575b600080fd5b6100ec610331565b6040805160208082528351818301528351919283929083019185019080838360005b8381101561012657818101518382015260200161010e565b50505050905090810190601f1680156101535780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b61018d6004803603604081101561017757600080fd5b506001600160a01b0381351690602001356103c6565b604080519115158252519081900360200190f35b6101a96103dc565b60408051918252519081900360200190f35b61018d600480360360608110156101d157600080fd5b506001600160a01b03813581169160208101359091169060400135610493565b61018d6004803603606081101561020757600080fd5b506001600160a01b03813581169160208101359091169060400135610624565b61022f610740565b6040805160ff9092168252519081900360200190f35b6101a96004803603602081101561025b57600080fd5b50356001600160a01b0316610745565b61027361081f565b604080516001600160a01b039092168252519081900360200190f35b6100ec610843565b6102cd600480360360608110156102ad57600080fd5b506001600160a01b038135811691602081013590911690604001356108a1565b005b61018d600480360360408110156102e557600080fd5b506001600160a01b03813516906020013561096e565b6101a961097b565b6101a96004803603604081101561031957600080fd5b506001600160a01b038135811691602001351661099f565b60018054604080516020601f600260001961010087891615020190951694909404938401819004810282018101909252828152606093909290918301828280156103bc5780601f10610391576101008083540402835291602001916103bc565b820191906000526020600020905b81548152906001019060200180831161039f57829003601f168201915b5050505050905090565b60006103d33384846109c8565b50600192915050565b60007f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316638806792f7f00000000000000000000000000000000000000000000000000000000000000006040518263ffffffff1660e01b81526004018082815260200191505060206040518083038186803b15801561046257600080fd5b505afa158015610476573d6000803e3d6000fd5b505050506040513d602081101561048c57600080fd5b5051905090565b6000336001600160a01b038516148015906105615750604080517f0d70e29c0000000000000000000000000000000000000000000000000000000081526001600160a01b03868116600483015233602483015291517f000000000000000000000000000000000000000000000000000000000000000090921691630d70e29c91604480820192602092909190829003018186803b15801561053357600080fd5b505afa158015610547573d6000803e3d6000fd5b505050506040513d602081101561055d57600080fd5b5051155b1561060f576001600160a01b038416600090815260208181526040808320338452909152902054600019811461060d57828110156105e6576040805162461bcd60e51b815260206004820152601760248201527f4e4f545f415554484f495a45445f414c4c4f57414e4345000000000000000000604482015290519081900360640190fd5b6001600160a01b038516600090815260208181526040808320338452909152902083820390555b505b61061a848484610a99565b5060019392505050565b6000336001600160a01b03851614806106e45750604080517feaa5125100000000000000000000000000000000000000000000000000000000815233600482015290516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000169163eaa51251916024808301926020929190829003018186803b1580156106b757600080fd5b505afa1580156106cb573d6000803e3d6000fd5b505050506040513d60208110156106e157600080fd5b50515b610735576040805162461bcd60e51b815260206004820152600e60248201527f4e4f545f415554484f52495a4544000000000000000000000000000000000000604482015290519081900360640190fd5b61061a8484846109c8565b600090565b604080517efdd58e0000000000000000000000000000000000000000000000000000000081526001600160a01b0383811660048301527f0000000000000000000000000000000000000000000000000000000000000000602483015291516000927f0000000000000000000000000000000000000000000000000000000000000000169162fdd58e916044808301926020929190829003018186803b1580156107ed57600080fd5b505afa158015610801573d6000803e3d6000fd5b505050506040513d602081101561081757600080fd5b505192915050565b7f000000000000000000000000000000000000000000000000000000000000000090565b60028054604080516020601f60001961010060018716150201909416859004938401819004810282018101909252828152606093909290918301828280156103bc5780601f10610391576101008083540402835291602001916103bc565b336001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000161461091e576040805162461bcd60e51b815260206004820152601960248201527f4e4f545f415554484f52495a45445f47524f55505f4f4e4c5900000000000000604482015290519081900360640190fd5b816001600160a01b0316836001600160a01b03167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef836040518082815260200191505060405180910390a3505050565b60006103d3338484610a99565b7f000000000000000000000000000000000000000000000000000000000000000090565b6001600160a01b0391821660009081526020818152604080832093909416825291909152205490565b6001600160a01b038316158015906109e857506001600160a01b03821615155b610a39576040805162461bcd60e51b815260206004820152601760248201527f494e56414c49445f46524f4d5f4f525f5350454e444552000000000000000000604482015290519081900360640190fd5b6001600160a01b0380841660008181526020818152604080832094871680845294825291829020859055815185815291517f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b9259281900390910190a3505050565b604080517fa531e0fa0000000000000000000000000000000000000000000000000000000081526001600160a01b03858116600483015284811660248301527f000000000000000000000000000000000000000000000000000000000000000060448301526064820184905291517f00000000000000000000000000000000000000000000000000000000000000009092169163a531e0fa9160848082019260009290919082900301818387803b158015610b5357600080fd5b505af1158015610b67573d6000803e3d6000fd5b5050505050505056fea264697066735822122030c9e29fbacfe4e0144a74fb6b2ce085a13de2c3d6e6e11d7391a80053f8e93a64736f6c63430006050033",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {
+      "groupAddress()": {
+        "notice": "the ERC20Group address"
+      },
+      "groupTokenId()": {
+        "notice": "the tokenId in ERC20Group"
+      },
+      "name()": {
+        "notice": "A descriptive name for the tokens"
+      },
+      "symbol()": {
+        "notice": "An abbreviated name for the tokens"
+      }
+    }
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 2843,
+        "contract": "src/solc_0.6/BaseWithStorage/ERC20SubToken.sol:ERC20SubToken",
+        "label": "_mAllowed",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      },
+      {
+        "astId": 2845,
+        "contract": "src/solc_0.6/BaseWithStorage/ERC20SubToken.sol:ERC20SubToken",
+        "label": "_name",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 2847,
+        "contract": "src/solc_0.6/BaseWithStorage/ERC20SubToken.sol:ERC20SubToken",
+        "label": "_symbol",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_string_storage"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

@@ -4,6 +4,7 @@ pragma solidity 0.8.2;
 
 import "../common/BaseWithStorage/ImmutableERC721.sol";
 import "../common/interfaces/ILandToken.sol";
+import "../Game/GameBaseToken.sol";
 import "../common/interfaces/IERC721MandatoryTokenReceiver.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
@@ -18,20 +19,37 @@ contract EstateBaseToken is ImmutableERC721, Initializable {
     uint16 internal constant GRID_SIZE = 408;
 
     uint64 internal _nextId; // max uint64 = 18,446,744,073,709,551,615
-
     mapping(uint256 => bytes32) internal _metaData;
+    mapping(uint256 => EstateData) internal estates;
+
     LandToken internal _land;
+    GameBaseToken internal _gameToken;
     address internal _minter;
     // @review needed?
     address internal _breaker;
-    // @todo add Update struct like GameToken ?
-    event EstateTokenUpdated(
-        uint256 indexed oldId,
-        uint256 indexed newId,
-        uint256[] ids,
-        uint256[] junctions,
-        bytes32 uri
-    );
+
+    struct EstateData {
+        uint256[] gameIds;
+        uint24[] landIds;
+    }
+    /// @param ids LAND tokenIds added, Games added, Games removed, uri
+    /// @param junctions
+    /// @param gamesToAdd Games added
+    /// @param gamesToRemove Games removed
+    /// @param uri ipfs hash (without the prefix, assume cidv1 folder)
+    struct EstateCRUDData {
+        uint256[] ids;
+        uint256[] junctions;
+        uint256[] gamesToAdd;
+        uint256[] gamesToRemove;
+        bytes32 uri;
+    }
+
+    /// @dev Emits when a estate is updated.
+    /// @param oldId The id of the previous erc721 ESTATE token.
+    /// @param newId The id of the newly minted token.
+    /// @param update The changes made to the Estate.
+    event EstateTokenUpdated(uint256 indexed oldId, uint256 indexed newId, EstateCRUDData update);
 
     function initV1(
         address trustedForwarder,
@@ -43,30 +61,77 @@ contract EstateBaseToken is ImmutableERC721, Initializable {
         ERC2771Handler.__ERC2771Handler_initialize(trustedForwarder);
     }
 
-    // @review rename createEstate to mimic GameToken funcs ?
-    function createFromMultipleLands(
-        address sender,
+    // @todo Add access-control: minter-only? could inherit WithMinter.sol
+    /// @notice Create a new estate token with adjacent lands.
+    /// @param from The address of the one creating the estate.
+    /// @param to The address that will own the estate.
+    /// @param creation The data to use to create the estate.
+    function createEstate(
+        address from,
         address to,
-        uint256[] calldata ids,
-        uint256[] calldata junctions
+        EstateCRUDData calldata creation
     ) external returns (uint256) {
-        _check_authorized(sender, ADD);
-        (uint256 id, ) = _mintEstate(sender, to, 1, true);
-        _addLands(sender, id, ids, junctions, true);
-        return id;
+        _check_authorized(from, ADD);
+        (uint256 estateId, uint256 storageId) = _mintEstate(from, to, _nextId++, 1, true);
+        _addLands(from, storageId, creation.ids, creation.junctions, true);
+        _addGames(from, storageId, creation.gamesToAdd);
+        _metaData[storageId] = creation.uri;
+        emit EstateTokenUpdated(0, estateId, creation);
+        return estateId;
     }
 
-    // TODO addSingleLand
+    /// @notice Update an existing ESTATE token.This actually burns old token
+    /// and mints new token with same basId & incremented version.
+    /// @param from The one updating the ESTATE token.
+    /// @param to The address to transfer removed GAMES to.
+    /// @param estateId The current id of the ESTATE token.
+    /// @param update The data to use for the Estate update.
+    /// @return The new estateId.
+    // @todo  Allow for updating a linked gameToken directly to avoid getting out of sync? think some more...
+    function updateEstate(
+        address from,
+        address to,
+        uint256 estateId,
+        EstateCRUDData memory update
+    ) external returns (uint256) {
+        _check_hasOwnerRights(from, estateId);
+        uint256 storageId = _storageId(estateId);
+        if (update.ids.length != 0) {
+            _check_authorized(from, ADD);
+        }
+        _addLands(from, storageId, update.ids, update.junctions, false);
+        _removeGames(to, storageId, update.gamesToRemove);
+        _addGames(from, storageId, update.gamesToAdd);
+        _metaData[storageId] = update.uri;
+        uint256 newId = _incrementTokenVersion(from, estateId);
+        emit EstateTokenUpdated(estateId, newId, update);
+        return newId;
+    }
 
-    function addMultipleLands(
-        address sender,
+    /// @notice Used to remove lands from an estate.
+    // @review do we need from? only needed when called by approved/superoperators...
+    // @note see https://docs.google.com/document/d/1eXJP0Tp2C617kOkDNpLCS_hJXaGZizHkxJndMIlKpeQ/edit for offchain metadata solution
+    /// @param from The address of the one removing lands.
+    /// @param estateId The estate token to remove lands from.
+    /// @param ids The tokenIds of the LANDs to remove
+    /// @param rebuild The data to use when reconstructing the Estate.
+    /// @dev Note that a valid estate can only contain adjacent lands, so it is possible to attempt to remove lands in a way that would result in an invalid estate, which must be prevented.
+    // @todo decide how to handle the above case.
+    function downsizeEstate(
+        address from,
         uint256 estateId,
         uint256[] calldata ids,
-        uint256[] calldata junctions
-    ) external {
-        _check_authorized(sender, ADD);
-        _check_hasOwnerRights(sender, estateId);
-        _addLands(sender, estateId, ids, junctions, false);
+        EstateCRUDData memory rebuild
+    ) external returns (uint256) {
+        _check_hasOwnerRights(from, estateId);
+        _check_authorized(from, BREAK);
+        _check_authorized(from, ADD);
+        // @todo implement.
+        // - [ ] ensure resultant estate's lands are still adjacent
+        // - [ ] _addLands(...);
+        // - [ ] remove and/or add Games. update _gamesInEstate[] mapping if needed.
+        // - [ ] _incrementTokenVersion(...)
+        // - [ ] emit EstateTokenUpdated(...)
     }
 
     /// @notice Burns token `id`.
@@ -96,31 +161,6 @@ contract EstateBaseToken is ImmutableERC721, Initializable {
         _burn(from, owner, id);
     }
 
-    /// @notice Update an existing ESTATE token.This actually burns old token
-    /// and mints new token with same basId & incremented version.
-    /// @param from The one updating the ESTATE token.
-    /// @param estateId The current id of the ESTATE token.
-    /// @param ids The ids to use for the update.
-    /// @param junctions The junctions to use for the update.
-    /// @return The new estateId.
-    function updateEstate(
-        address from,
-        uint256 estateId,
-        uint256[] memory ids,
-        uint256[] memory junctions,
-        bytes32 uri
-    ) external returns (uint256) {
-        // @review can this function also handle removing lands?
-        // would involve breaking and reminting.
-        // could try to preserve internal data, ie: metaData hash, _owners[] mapping, etc...
-        uint256 id = _storageId(estateId);
-        _addLands(from, estateId, ids, junctions, false);
-        _metaData[id] = uri;
-        uint256 newId = _incrementTokenVersion(from, estateId);
-        emit EstateTokenUpdated(estateId, newId, ids, junctions, uri);
-        return newId;
-    }
-
     /// @notice Used to recover Land tokens from a burned estate.
     /// Note: Implemented separately from burn to avoid hitting the block gas-limit if estate has too many lands.
     /// @param sender The sender of the request.
@@ -139,11 +179,14 @@ contract EstateBaseToken is ImmutableERC721, Initializable {
         address msgSender = _msgSender();
         require(msgSender == sender || _superOperators[msgSender], "not _check_authorized");
         require(sender == _withdrawalOwnerOf(estateId), "NOT_WITHDRAWAL_OWNER");
-        // @todo implement the actual transfer !
+        // @todo implement the actual transfer ! see GameToken.recoverAssets()
         // need to validate lands, pass land ids ?
     }
 
-    // solhint-enable no-unused-vars
+    function getEstateData(uint256 estateId) external view returns (EstateData memory) {
+        uint256 storageId = _storageId(estateId);
+        return estates[storageId];
+    }
 
     /// @notice Return the name of the token contract.
     /// @return The name of the token contract.
@@ -168,19 +211,105 @@ contract EstateBaseToken is ImmutableERC721, Initializable {
 
     // //////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    function _addGames(
+        address from,
+        uint256 storageId,
+        uint256[] memory gamesToAdd
+    ) internal {
+        _gameToken.batchTransferFrom(from, address(this), gamesToAdd, "");
+        // no need to de-duplicate as gameId is unique
+        for (uint256 i = 0; i < gamesToAdd.length; i++) {
+            require(gamesToAdd[i] != 0);
+            estates[storageId].gameIds.push(gamesToAdd[i]);
+        }
+    }
+
+    function _removeGames(
+        address to,
+        uint256 storageId,
+        uint256[] memory gamesToRemove
+    ) internal {
+        _gameToken.batchTransferFrom(address(this), to, gamesToRemove, "");
+        uint256 len = estates[storageId].gameIds.length;
+        for (uint256 i = 0; i < gamesToRemove.length; i++) {
+            for (uint256 j = 0; j < len; j++) {
+                if (gamesToRemove[i] == estates[storageId].gameIds[j]) {
+                    estates[storageId].gameIds[j] = 0;
+                }
+            }
+        }
+    }
+
+    function _addLands(
+        address sender,
+        uint256 storageId,
+        uint256[] memory ids,
+        uint256[] memory junctions,
+        bool justCreated
+    ) internal {
+        _land.batchTransferFrom(sender, address(this), ids, "");
+        uint24[] memory list = new uint24[](ids.length);
+        for (uint256 i = 0; i < list.length; i++) {
+            uint16 x = uint16(ids[i] % GRID_SIZE);
+            uint16 y = uint16(ids[i] / GRID_SIZE);
+            list[i] = _encode(x, y, 1);
+        }
+        // solhint-disable-next-line use-forbidden-name
+        uint256 l = estates[storageId].landIds.length;
+        uint16 lastX = 409;
+        uint16 lastY = 409;
+        if (!justCreated) {
+            uint24 d = estates[storageId].landIds[l - 1];
+            lastX = uint16(d % GRID_SIZE);
+            lastY = uint16(d % GRID_SIZE);
+        }
+        uint256 j = 0;
+        for (uint256 i = 0; i < list.length; i++) {
+            uint16 x = uint16(ids[i] % GRID_SIZE);
+            uint16 y = uint16(ids[i] / GRID_SIZE);
+            if (lastX != 409 && !_adjacent(x, y, lastX, lastY)) {
+                uint256 index = junctions[j];
+                j++;
+                uint24 data;
+                if (index >= l) {
+                    require(index - l < j, "junctions need to refers to previously accepted land");
+                    data = list[index - l];
+                } else {
+                    data = estates[storageId].landIds[j];
+                }
+                (uint16 jx, uint16 jy, uint8 jsize) = _decode(data);
+                if (jsize == 1) {
+                    require(_adjacent(x, y, jx, jy), "need junctions to be adjacent");
+                } else {
+                    require(_adjacent(x, y, jx, jy, jsize), "need junctions to be adjacent");
+                }
+            }
+            lastX = x;
+            lastY = y;
+        }
+        if (justCreated) {
+            estates[storageId].landIds = list;
+        } else {
+            for (uint256 i = 0; i < list.length; i++) {
+                estates[storageId].landIds.push(list[i]);
+            }
+        }
+    }
+
     /// @dev used to increment the version in a tokenId by burning the original and reminting a new token. Mappings to token-specific data are preserved via the storageId mechanism.
     /// @param from The address of the token owner.
     /// @param estateId The tokenId to increment.
     /// @return the version-incremented tokenId.
     function _incrementTokenVersion(address from, uint256 estateId) internal returns (uint256) {
         address originalCreator = address(uint160(estateId / CREATOR_OFFSET_MULTIPLIER));
+        uint64 subId = uint64(estateId / SUBID_MULTIPLIER);
         uint16 version = uint16(estateId);
         version++;
         address owner = _ownerOf(estateId);
         if (from == owner) {
             _burn(from, owner, estateId);
         }
-        (uint256 newId, ) = _mintEstate(originalCreator, owner, version, false);
+        (uint256 newId, ) = _mintEstate(originalCreator, owner, subId, version, false);
         address newOwner = _ownerOf(newId);
         assert(owner == newOwner);
         return newId;
@@ -248,6 +377,7 @@ contract EstateBaseToken is ImmutableERC721, Initializable {
     /// @dev Create a new (or incremented) estateId and associate it with an owner.
     /// @param from The address of one creating the Estate.
     /// @param to The address of the Estate owner.
+    /// @param subId The id to use when generating the new estateId.
     /// @param version The version number part of the estateId.
     /// @param isCreation Whether this is a brand new Estate (as opposed to an update).
     /// @return id The newly created estateId.
@@ -255,23 +385,25 @@ contract EstateBaseToken is ImmutableERC721, Initializable {
     function _mintEstate(
         address from,
         address to,
+        uint64 subId,
         uint16 version,
         bool isCreation
-    ) internal returns (uint256 id, uint256 storageId) {
+    ) internal returns (uint256, uint256 storageId) {
         require(to != address(uint160(0)), "can't send to zero address");
+        uint16 idVersion;
         uint256 estateId;
         uint256 strgId;
         if (isCreation) {
-            estateId = _generateTokenId(from, _nextId++, _chainIndex, version);
+            idVersion = 1;
+            estateId = _generateTokenId(from, subId, _chainIndex, idVersion);
             strgId = _storageId(estateId);
             require(_owners[strgId] == 0, "STORAGE_ID_REUSE_FORBIDDEN");
         } else {
-            uint64 subId = uint64(estateId / SUBID_MULTIPLIER);
             estateId = _generateTokenId(from, subId, _chainIndex, version);
             strgId = _storageId(estateId);
         }
 
-        _owners[strgId] = (uint256(version) << 200) + uint256(uint160(to));
+        _owners[strgId] = (uint256(idVersion) << 200) + uint256(uint160(to));
         _numNFTPerAddress[to]++;
         emit Transfer(address(0), to, estateId);
         return (estateId, strgId);
@@ -302,69 +434,6 @@ contract EstateBaseToken is ImmutableERC721, Initializable {
             (x1 == x2 - s2 && y1 >= y2 && y1 < y2 + s2));
     }
 
-    // solhint-disable no-empty-blocks
-    function _addLands(
-        address sender,
-        uint256 estateId,
-        uint256[] memory ids,
-        uint256[] memory junctions,
-        bool justCreated
-    ) internal {}
-
-    // solhint-enable no-empty-blocks
-    //temporarily disable function logic until it gets refactored in next PR
-
-    /**
-        _land.batchTransferFrom(sender, address(this), ids, "");
-        uint24[] memory list = new uint24[](ids.length);
-        for (uint256 i = 0; i < list.length; i++) {
-            uint16 x = uint16(ids[i] % GRID_SIZE);
-            uint16 y = uint16(ids[i] / GRID_SIZE);
-            list[i] = _encode(x, y, 1);
-        }
-        // solhint-disable-next-line use-forbidden-name
-        uint256 l = _quadsInEstate[estateId].length;
-        uint16 lastX = 409;
-        uint16 lastY = 409;
-        if (!justCreated) {
-            uint24 d = _quadsInEstate[estateId][l - 1];
-            lastX = uint16(d % GRID_SIZE);
-            lastY = uint16(d % GRID_SIZE);
-        }
-        uint256 j = 0;
-        for (uint256 i = 0; i < list.length; i++) {
-            uint16 x = uint16(ids[i] % GRID_SIZE);
-            uint16 y = uint16(ids[i] / GRID_SIZE);
-            if (lastX != 409 && !_adjacent(x, y, lastX, lastY)) {
-                uint256 index = junctions[j];
-                j++;
-                uint24 data;
-                if (index >= l) {
-                    require(index - l < j, "junctions need to refers to previously accepted land");
-                    data = list[index - l];
-                } else {
-                    data = _quadsInEstate[estateId][j];
-                }
-                (uint16 jx, uint16 jy, uint8 jsize) = _decode(data);
-                if (jsize == 1) {
-                    require(_adjacent(x, y, jx, jy), "need junctions to be adjacent");
-                } else {
-                    require(_adjacent(x, y, jx, jy, jsize), "need junctions to be adjacent");
-                }
-            }
-            lastX = x;
-            lastY = y;
-        }
-        if (justCreated) {
-            _quadsInEstate[estateId] = list;
-        } else {
-            for (uint256 i = 0; i < list.length; i++) {
-                _quadsInEstate[estateId].push(list[i]);
-            }
-        }
-    }
-    */
-
     // ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     function onERC721BatchReceived(
         address, // operator,
@@ -372,7 +441,7 @@ contract EstateBaseToken is ImmutableERC721, Initializable {
         uint256[] calldata, // ids,
         bytes calldata // data
     ) external pure returns (bytes4) {
-        revert("please call add* or createFrom* functions");
+        revert("please call createEstate or updateEstate functions");
     }
 
     function onERC721Received(
@@ -381,7 +450,7 @@ contract EstateBaseToken is ImmutableERC721, Initializable {
         uint256, // tokenId,
         bytes calldata // data
     ) external pure returns (bytes4) {
-        revert("please call add* or createFrom* functions");
+        revert("please call createEstate or updateEstate functions");
     }
 
     /// @dev Get the a full URI string for a given hash + gameId.

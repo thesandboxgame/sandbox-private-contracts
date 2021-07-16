@@ -128,7 +128,9 @@ export function waitFor(
   return p.then((tx) => tx.wait());
 }
 
-export async function setupUsers<T extends {[contractName: string]: Contract}>(
+type Contracts = Record<string, Contract>;
+
+export async function setupUsers<T extends Contracts>(
   addresses: string[],
   contracts: T
 ): Promise<({address: string} & T)[]> {
@@ -144,7 +146,14 @@ export async function setupUsers<T extends {[contractName: string]: Contract}>(
   return users;
 }
 
-// @todo merge these 2 functions into 1 generic one
+export async function setupUser<T extends Contracts>(
+  address: string,
+  contracts: T
+): Promise<{address: string} & T> {
+  const users = await setupUsers([address], contracts);
+  return users[0];
+}
+
 export function getAssetChainIndex(id: BigNumber): number {
   // js bitwise & operands are converted to 32-bit integers
   const idAsHexString = utils.hexValue(id);

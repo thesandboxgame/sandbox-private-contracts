@@ -1,0 +1,561 @@
+{
+  "address": "0xC19C586EB19BBacAef8209eB541Ed7538A82Ef5B",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "burnFor",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "approveFor",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "decimals",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "name": "amountNeeded",
+          "type": "uint256"
+        }
+      ],
+      "name": "addAllowanceIfNeeded",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "burn",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "who",
+          "type": "address"
+        }
+      ],
+      "name": "isSuperOperator",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getAdmin",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "changeAdmin",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transfer",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "superOperator",
+          "type": "address"
+        },
+        {
+          "name": "enabled",
+          "type": "bool"
+        }
+      ],
+      "name": "setSuperOperator",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "name": "spender",
+          "type": "address"
+        }
+      ],
+      "name": "allowance",
+      "outputs": [
+        {
+          "name": "remaining",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "superOperator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "enabled",
+          "type": "bool"
+        }
+      ],
+      "name": "SuperOperator",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "oldAdmin",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "AdminChanged",
+      "type": "event"
+    }
+  ],
+  "transactionHash": "0x79fa927bf05ff1f5af18835ba5982200ea1900a6690fda0b53f81ad086b39843",
+  "receipt": {
+    "to": null,
+    "from": "0xA796AE911621E00809E0E7C8f0AD6BF118E5139e",
+    "contractAddress": "0xC19C586EB19BBacAef8209eB541Ed7538A82Ef5B",
+    "transactionIndex": 0,
+    "gasUsed": "802578",
+    "logsBloom": "0x00020000000000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000800000020000000000000000000800000000000000000000000010000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000001020000000000000000000040000000000000000000000000000000000000000000000",
+    "blockHash": "0xa7cf308ef812b5d47281f18815a9338e65d99cbdb0cdc94611957bee62b3e61a",
+    "transactionHash": "0x79fa927bf05ff1f5af18835ba5982200ea1900a6690fda0b53f81ad086b39843",
+    "logs": [
+      {
+        "transactionIndex": 0,
+        "blockNumber": 5030805,
+        "transactionHash": "0x79fa927bf05ff1f5af18835ba5982200ea1900a6690fda0b53f81ad086b39843",
+        "address": "0xC19C586EB19BBacAef8209eB541Ed7538A82Ef5B",
+        "topics": [
+          "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x000000000000000000000000a796ae911621e00809e0e7c8f0ad6bf118e5139e"
+        ],
+        "data": "0x000000000000000000000000000000000000000009b18ab5df7180b6b8000000",
+        "logIndex": 0,
+        "blockHash": "0xa7cf308ef812b5d47281f18815a9338e65d99cbdb0cdc94611957bee62b3e61a"
+      }
+    ],
+    "blockNumber": 5030805,
+    "cumulativeGasUsed": "802578",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "solcInputHash": "a48eeaeaeaebd3f4efa2faa8e6d75af1",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.9+commit.c68bc34e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"spender\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"burnFor\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"from\",\"type\":\"address\"},{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"spender\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approveFor\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"spender\",\"type\":\"address\"},{\"name\":\"amountNeeded\",\"type\":\"uint256\"}],\"name\":\"addAllowanceIfNeeded\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"who\",\"type\":\"address\"}],\"name\":\"isSuperOperator\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getAdmin\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newAdmin\",\"type\":\"address\"}],\"name\":\"changeAdmin\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"to\",\"type\":\"address\"},{\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"superOperator\",\"type\":\"address\"},{\"name\":\"enabled\",\"type\":\"bool\"}],\"name\":\"setSuperOperator\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"name\":\"remaining\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"superOperator\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"enabled\",\"type\":\"bool\"}],\"name\":\"SuperOperator\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"oldAdmin\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"newAdmin\",\"type\":\"address\"}],\"name\":\"AdminChanged\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{\"allowance(address,address)\":{\"params\":{\"owner\":\"address whose token is allowed.\",\"spender\":\"address allowed to transfer.\"},\"return\":\"the amount of token `spender` is allowed to transfer on behalf of `owner`.\"},\"approve(address,uint256)\":{\"params\":{\"amount\":\"the number of tokens allowed.\",\"spender\":\"address to be given rights to transfer.\"},\"return\":\"true if success.\"},\"approveFor(address,address,uint256)\":{\"params\":{\"amount\":\"the number of tokens allowed.\",\"owner\":\"address whose token is allowed.\",\"spender\":\"address to be given rights to transfer.\"},\"return\":\"true if success.\"},\"balanceOf(address)\":{\"params\":{\"owner\":\"The address to query the balance of.\"},\"return\":\"The amount owned by `owner`.\"},\"burn(uint256)\":{\"params\":{\"amount\":\"the number of tokens to burn.\"},\"return\":\"true if success.\"},\"burnFor(address,uint256)\":{\"params\":{\"amount\":\"the number of token to burn.\",\"owner\":\"address whose token is to burn.\"},\"return\":\"true if success.\"},\"changeAdmin(address)\":{\"params\":{\"newAdmin\":\"address of the new administrator.\"}},\"decimals()\":{\"return\":\"the number of decimals.\"},\"getAdmin()\":{\"return\":\"the current administrator of this contract.\"},\"isSuperOperator(address)\":{\"params\":{\"who\":\"The address to query.\"},\"return\":\"whether the address has superOperator rights.\"},\"setSuperOperator(address,bool)\":{\"params\":{\"enabled\":\"set whether the superOperator is enabled or disabled.\",\"superOperator\":\"address that will be given/removed superOperator right.\"}},\"totalSupply()\":{\"return\":\"the total number of tokens in existence.\"},\"transfer(address,uint256)\":{\"params\":{\"amount\":\"the number of tokens transfered.\",\"to\":\"the recipient address of the tokens transfered.\"},\"return\":\"true if success.\"},\"transferFrom(address,address,uint256)\":{\"params\":{\"amount\":\"the number of tokens transfered.\",\"from\":\"whose token it is transferring from.\",\"to\":\"the recipient address of the tokens transfered.\"},\"return\":\"true if success.\"}}},\"userdoc\":{\"methods\":{\"allowance(address,address)\":{\"notice\":\"gets allowance of `spender` for `owner`'s tokens.\"},\"approve(address,uint256)\":{\"notice\":\"approve `spender` to transfer `amount` tokens.\"},\"approveFor(address,address,uint256)\":{\"notice\":\"approve `spender` to transfer `amount` tokens from `owner`.\"},\"balanceOf(address)\":{\"notice\":\"Gets the balance of `owner`.\"},\"burn(uint256)\":{\"notice\":\"burn `amount` tokens.\"},\"burnFor(address,uint256)\":{\"notice\":\"burn `amount` tokens from `owner`.\"},\"changeAdmin(address)\":{\"notice\":\"change the administrator to be `newAdmin`.\"},\"decimals()\":{\"notice\":\"returns the number of decimals for that token.\"},\"getAdmin()\":{\"notice\":\"gives the current administrator of this contract.\"},\"isSuperOperator(address)\":{\"notice\":\"check whether address `who` is given superOperator rights.\"},\"setSuperOperator(address,bool)\":{\"notice\":\"Enable or disable the ability of `superOperator` to transfer tokens of all (superOperator rights).\"},\"totalSupply()\":{\"notice\":\"Gets the total number of tokens in existence.\"},\"transfer(address,uint256)\":{\"notice\":\"Transfer `amount` tokens to `to`.\"},\"transferFrom(address,address,uint256)\":{\"notice\":\"Transfer `amount` tokens from `from` to `to`.\"}}}},\"settings\":{\"compilationTarget\":{\"src/solc_0.5/Test/FakeDai.sol\":\"FakeDai\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"metadata\":{\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":2000},\"remappings\":[]},\"sources\":{\"src/solc_0.5/Sand/erc20/ERC20BaseToken.sol\":{\"content\":\"pragma solidity 0.5.9;\\n\\nimport \\\"../../contracts_common/Interfaces/ERC20Events.sol\\\";\\nimport \\\"../../contracts_common/BaseWithStorage/SuperOperators.sol\\\";\\n\\ncontract ERC20BaseToken is SuperOperators, ERC20Events {\\n\\n    uint256 internal _totalSupply;\\n    mapping(address => uint256) internal _balances;\\n    mapping(address => mapping(address => uint256)) internal _allowances;\\n\\n    /// @notice Gets the total number of tokens in existence.\\n    /// @return the total number of tokens in existence.\\n    function totalSupply() public view returns (uint256) {\\n        return _totalSupply;\\n    }\\n\\n    /// @notice Gets the balance of `owner`.\\n    /// @param owner The address to query the balance of.\\n    /// @return The amount owned by `owner`.\\n    function balanceOf(address owner) public view returns (uint256) {\\n        return _balances[owner];\\n    }\\n\\n    /// @notice gets allowance of `spender` for `owner`'s tokens.\\n    /// @param owner address whose token is allowed.\\n    /// @param spender address allowed to transfer.\\n    /// @return the amount of token `spender` is allowed to transfer on behalf of `owner`.\\n    function allowance(address owner, address spender)\\n        public\\n        view\\n        returns (uint256 remaining)\\n    {\\n        return _allowances[owner][spender];\\n    }\\n\\n    /// @notice returns the number of decimals for that token.\\n    /// @return the number of decimals.\\n    function decimals() public view returns (uint8) {\\n        return uint8(18);\\n    }\\n\\n    /// @notice Transfer `amount` tokens to `to`.\\n    /// @param to the recipient address of the tokens transfered.\\n    /// @param amount the number of tokens transfered.\\n    /// @return true if success.\\n    function transfer(address to, uint256 amount)\\n        public\\n        returns (bool success)\\n    {\\n        _transfer(msg.sender, to, amount);\\n        return true;\\n    }\\n\\n    /// @notice Transfer `amount` tokens from `from` to `to`.\\n    /// @param from whose token it is transferring from.\\n    /// @param to the recipient address of the tokens transfered.\\n    /// @param amount the number of tokens transfered.\\n    /// @return true if success.\\n    function transferFrom(address from, address to, uint256 amount)\\n        public\\n        returns (bool success)\\n    {\\n        if (msg.sender != from && !_superOperators[msg.sender]) {\\n            uint256 currentAllowance = _allowances[from][msg.sender];\\n            if (currentAllowance != (2**256) - 1) {\\n                // save gas when allowance is maximal by not reducing it (see https://github.com/ethereum/EIPs/issues/717)\\n                require(currentAllowance >= amount, \\\"Not enough funds allowed\\\");\\n                _allowances[from][msg.sender] = currentAllowance - amount;\\n            }\\n        }\\n        _transfer(from, to, amount);\\n        return true;\\n    }\\n\\n    /// @notice burn `amount` tokens.\\n    /// @param amount the number of tokens to burn.\\n    /// @return true if success.\\n    function burn(uint256 amount) external returns (bool) {\\n        _burn(msg.sender, amount);\\n        return true;\\n    }\\n\\n    /// @notice burn `amount` tokens from `owner`.\\n    /// @param owner address whose token is to burn.\\n    /// @param amount the number of token to burn.\\n    /// @return true if success.\\n    function burnFor(address owner, uint256 amount) external returns (bool) {\\n        _burn(owner, amount);\\n        return true;\\n    }\\n\\n    /// @notice approve `spender` to transfer `amount` tokens.\\n    /// @param spender address to be given rights to transfer.\\n    /// @param amount the number of tokens allowed.\\n    /// @return true if success.\\n    function approve(address spender, uint256 amount)\\n        public\\n        returns (bool success)\\n    {\\n        _approveFor(msg.sender, spender, amount);\\n        return true;\\n    }\\n\\n    /// @notice approve `spender` to transfer `amount` tokens from `owner`.\\n    /// @param owner address whose token is allowed.\\n    /// @param spender  address to be given rights to transfer.\\n    /// @param amount the number of tokens allowed.\\n    /// @return true if success.\\n    function approveFor(address owner, address spender, uint256 amount)\\n        public\\n        returns (bool success)\\n    {\\n        require(\\n            msg.sender == owner || _superOperators[msg.sender],\\n            \\\"msg.sender != owner && !superOperator\\\"\\n        );\\n        _approveFor(owner, spender, amount);\\n        return true;\\n    }\\n\\n    function addAllowanceIfNeeded(address owner, address spender, uint256 amountNeeded)\\n        public\\n        returns (bool success)\\n    {\\n        require(\\n            msg.sender == owner || _superOperators[msg.sender],\\n            \\\"msg.sender != owner && !superOperator\\\"\\n        );\\n        _addAllowanceIfNeeded(owner, spender, amountNeeded);\\n        return true;\\n    }\\n\\n    function _addAllowanceIfNeeded(address owner, address spender, uint256 amountNeeded)\\n        internal\\n    {\\n        if(amountNeeded > 0 && !isSuperOperator(spender)) {\\n            uint256 currentAllowance = _allowances[owner][spender];\\n            if(currentAllowance < amountNeeded) {\\n                _approveFor(owner, spender, amountNeeded);\\n            }\\n        }\\n    }\\n\\n    function _approveFor(address owner, address spender, uint256 amount)\\n        internal\\n    {\\n        require(\\n            owner != address(0) && spender != address(0),\\n            \\\"Cannot approve with 0x0\\\"\\n        );\\n        _allowances[owner][spender] = amount;\\n        emit Approval(owner, spender, amount);\\n    }\\n\\n    function _transfer(address from, address to, uint256 amount) internal {\\n        require(to != address(0), \\\"Cannot send to 0x0\\\");\\n        uint256 currentBalance = _balances[from];\\n        require(currentBalance >= amount, \\\"not enough fund\\\");\\n        _balances[from] = currentBalance - amount;\\n        _balances[to] += amount;\\n        emit Transfer(from, to, amount);\\n    }\\n\\n    function _mint(address to, uint256 amount) internal {\\n        require(to != address(0), \\\"Cannot mint to 0x0\\\");\\n        require(amount > 0, \\\"cannot mint 0 tokens\\\");\\n        uint256 currentTotalSupply = _totalSupply;\\n        uint256 newTotalSupply = currentTotalSupply + amount;\\n        require(newTotalSupply > currentTotalSupply, \\\"overflow\\\");\\n        _totalSupply = newTotalSupply;\\n        _balances[to] += amount;\\n        emit Transfer(address(0), to, amount);\\n    }\\n\\n    function _burn(address from, uint256 amount) internal {\\n        require(amount > 0, \\\"cannot burn 0 tokens\\\");\\n        if (msg.sender != from && !_superOperators[msg.sender]) {\\n            uint256 currentAllowance = _allowances[from][msg.sender];\\n            require(\\n                currentAllowance >= amount,\\n                \\\"Not enough funds allowed\\\"\\n            );\\n            if (currentAllowance != (2**256) - 1) {\\n                // save gas when allowance is maximal by not reducing it (see https://github.com/ethereum/EIPs/issues/717)\\n                _allowances[from][msg.sender] = currentAllowance - amount;\\n            }\\n        }\\n\\n        uint256 currentBalance = _balances[from];\\n        require(currentBalance >= amount, \\\"Not enough funds\\\");\\n        _balances[from] = currentBalance - amount;\\n        _totalSupply -= amount;\\n        emit Transfer(from, address(0), amount);\\n    }\\n}\\n\",\"keccak256\":\"0xb3fd284ec0b98868d1529561ef95d0f499bce7526112518f944be51147237ce1\"},\"src/solc_0.5/Test/FakeDai.sol\":{\"content\":\"pragma solidity 0.5.9;\\n\\nimport '../Sand/erc20/ERC20BaseToken.sol';\\n\\n\\ncontract FakeDai is ERC20BaseToken {\\n  constructor() public {\\n    _mint(msg.sender, 3000000000 * 10 ** 18);\\n  }\\n}\\n\",\"keccak256\":\"0xd221817d8e5e9943ab5dc4bd13ec9b9630ec20d0e8ca666e731947140a0647e8\"},\"src/solc_0.5/contracts_common/BaseWithStorage/Admin.sol\":{\"content\":\"pragma solidity ^0.5.2;\\n\\ncontract Admin {\\n\\n    address internal _admin;\\n\\n    event AdminChanged(address oldAdmin, address newAdmin);\\n\\n    /// @notice gives the current administrator of this contract.\\n    /// @return the current administrator of this contract.\\n    function getAdmin() external view returns (address) {\\n        return _admin;\\n    }\\n\\n    /// @notice change the administrator to be `newAdmin`.\\n    /// @param newAdmin address of the new administrator.\\n    function changeAdmin(address newAdmin) external {\\n        require(msg.sender == _admin, \\\"only admin can change admin\\\");\\n        emit AdminChanged(_admin, newAdmin);\\n        _admin = newAdmin;\\n    }\\n\\n    modifier onlyAdmin() {\\n        require (msg.sender == _admin, \\\"only admin allowed\\\");\\n        _;\\n    }\\n\\n}\\n\",\"keccak256\":\"0xf3763fa108235379b48cf8fe9a708692fcb077250d9974351fd636ff0baf84bf\"},\"src/solc_0.5/contracts_common/BaseWithStorage/SuperOperators.sol\":{\"content\":\"pragma solidity ^0.5.2;\\n\\nimport \\\"./Admin.sol\\\";\\n\\ncontract SuperOperators is Admin {\\n\\n    mapping(address => bool) internal _superOperators;\\n\\n    event SuperOperator(address superOperator, bool enabled);\\n\\n    /// @notice Enable or disable the ability of `superOperator` to transfer tokens of all (superOperator rights).\\n    /// @param superOperator address that will be given/removed superOperator right.\\n    /// @param enabled set whether the superOperator is enabled or disabled.\\n    function setSuperOperator(address superOperator, bool enabled) external {\\n        require(\\n            msg.sender == _admin,\\n            \\\"only admin is allowed to add super operators\\\"\\n        );\\n        _superOperators[superOperator] = enabled;\\n        emit SuperOperator(superOperator, enabled);\\n    }\\n\\n    /// @notice check whether address `who` is given superOperator rights.\\n    /// @param who The address to query.\\n    /// @return whether the address has superOperator rights.\\n    function isSuperOperator(address who) public view returns (bool) {\\n        return _superOperators[who];\\n    }\\n}\\n\",\"keccak256\":\"0x22354cf60ccf77a6de61c13bdaf4e3094d115b960ae563b0527622c846a12abb\"},\"src/solc_0.5/contracts_common/Interfaces/ERC20Events.sol\":{\"content\":\"pragma solidity ^0.5.2;\\n\\n/* interface */\\ncontract ERC20Events {\\n    event Transfer(address indexed from, address indexed to, uint256 value);\\n    event Approval(\\n        address indexed owner,\\n        address indexed spender,\\n        uint256 value\\n    );\\n}\\n\",\"keccak256\":\"0xee09c10a3f9adc913227efdcd94ce44e05b59b04717f8f868153d356bd03f5d2\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610030336b09b18ab5df7180b6b80000006001600160e01b0361003516565b6101eb565b6001600160a01b0382166100aa57604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601260248201527f43616e6e6f74206d696e7420746f203078300000000000000000000000000000604482015290519081900360640190fd5b6000811161011957604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152601460248201527f63616e6e6f74206d696e74203020746f6b656e73000000000000000000000000604482015290519081900360640190fd5b60025481810181811161018d57604080517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152600860248201527f6f766572666c6f77000000000000000000000000000000000000000000000000604482015290519081900360640190fd5b60028190556001600160a01b0384166000818152600360209081526040808320805488019055805187815290517fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef929181900390910190a350505050565b610ca1806101fa6000396000f3fe608060405234801561001057600080fd5b50600436106100f55760003560e01c806342966c68116100975780638f283970116100665780638f283970146102cd578063a9059cbb146102f5578063ac9fe42114610321578063dd62ed3e1461034f576100f5565b806342966c6814610240578063654b748a1461025d5780636e9960c31461028357806370a08231146102a7576100f5565b806323b872dd116100d357806323b872dd146101805780632b991746146101b6578063313ce567146101ec5780633b7b5a161461020a576100f5565b8063095ea7b3146100fa57806318160ddd1461013a5780631dd319cb14610154575b600080fd5b6101266004803603604081101561011057600080fd5b506001600160a01b03813516906020013561037d565b604080519115158252519081900360200190f35b610142610393565b60408051918252519081900360200190f35b6101266004803603604081101561016a57600080fd5b506001600160a01b038135169060200135610399565b6101266004803603606081101561019657600080fd5b506001600160a01b038135811691602081013590911690604001356103a5565b610126600480360360608110156101cc57600080fd5b506001600160a01b03813581169160208101359091169060400135610497565b6101f4610505565b6040805160ff9092168252519081900360200190f35b6101266004803603606081101561022057600080fd5b506001600160a01b0381358116916020810135909116906040013561050a565b6101266004803603602081101561025657600080fd5b5035610578565b6101266004803603602081101561027357600080fd5b50356001600160a01b031661058c565b61028b6105aa565b604080516001600160a01b039092168252519081900360200190f35b610142600480360360208110156102bd57600080fd5b50356001600160a01b03166105b9565b6102f3600480360360208110156102e357600080fd5b50356001600160a01b03166105d4565b005b6101266004803603604081101561030b57600080fd5b506001600160a01b0381351690602001356106b5565b6102f36004803603604081101561033757600080fd5b506001600160a01b03813516906020013515156106c2565b6101426004803603604081101561036557600080fd5b506001600160a01b038135811691602001351661078d565b600061038a3384846107b8565b50600192915050565b60025490565b600061038a838361088b565b6000336001600160a01b038516148015906103d057503360009081526001602052604090205460ff16155b15610482576001600160a01b038416600090815260046020908152604080832033845290915290205460001981146104805782811015610457576040805162461bcd60e51b815260206004820152601860248201527f4e6f7420656e6f7567682066756e647320616c6c6f7765640000000000000000604482015290519081900360640190fd5b6001600160a01b0385166000908152600460209081526040808320338452909152902083820390555b505b61048d848484610a8c565b5060019392505050565b6000336001600160a01b03851614806104bf57503360009081526001602052604090205460ff165b6104fa5760405162461bcd60e51b8152600401808060200182810382526025815260200180610c1c6025913960400191505060405180910390fd5b61048d8484846107b8565b601290565b6000336001600160a01b038516148061053257503360009081526001602052604090205460ff165b61056d5760405162461bcd60e51b8152600401808060200182810382526025815260200180610c1c6025913960400191505060405180910390fd5b61048d848484610bc0565b6000610584338361088b565b506001919050565b6001600160a01b031660009081526001602052604090205460ff1690565b6000546001600160a01b031690565b6001600160a01b031660009081526003602052604090205490565b6000546001600160a01b03163314610633576040805162461bcd60e51b815260206004820152601b60248201527f6f6e6c792061646d696e2063616e206368616e67652061646d696e0000000000604482015290519081900360640190fd5b600054604080516001600160a01b039283168152918316602083015280517f7e644d79422f17c01e4894b5f4f588d331ebfa28653d42ae832dc59e38c9798f9281900390910190a1600080547fffffffffffffffffffffffff0000000000000000000000000000000000000000166001600160a01b0392909216919091179055565b600061038a338484610a8c565b6000546001600160a01b0316331461070b5760405162461bcd60e51b815260040180806020018281038252602c815260200180610c41602c913960400191505060405180910390fd5b6001600160a01b03821660008181526001602090815260409182902080547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff001685151590811790915582519384529083015280517f44f92d27abdf4cfb6a7d712c3af68f3be086d4ca747ab802c36f67d6790060d89281900390910190a15050565b6001600160a01b03918216600090815260046020908152604080832093909416825291909152205490565b6001600160a01b038316158015906107d857506001600160a01b03821615155b610829576040805162461bcd60e51b815260206004820152601760248201527f43616e6e6f7420617070726f7665207769746820307830000000000000000000604482015290519081900360640190fd5b6001600160a01b03808416600081815260046020908152604080832094871680845294825291829020859055815185815291517f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b9259281900390910190a3505050565b600081116108e0576040805162461bcd60e51b815260206004820152601460248201527f63616e6e6f74206275726e203020746f6b656e73000000000000000000000000604482015290519081900360640190fd5b336001600160a01b0383161480159061090957503360009081526001602052604090205460ff16155b156109bb576001600160a01b038216600090815260046020908152604080832033845290915290205481811015610987576040805162461bcd60e51b815260206004820152601860248201527f4e6f7420656e6f7567682066756e647320616c6c6f7765640000000000000000604482015290519081900360640190fd5b80600019146109b9576001600160a01b0383166000908152600460209081526040808320338452909152902082820390555b505b6001600160a01b03821660009081526003602052604090205481811015610a29576040805162461bcd60e51b815260206004820152601060248201527f4e6f7420656e6f7567682066756e647300000000000000000000000000000000604482015290519081900360640190fd5b6001600160a01b03831660008181526003602090815260408083208686039055600280548790039055805186815290519293927fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef929181900390910190a3505050565b6001600160a01b038216610ae7576040805162461bcd60e51b815260206004820152601260248201527f43616e6e6f742073656e6420746f203078300000000000000000000000000000604482015290519081900360640190fd5b6001600160a01b03831660009081526003602052604090205481811015610b55576040805162461bcd60e51b815260206004820152600f60248201527f6e6f7420656e6f7567682066756e640000000000000000000000000000000000604482015290519081900360640190fd5b6001600160a01b0380851660008181526003602090815260408083208787039055938716808352918490208054870190558351868152935191937fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef929081900390910190a350505050565b600081118015610bd65750610bd48261058c565b155b15610c16576001600160a01b0380841660009081526004602090815260408083209386168352929052205481811015610c1457610c148484846107b8565b505b50505056fe6d73672e73656e64657220213d206f776e6572202626202173757065724f70657261746f726f6e6c792061646d696e20697320616c6c6f77656420746f20616464207375706572206f70657261746f7273a265627a7a72305820dcbe0f057acc5d54a687abb5ad7d2fea243c04c1e7232661771c6529865f1b9864736f6c63430005090032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100f55760003560e01c806342966c68116100975780638f283970116100665780638f283970146102cd578063a9059cbb146102f5578063ac9fe42114610321578063dd62ed3e1461034f576100f5565b806342966c6814610240578063654b748a1461025d5780636e9960c31461028357806370a08231146102a7576100f5565b806323b872dd116100d357806323b872dd146101805780632b991746146101b6578063313ce567146101ec5780633b7b5a161461020a576100f5565b8063095ea7b3146100fa57806318160ddd1461013a5780631dd319cb14610154575b600080fd5b6101266004803603604081101561011057600080fd5b506001600160a01b03813516906020013561037d565b604080519115158252519081900360200190f35b610142610393565b60408051918252519081900360200190f35b6101266004803603604081101561016a57600080fd5b506001600160a01b038135169060200135610399565b6101266004803603606081101561019657600080fd5b506001600160a01b038135811691602081013590911690604001356103a5565b610126600480360360608110156101cc57600080fd5b506001600160a01b03813581169160208101359091169060400135610497565b6101f4610505565b6040805160ff9092168252519081900360200190f35b6101266004803603606081101561022057600080fd5b506001600160a01b0381358116916020810135909116906040013561050a565b6101266004803603602081101561025657600080fd5b5035610578565b6101266004803603602081101561027357600080fd5b50356001600160a01b031661058c565b61028b6105aa565b604080516001600160a01b039092168252519081900360200190f35b610142600480360360208110156102bd57600080fd5b50356001600160a01b03166105b9565b6102f3600480360360208110156102e357600080fd5b50356001600160a01b03166105d4565b005b6101266004803603604081101561030b57600080fd5b506001600160a01b0381351690602001356106b5565b6102f36004803603604081101561033757600080fd5b506001600160a01b03813516906020013515156106c2565b6101426004803603604081101561036557600080fd5b506001600160a01b038135811691602001351661078d565b600061038a3384846107b8565b50600192915050565b60025490565b600061038a838361088b565b6000336001600160a01b038516148015906103d057503360009081526001602052604090205460ff16155b15610482576001600160a01b038416600090815260046020908152604080832033845290915290205460001981146104805782811015610457576040805162461bcd60e51b815260206004820152601860248201527f4e6f7420656e6f7567682066756e647320616c6c6f7765640000000000000000604482015290519081900360640190fd5b6001600160a01b0385166000908152600460209081526040808320338452909152902083820390555b505b61048d848484610a8c565b5060019392505050565b6000336001600160a01b03851614806104bf57503360009081526001602052604090205460ff165b6104fa5760405162461bcd60e51b8152600401808060200182810382526025815260200180610c1c6025913960400191505060405180910390fd5b61048d8484846107b8565b601290565b6000336001600160a01b038516148061053257503360009081526001602052604090205460ff165b61056d5760405162461bcd60e51b8152600401808060200182810382526025815260200180610c1c6025913960400191505060405180910390fd5b61048d848484610bc0565b6000610584338361088b565b506001919050565b6001600160a01b031660009081526001602052604090205460ff1690565b6000546001600160a01b031690565b6001600160a01b031660009081526003602052604090205490565b6000546001600160a01b03163314610633576040805162461bcd60e51b815260206004820152601b60248201527f6f6e6c792061646d696e2063616e206368616e67652061646d696e0000000000604482015290519081900360640190fd5b600054604080516001600160a01b039283168152918316602083015280517f7e644d79422f17c01e4894b5f4f588d331ebfa28653d42ae832dc59e38c9798f9281900390910190a1600080547fffffffffffffffffffffffff0000000000000000000000000000000000000000166001600160a01b0392909216919091179055565b600061038a338484610a8c565b6000546001600160a01b0316331461070b5760405162461bcd60e51b815260040180806020018281038252602c815260200180610c41602c913960400191505060405180910390fd5b6001600160a01b03821660008181526001602090815260409182902080547fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff001685151590811790915582519384529083015280517f44f92d27abdf4cfb6a7d712c3af68f3be086d4ca747ab802c36f67d6790060d89281900390910190a15050565b6001600160a01b03918216600090815260046020908152604080832093909416825291909152205490565b6001600160a01b038316158015906107d857506001600160a01b03821615155b610829576040805162461bcd60e51b815260206004820152601760248201527f43616e6e6f7420617070726f7665207769746820307830000000000000000000604482015290519081900360640190fd5b6001600160a01b03808416600081815260046020908152604080832094871680845294825291829020859055815185815291517f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b9259281900390910190a3505050565b600081116108e0576040805162461bcd60e51b815260206004820152601460248201527f63616e6e6f74206275726e203020746f6b656e73000000000000000000000000604482015290519081900360640190fd5b336001600160a01b0383161480159061090957503360009081526001602052604090205460ff16155b156109bb576001600160a01b038216600090815260046020908152604080832033845290915290205481811015610987576040805162461bcd60e51b815260206004820152601860248201527f4e6f7420656e6f7567682066756e647320616c6c6f7765640000000000000000604482015290519081900360640190fd5b80600019146109b9576001600160a01b0383166000908152600460209081526040808320338452909152902082820390555b505b6001600160a01b03821660009081526003602052604090205481811015610a29576040805162461bcd60e51b815260206004820152601060248201527f4e6f7420656e6f7567682066756e647300000000000000000000000000000000604482015290519081900360640190fd5b6001600160a01b03831660008181526003602090815260408083208686039055600280548790039055805186815290519293927fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef929181900390910190a3505050565b6001600160a01b038216610ae7576040805162461bcd60e51b815260206004820152601260248201527f43616e6e6f742073656e6420746f203078300000000000000000000000000000604482015290519081900360640190fd5b6001600160a01b03831660009081526003602052604090205481811015610b55576040805162461bcd60e51b815260206004820152600f60248201527f6e6f7420656e6f7567682066756e640000000000000000000000000000000000604482015290519081900360640190fd5b6001600160a01b0380851660008181526003602090815260408083208787039055938716808352918490208054870190558351868152935191937fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef929081900390910190a350505050565b600081118015610bd65750610bd48261058c565b155b15610c16576001600160a01b0380841660009081526004602090815260408083209386168352929052205481811015610c1457610c148484846107b8565b505b50505056fe6d73672e73656e64657220213d206f776e6572202626202173757065724f70657261746f726f6e6c792061646d696e20697320616c6c6f77656420746f20616464207375706572206f70657261746f7273a265627a7a72305820dcbe0f057acc5d54a687abb5ad7d2fea243c04c1e7232661771c6529865f1b9864736f6c63430005090032",
+  "devdoc": {
+    "methods": {
+      "allowance(address,address)": {
+        "params": {
+          "owner": "address whose token is allowed.",
+          "spender": "address allowed to transfer."
+        },
+        "return": "the amount of token `spender` is allowed to transfer on behalf of `owner`."
+      },
+      "approve(address,uint256)": {
+        "params": {
+          "amount": "the number of tokens allowed.",
+          "spender": "address to be given rights to transfer."
+        },
+        "return": "true if success."
+      },
+      "approveFor(address,address,uint256)": {
+        "params": {
+          "amount": "the number of tokens allowed.",
+          "owner": "address whose token is allowed.",
+          "spender": "address to be given rights to transfer."
+        },
+        "return": "true if success."
+      },
+      "balanceOf(address)": {
+        "params": {
+          "owner": "The address to query the balance of."
+        },
+        "return": "The amount owned by `owner`."
+      },
+      "burn(uint256)": {
+        "params": {
+          "amount": "the number of tokens to burn."
+        },
+        "return": "true if success."
+      },
+      "burnFor(address,uint256)": {
+        "params": {
+          "amount": "the number of token to burn.",
+          "owner": "address whose token is to burn."
+        },
+        "return": "true if success."
+      },
+      "changeAdmin(address)": {
+        "params": {
+          "newAdmin": "address of the new administrator."
+        }
+      },
+      "decimals()": {
+        "return": "the number of decimals."
+      },
+      "getAdmin()": {
+        "return": "the current administrator of this contract."
+      },
+      "isSuperOperator(address)": {
+        "params": {
+          "who": "The address to query."
+        },
+        "return": "whether the address has superOperator rights."
+      },
+      "setSuperOperator(address,bool)": {
+        "params": {
+          "enabled": "set whether the superOperator is enabled or disabled.",
+          "superOperator": "address that will be given/removed superOperator right."
+        }
+      },
+      "totalSupply()": {
+        "return": "the total number of tokens in existence."
+      },
+      "transfer(address,uint256)": {
+        "params": {
+          "amount": "the number of tokens transfered.",
+          "to": "the recipient address of the tokens transfered."
+        },
+        "return": "true if success."
+      },
+      "transferFrom(address,address,uint256)": {
+        "params": {
+          "amount": "the number of tokens transfered.",
+          "from": "whose token it is transferring from.",
+          "to": "the recipient address of the tokens transfered."
+        },
+        "return": "true if success."
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {
+      "allowance(address,address)": {
+        "notice": "gets allowance of `spender` for `owner`'s tokens."
+      },
+      "approve(address,uint256)": {
+        "notice": "approve `spender` to transfer `amount` tokens."
+      },
+      "approveFor(address,address,uint256)": {
+        "notice": "approve `spender` to transfer `amount` tokens from `owner`."
+      },
+      "balanceOf(address)": {
+        "notice": "Gets the balance of `owner`."
+      },
+      "burn(uint256)": {
+        "notice": "burn `amount` tokens."
+      },
+      "burnFor(address,uint256)": {
+        "notice": "burn `amount` tokens from `owner`."
+      },
+      "changeAdmin(address)": {
+        "notice": "change the administrator to be `newAdmin`."
+      },
+      "decimals()": {
+        "notice": "returns the number of decimals for that token."
+      },
+      "getAdmin()": {
+        "notice": "gives the current administrator of this contract."
+      },
+      "isSuperOperator(address)": {
+        "notice": "check whether address `who` is given superOperator rights."
+      },
+      "setSuperOperator(address,bool)": {
+        "notice": "Enable or disable the ability of `superOperator` to transfer tokens of all (superOperator rights)."
+      },
+      "totalSupply()": {
+        "notice": "Gets the total number of tokens in existence."
+      },
+      "transfer(address,uint256)": {
+        "notice": "Transfer `amount` tokens to `to`."
+      },
+      "transferFrom(address,address,uint256)": {
+        "notice": "Transfer `amount` tokens from `from` to `to`."
+      }
+    }
+  }
+}

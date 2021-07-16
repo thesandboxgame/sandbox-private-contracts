@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "src/solc_0.8/test/FakePredicateForwarder.sol": {
+      "content": "//SPDX-License-Identifier: MIT\n\npragma solidity 0.8.2;\n\n/// @dev This is NOT a secure forwarder contract implementation!\n/// DO NOT USE in production.\ncontract FakePredicateForwarder {\n    struct Request {\n        address from;\n        address to;\n        uint256 value;\n        uint256 gas;\n        bytes data;\n    }\n\n    // solhint-disable-next-line no-empty-blocks\n    constructor() {}\n\n    function forward(Request calldata req) public returns (bool, bytes memory) {\n        // solhint-disable avoid-low-level-calls\n        (bool success, bytes memory returndata) =\n            req.to.call{gas: req.gas, value: req.value}(abi.encodePacked(req.data, req.from));\n        // solhint-enable avoid-low-level-calls\n\n        return (success, returndata);\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 2000
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

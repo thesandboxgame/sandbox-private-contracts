@@ -14,6 +14,7 @@
     "./scripts",
     "./setup",
     "./deploy",
+    "./deploy_polygon",
     "./test",
     "./utils"
   ]

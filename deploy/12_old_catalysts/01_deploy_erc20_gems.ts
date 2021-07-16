@@ -2,7 +2,7 @@ import {DeployFunction} from 'hardhat-deploy/types';
 import {skipUnlessTest} from '../../utils/network';
 
 const func: DeployFunction = async function (hre) {
-  const {deployments, getNamedAccounts} = hre;
+  const {deployments, getNamedAccounts, ethers} = hre;
   const {execute, deploy} = deployments;
 
   const {deployer} = await getNamedAccounts();
@@ -38,11 +38,19 @@ const func: DeployFunction = async function (hre) {
       });
       gems.push(result.address);
     }
-    return execute('OldGems', {from: deployer}, 'addGems', gems);
+    const contract = await ethers.getContract('OldGems');
+    const filter = contract.filters['SubToken']();
+    const res = await contract.queryFilter(filter);
+    if (res.length === 0) {
+      return execute('OldGems', {from: deployer}, 'addGems', gems);
+    } else {
+      console.log('Gems already setup');
+    }
   }
   await addGems(['Power', 'Defense', 'Speed', 'Magic', 'Luck']);
 };
 export default func;
 func.tags = ['OldGems', 'OldGems_deploy'];
 func.dependencies = ['Sand'];
+// comment to deploy old system
 func.skip = skipUnlessTest; // not meant to be redeployed

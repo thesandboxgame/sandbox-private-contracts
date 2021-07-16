@@ -22,4 +22,5 @@ const func: DeployFunction = async function (hre) {
 export default func;
 func.tags = ['OldCatalystRegistry', 'OldCatalystRegistry_deploy'];
 func.dependencies = ['OldCatalysts_deploy', 'Sand_deploy'];
+// comment to deploy old system
 func.skip = skipUnlessTest; // not meant to be redeployed

@@ -48,3 +48,15 @@ export async function skipUnlessTest(
 ): Promise<boolean> {
   return hre.network.name !== 'hardhat' || !!process.env.HARDHAT_FORK;
 }
+
+export async function skipUnlessL1(
+  hre: HardhatRuntimeEnvironment
+): Promise<boolean> {
+  return !hre.network.tags.L1;
+}
+
+export async function skipUnlessL2(
+  hre: HardhatRuntimeEnvironment
+): Promise<boolean> {
+  return !hre.network.tags.L2;
+}

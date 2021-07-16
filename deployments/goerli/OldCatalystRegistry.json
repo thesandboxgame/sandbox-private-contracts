@@ -1,0 +1,424 @@
+{
+  "address": "0xF3aF28E1240abfb4bc2669eFD8A45B927a545629",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract CatalystValue",
+          "name": "catalystValue",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "admin",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "oldAdmin",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "AdminChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "assetId",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "catalystId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "seed",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256[]",
+          "name": "gemIds",
+          "type": "uint256[]"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "blockNumber",
+          "type": "uint64"
+        }
+      ],
+      "name": "CatalystApplied",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "assetId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "seed",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256[]",
+          "name": "gemIds",
+          "type": "uint256[]"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "blockNumber",
+          "type": "uint64"
+        }
+      ],
+      "name": "GemsAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newMinter",
+          "type": "address"
+        }
+      ],
+      "name": "Minter",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "assetId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "gemIds",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "addGems",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newAdmin",
+          "type": "address"
+        }
+      ],
+      "name": "changeAdmin",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAdmin",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "assetId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getCatalyst",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "exists",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "catalystId",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getMinter",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "catalystId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "seed",
+          "type": "uint256"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint256[]",
+              "name": "gemIds",
+              "type": "uint256[]"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "blockHash",
+              "type": "bytes32"
+            }
+          ],
+          "internalType": "struct CatalystValue.GemEvent[]",
+          "name": "events",
+          "type": "tuple[]"
+        },
+        {
+          "internalType": "uint32",
+          "name": "totalNumberOfGemTypes",
+          "type": "uint32"
+        }
+      ],
+      "name": "getValues",
+      "outputs": [
+        {
+          "internalType": "uint32[]",
+          "name": "values",
+          "type": "uint32[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "assetId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "catalystId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "maxGems",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256[]",
+          "name": "gemIds",
+          "type": "uint256[]"
+        }
+      ],
+      "name": "setCatalyst",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "minter",
+          "type": "address"
+        }
+      ],
+      "name": "setMinter",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xec6e259e2e499f96a61ee07cd2ab215d3a3496ef876bc787a841c2979d4604ee",
+  "receipt": {
+    "to": null,
+    "from": "0xA796AE911621E00809E0E7C8f0AD6BF118E5139e",
+    "contractAddress": "0xF3aF28E1240abfb4bc2669eFD8A45B927a545629",
+    "transactionIndex": 0,
+    "gasUsed": "911754",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x85504dd83ba940e50ae42c8547b867fcba85190969cb6531c07308cdb6b1dd38",
+    "transactionHash": "0xec6e259e2e499f96a61ee07cd2ab215d3a3496ef876bc787a841c2979d4604ee",
+    "logs": [],
+    "blockNumber": 5072063,
+    "cumulativeGasUsed": "911754",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0x0c71dE81F3c98dFE43D84eaDA9AcE3325BFf4eE1",
+    "0xA796AE911621E00809E0E7C8f0AD6BF118E5139e"
+  ],
+  "solcInputHash": "313f455adab9ae93096e43acc50d7d38",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.5+commit.f956cc89\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract CatalystValue\",\"name\":\"catalystValue\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"admin\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"oldAdmin\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newAdmin\",\"type\":\"address\"}],\"name\":\"AdminChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"assetId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"catalystId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"seed\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256[]\",\"name\":\"gemIds\",\"type\":\"uint256[]\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"blockNumber\",\"type\":\"uint64\"}],\"name\":\"CatalystApplied\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"assetId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"seed\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256[]\",\"name\":\"gemIds\",\"type\":\"uint256[]\"},{\"indexed\":false,\"internalType\":\"uint64\",\"name\":\"blockNumber\",\"type\":\"uint64\"}],\"name\":\"GemsAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newMinter\",\"type\":\"address\"}],\"name\":\"Minter\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"assetId\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"gemIds\",\"type\":\"uint256[]\"}],\"name\":\"addGems\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newAdmin\",\"type\":\"address\"}],\"name\":\"changeAdmin\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAdmin\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"assetId\",\"type\":\"uint256\"}],\"name\":\"getCatalyst\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"exists\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"catalystId\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getMinter\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"catalystId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"seed\",\"type\":\"uint256\"},{\"components\":[{\"internalType\":\"uint256[]\",\"name\":\"gemIds\",\"type\":\"uint256[]\"},{\"internalType\":\"bytes32\",\"name\":\"blockHash\",\"type\":\"bytes32\"}],\"internalType\":\"struct CatalystValue.GemEvent[]\",\"name\":\"events\",\"type\":\"tuple[]\"},{\"internalType\":\"uint32\",\"name\":\"totalNumberOfGemTypes\",\"type\":\"uint32\"}],\"name\":\"getValues\",\"outputs\":[{\"internalType\":\"uint32[]\",\"name\":\"values\",\"type\":\"uint32[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"assetId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"catalystId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"maxGems\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"gemIds\",\"type\":\"uint256[]\"}],\"name\":\"setCatalyst\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"minter\",\"type\":\"address\"}],\"name\":\"setMinter\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"changeAdmin(address)\":{\"details\":\"change the administrator to be `newAdmin`.\",\"params\":{\"newAdmin\":\"address of the new administrator.\"}},\"getAdmin()\":{\"details\":\"gives the current administrator of this contract.\",\"returns\":{\"_0\":\"the current administrator of this contract.\"}},\"getMinter()\":{\"details\":\"return the current minter\"},\"setMinter(address)\":{\"details\":\"Set the Minter that will be the only address able to create Estate\",\"params\":{\"minter\":\"address of the minter\"}}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"src/solc_0.6/CatalystRegistry.sol\":\"CatalystRegistry\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":2000},\"remappings\":[]},\"sources\":{\"src/solc_0.6/Catalyst/CatalystValue.sol\":{\"content\":\"pragma solidity 0.6.5;\\npragma experimental ABIEncoderV2;\\n\\n\\ninterface CatalystValue {\\n    struct GemEvent {\\n        uint256[] gemIds;\\n        bytes32 blockHash;\\n    }\\n\\n    function getValues(\\n        uint256 catalystId,\\n        uint256 seed,\\n        GemEvent[] calldata events,\\n        uint32 totalNumberOfGemTypes\\n    ) external view returns (uint32[] memory values);\\n}\\n\",\"keccak256\":\"0x3983ba567af891e8d4c6a983bd0857d930754fd36d72b330925a3df33289ae0f\"},\"src/solc_0.6/CatalystRegistry.sol\":{\"content\":\"pragma solidity 0.6.5;\\npragma experimental ABIEncoderV2;\\n\\nimport \\\"./Interfaces/AssetToken.sol\\\";\\nimport \\\"./common/BaseWithStorage/Admin.sol\\\";\\nimport \\\"./Catalyst/CatalystValue.sol\\\";\\n\\n\\ncontract CatalystRegistry is Admin, CatalystValue {\\n    event Minter(address indexed newMinter);\\n    event CatalystApplied(uint256 indexed assetId, uint256 indexed catalystId, uint256 seed, uint256[] gemIds, uint64 blockNumber);\\n    event GemsAdded(uint256 indexed assetId, uint256 seed, uint256[] gemIds, uint64 blockNumber);\\n\\n    function getCatalyst(uint256 assetId) external view returns (bool exists, uint256 catalystId) {\\n        CatalystStored memory catalyst = _catalysts[assetId];\\n        if (catalyst.set != 0) {\\n            return (true, catalyst.catalystId);\\n        }\\n        if (assetId & IS_NFT != 0) {\\n            catalyst = _catalysts[_getCollectionId(assetId)];\\n            return (catalyst.set != 0, catalyst.catalystId);\\n        }\\n        return (false, 0);\\n    }\\n\\n    function setCatalyst(\\n        uint256 assetId,\\n        uint256 catalystId,\\n        uint256 maxGems,\\n        uint256[] calldata gemIds\\n    ) external {\\n        require(msg.sender == _minter, \\\"NOT_AUTHORIZED_MINTER\\\");\\n        require(gemIds.length <= maxGems, \\\"INVALID_GEMS_TOO_MANY\\\");\\n        uint256 emptySockets = maxGems - gemIds.length;\\n        _catalysts[assetId] = CatalystStored(uint64(emptySockets), uint64(catalystId), 1);\\n        uint64 blockNumber = _getBlockNumber();\\n        emit CatalystApplied(assetId, catalystId, assetId, gemIds, blockNumber);\\n    }\\n\\n    function addGems(uint256 assetId, uint256[] calldata gemIds) external {\\n        require(msg.sender == _minter, \\\"NOT_AUTHORIZED_MINTER\\\");\\n        require(assetId & IS_NFT != 0, \\\"INVALID_NOT_NFT\\\");\\n        require(gemIds.length != 0, \\\"INVALID_GEMS_0\\\");\\n        (uint256 emptySockets, uint256 seed) = _getSocketData(assetId);\\n        require(emptySockets >= gemIds.length, \\\"INVALID_GEMS_TOO_MANY\\\");\\n        emptySockets -= gemIds.length;\\n        _catalysts[assetId].emptySockets = uint64(emptySockets);\\n        uint64 blockNumber = _getBlockNumber();\\n        emit GemsAdded(assetId, seed, gemIds, blockNumber);\\n    }\\n\\n    /// @dev Set the Minter that will be the only address able to create Estate\\n    /// @param minter address of the minter\\n    function setMinter(address minter) external {\\n        require(msg.sender == _admin, \\\"NOT_AUTHORIZED_ADMIN\\\");\\n        require(minter != _minter, \\\"INVALID_MINTER_SAME_ALREADY_SET\\\");\\n        _minter = minter;\\n        emit Minter(minter);\\n    }\\n\\n    /// @dev return the current minter\\n    function getMinter() external view returns (address) {\\n        return _minter;\\n    }\\n\\n    function getValues(\\n        uint256 catalystId,\\n        uint256 seed,\\n        GemEvent[] calldata events,\\n        uint32 totalNumberOfGemTypes\\n    ) external override view returns (uint32[] memory values) {\\n        return _catalystValue.getValues(catalystId, seed, events, totalNumberOfGemTypes);\\n    }\\n\\n    // ///////// INTERNAL ////////////\\n\\n    uint256 private constant IS_NFT = 0x0000000000000000000000000000000000000000800000000000000000000000;\\n    uint256 private constant NOT_IS_NFT = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7FFFFFFFFFFFFFFFFFFFFFFF;\\n    uint256 private constant NOT_NFT_INDEX = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF800000007FFFFFFFFFFFFFFF;\\n\\n    function _getSocketData(uint256 assetId) internal view returns (uint256 emptySockets, uint256 seed) {\\n        seed = assetId;\\n        CatalystStored memory catalyst = _catalysts[assetId];\\n        if (catalyst.set != 0) {\\n            // the gems are added to an asset who already get a specific catalyst.\\n            // the seed is its id\\n            return (catalyst.emptySockets, seed);\\n        }\\n        // else the asset is only adding gems while keeping the same seed (that of the original assetId)\\n        seed = _getCollectionId(assetId);\\n        catalyst = _catalysts[seed];\\n        return (catalyst.emptySockets, seed);\\n    }\\n\\n    function _getBlockNumber() internal view returns (uint64 blockNumber) {\\n        blockNumber = uint64(block.number + 1);\\n    }\\n\\n    function _getCollectionId(uint256 assetId) internal pure returns (uint256) {\\n        return assetId & NOT_NFT_INDEX & NOT_IS_NFT; // compute the same as Asset to get collectionId\\n    }\\n\\n    // CONSTRUCTOR ////\\n    constructor(CatalystValue catalystValue, address admin) public {\\n        _admin = admin;\\n        _catalystValue = catalystValue;\\n    }\\n\\n    /// DATA ////////\\n\\n    struct CatalystStored {\\n        uint64 emptySockets;\\n        uint64 catalystId;\\n        uint64 set;\\n    }\\n    address internal _minter;\\n    CatalystValue internal immutable _catalystValue;\\n    mapping(uint256 => CatalystStored) internal _catalysts;\\n}\\n\",\"keccak256\":\"0x92d25874fc42b576a26b1898b695e205e9f6066e2788fe3dce2e7b4967e2fcaf\"},\"src/solc_0.6/Interfaces/AssetToken.sol\":{\"content\":\"pragma solidity 0.6.5;\\n\\n\\ninterface AssetToken {\\n    function mint(\\n        address creator,\\n        uint40 packId,\\n        bytes32 hash,\\n        uint256 supply,\\n        uint8 rarity,\\n        address owner,\\n        bytes calldata data\\n    ) external returns (uint256 id);\\n\\n    function mintMultiple(\\n        address creator,\\n        uint40 packId,\\n        bytes32 hash,\\n        uint256[] calldata supplies,\\n        bytes calldata rarityPack,\\n        address owner,\\n        bytes calldata data\\n    ) external returns (uint256[] memory ids);\\n\\n    // fails on non-NFT or nft who do not have collection (was a mistake)\\n    function collectionOf(uint256 id) external view returns (uint256);\\n\\n    function balanceOf(address owner, uint256 id) external view returns (uint256);\\n\\n    // return true for Non-NFT ERC1155 tokens which exists\\n    function isCollection(uint256 id) external view returns (bool);\\n\\n    function collectionIndexOf(uint256 id) external view returns (uint256);\\n\\n    function extractERC721From(\\n        address sender,\\n        uint256 id,\\n        address to\\n    ) external returns (uint256 newId);\\n\\n    function transferFrom(\\n        address from,\\n        address to,\\n        uint256 id\\n    ) external;\\n\\n    function safeTransferFrom(\\n        address from,\\n        address to,\\n        uint256 id\\n    ) external;\\n\\n    function safeTransferFrom(\\n        address from,\\n        address to,\\n        uint256 id,\\n        uint256 value,\\n        bytes calldata data\\n    ) external;\\n\\n    function safeBatchTransferFrom(\\n        address from,\\n        address to,\\n        uint256[] calldata ids,\\n        bytes calldata data\\n    ) external;\\n\\n    function safeBatchTransferFrom(\\n        address from,\\n        address to,\\n        uint256[] calldata ids,\\n        uint256[] calldata values,\\n        bytes calldata data\\n    ) external;\\n}\\n\",\"keccak256\":\"0x3663319e338bcc49711271639823904fd486a631b489cc8ff81d83a74f0b550b\"},\"src/solc_0.6/common/BaseWithStorage/Admin.sol\":{\"content\":\"pragma solidity 0.6.5;\\n\\n\\ncontract Admin {\\n    address internal _admin;\\n\\n    /// @dev emitted when the contract administrator is changed.\\n    /// @param oldAdmin address of the previous administrator.\\n    /// @param newAdmin address of the new administrator.\\n    event AdminChanged(address oldAdmin, address newAdmin);\\n\\n    /// @dev gives the current administrator of this contract.\\n    /// @return the current administrator of this contract.\\n    function getAdmin() external view returns (address) {\\n        return _admin;\\n    }\\n\\n    /// @dev change the administrator to be `newAdmin`.\\n    /// @param newAdmin address of the new administrator.\\n    function changeAdmin(address newAdmin) external {\\n        require(msg.sender == _admin, \\\"only admin can change admin\\\");\\n        emit AdminChanged(_admin, newAdmin);\\n        _admin = newAdmin;\\n    }\\n\\n    modifier onlyAdmin() {\\n        require(msg.sender == _admin, \\\"only admin allowed\\\");\\n        _;\\n    }\\n}\\n\",\"keccak256\":\"0x21ddf217d83b4c1b8c3fa7240ff1d1fcedb902003a65d455d2101b95f40f6db8\"}},\"version\":1}",
+  "bytecode": "0x60a060405234801561001057600080fd5b50604051610fee380380610fee83398101604081905261002f91610064565b600080546001600160a01b0319166001600160a01b039290921691909117905560601b6001600160601b0319166080526100b5565b60008060408385031215610076578182fd5b82516100818161009d565b60208401519092506100928161009d565b809150509250929050565b6001600160a01b03811681146100b257600080fd5b50565b60805160601c610f1c6100d2600039806103e85250610f1c6000f3fe608060405234801561001057600080fd5b50600436106100885760003560e01c80638f2839701161005b5780638f28397014610101578063b07fdd1f14610114578063f366751714610127578063fca3b5aa1461012f57610088565b80631b74ea651461008d5780636e9960c3146100a25780637a528ea5146100c05780638cc48b1c146100e1575b600080fd5b6100a061009b366004610a4c565b610142565b005b6100aa6102a3565b6040516100b79190610b8a565b60405180910390f35b6100d36100ce366004610981565b6102b2565b6040516100b7929190610c02565b6100f46100ef3660046109e3565b6103b5565b6040516100b79190610bb8565b6100a061010f3660046108b3565b6104a1565b6100a0610122366004610999565b61054c565b6100aa61066f565b6100a061013d3660046108b3565b61067e565b6001546001600160a01b031633146101755760405162461bcd60e51b815260040161016c90610d5c565b60405180910390fd5b828111156101955760405162461bcd60e51b815260040161016c90610cee565b6040805160608101825282850367ffffffffffffffff81811683528781166020808501918252600185870190815260008c81526002909252958120945185549251965167ffffffffffffffff19909316908416177fffffffffffffffffffffffffffffffff0000000000000000ffffffffffffffff166801000000000000000096841696909602959095177fffffffffffffffff0000000000000000ffffffffffffffffffffffffffffffff16600160801b91909216021790915590610259610738565b905085877fafece0d710ade702a82d755ffd5b7a46d2705b9845a3be706736bb8aab7cde13898787866040516102929493929190610d93565b60405180910390a350505050505050565b6000546001600160a01b031690565b6000806102bd610839565b506000838152600260209081526040918290208251606081018452905467ffffffffffffffff8082168352680100000000000000008204811693830193909352600160801b9004909116918101829052901561032c57602001516001925067ffffffffffffffff1690506103b0565b6b8000000000000000000000008416156103a7576002600061034d8661073f565b815260208082019290925260409081016000208151606081018352905467ffffffffffffffff80821683526801000000000000000082048116948301859052600160801b9091041691018190521515935091506103b09050565b50600091508190505b915091565b6040517f8cc48b1c0000000000000000000000000000000000000000000000000000000081526060906001600160a01b037f00000000000000000000000000000000000000000000000000000000000000001690638cc48b1c906104259089908990899089908990600401610dc8565b60006040518083038186803b15801561043d57600080fd5b505afa158015610451573d6000803e3d6000fd5b505050506040513d6000823e601f3d9081017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe016820160405261049791908101906108e1565b9695505050505050565b6000546001600160a01b031633146104cb5760405162461bcd60e51b815260040161016c90610d25565b6000546040517f7e644d79422f17c01e4894b5f4f588d331ebfa28653d42ae832dc59e38c9798f9161050a916001600160a01b03909116908490610b9e565b60405180910390a1600080547fffffffffffffffffffffffff0000000000000000000000000000000000000000166001600160a01b0392909216919091179055565b6001546001600160a01b031633146105765760405162461bcd60e51b815260040161016c90610d5c565b6b80000000000000000000000083166105a15760405162461bcd60e51b815260040161016c90610c12565b806105be5760405162461bcd60e51b815260040161016c90610cb7565b6000806105ca85610764565b9092509050828210156105ef5760405162461bcd60e51b815260040161016c90610cee565b6000858152600260205260408120805467ffffffffffffffff9486900394851667ffffffffffffffff19909116179055610627610738565b9050857f2bf412519a9530b3eb1f35f50a9ea1aa482bec60101aa3ddfe7c46539500ba638387878560405161065f9493929190610d93565b60405180910390a2505050505050565b6001546001600160a01b031690565b6000546001600160a01b031633146106a85760405162461bcd60e51b815260040161016c90610c80565b6001546001600160a01b03828116911614156106d65760405162461bcd60e51b815260040161016c90610c49565b600180547fffffffffffffffffffffffff0000000000000000000000000000000000000000166001600160a01b0383169081179091556040517f21ffb9a0b86ae3fac1c74b9687a1f60074ca118d66f641fb58ec34d8611dc24c90600090a250565b6001430190565b7fffffffffffffffffffffffffffffffffffffffff000000007fffffffffffffff1690565b60008161076f610839565b506000838152600260209081526040918290208251606081018452905467ffffffffffffffff8082168352680100000000000000008204811693830193909352600160801b900490911691810182905290156107d7575167ffffffffffffffff1691506103b0565b6107e08461073f565b6000818152600260209081526040918290208251606081018452905467ffffffffffffffff808216808452680100000000000000008304821694840194909452600160801b909104169201919091529350915050915091565b604080516060810182526000808252602082018190529181019190915290565b60008083601f84011261086a578182fd5b50813567ffffffffffffffff811115610881578182fd5b602083019150836020808302850101111561089b57600080fd5b9250929050565b80516108ad81610ed1565b92915050565b6000602082840312156108c4578081fd5b81356001600160a01b03811681146108da578182fd5b9392505050565b600060208083850312156108f3578182fd5b825167ffffffffffffffff811115610909578283fd5b80840185601f82011261091a578384fd5b8051915061092f61092a83610eb1565b610e8a565b828152838101908285018585028401860189101561094b578687fd5b8693505b848410156109755761096189826108a2565b83526001939093019291850191850161094f565b50979650505050505050565b600060208284031215610992578081fd5b5035919050565b6000806000604084860312156109ad578182fd5b83359250602084013567ffffffffffffffff8111156109ca578283fd5b6109d686828701610859565b9497909650939450505050565b6000806000806000608086880312156109fa578081fd5b8535945060208601359350604086013567ffffffffffffffff811115610a1e578182fd5b610a2a88828901610859565b9094509250506060860135610a3e81610ed1565b809150509295509295909350565b600080600080600060808688031215610a63578081fd5b853594506020860135935060408601359250606086013567ffffffffffffffff811115610a8e578182fd5b610a9a88828901610859565b969995985093965092949392505050565b60008284527f07ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff831115610adc578081fd5b6020830280836020870137939093016020019283525090919050565b600081357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe1833603018112610b2b578182fd5b820180359067ffffffffffffffff821115610b44578283fd5b602082023603841315610b55578283fd5b60408552610b6a604086018360208401610aab565b6020850135602087015280935050505092915050565b63ffffffff169052565b6001600160a01b0391909116815260200190565b6001600160a01b0392831681529116602082015260400190565b6020808252825182820181905260009190848201906040850190845b81811015610bf657835163ffffffff1683529284019291840191600101610bd4565b50909695505050505050565b9115158252602082015260400190565b6020808252600f908201527f494e56414c49445f4e4f545f4e46540000000000000000000000000000000000604082015260600190565b6020808252601f908201527f494e56414c49445f4d494e5445525f53414d455f414c52454144595f53455400604082015260600190565b60208082526014908201527f4e4f545f415554484f52495a45445f41444d494e000000000000000000000000604082015260600190565b6020808252600e908201527f494e56414c49445f47454d535f30000000000000000000000000000000000000604082015260600190565b60208082526015908201527f494e56414c49445f47454d535f544f4f5f4d414e590000000000000000000000604082015260600190565b6020808252601b908201527f6f6e6c792061646d696e2063616e206368616e67652061646d696e0000000000604082015260600190565b60208082526015908201527f4e4f545f415554484f52495a45445f4d494e5445520000000000000000000000604082015260600190565b600085825260606020830152610dad606083018587610aab565b905067ffffffffffffffff8316604083015295945050505050565b60006080820187835260208781850152608060408501528186835260a08501905060a0828802860101925087845b88811015610e75577fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff6087860301835281357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc18b3603018112610e56578687fd5b610e62868c8301610af8565b9550509183019190830190600101610df6565b50505050809150506104976060830184610b80565b60405181810167ffffffffffffffff81118282101715610ea957600080fd5b604052919050565b600067ffffffffffffffff821115610ec7578081fd5b5060209081020190565b63ffffffff81168114610ee357600080fd5b5056fea2646970667358221220f34b2340e69536de8227cad078c8193ffc44d0ae40ba3d1ced87edc4490ae2b064736f6c63430006050033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100885760003560e01c80638f2839701161005b5780638f28397014610101578063b07fdd1f14610114578063f366751714610127578063fca3b5aa1461012f57610088565b80631b74ea651461008d5780636e9960c3146100a25780637a528ea5146100c05780638cc48b1c146100e1575b600080fd5b6100a061009b366004610a4c565b610142565b005b6100aa6102a3565b6040516100b79190610b8a565b60405180910390f35b6100d36100ce366004610981565b6102b2565b6040516100b7929190610c02565b6100f46100ef3660046109e3565b6103b5565b6040516100b79190610bb8565b6100a061010f3660046108b3565b6104a1565b6100a0610122366004610999565b61054c565b6100aa61066f565b6100a061013d3660046108b3565b61067e565b6001546001600160a01b031633146101755760405162461bcd60e51b815260040161016c90610d5c565b60405180910390fd5b828111156101955760405162461bcd60e51b815260040161016c90610cee565b6040805160608101825282850367ffffffffffffffff81811683528781166020808501918252600185870190815260008c81526002909252958120945185549251965167ffffffffffffffff19909316908416177fffffffffffffffffffffffffffffffff0000000000000000ffffffffffffffff166801000000000000000096841696909602959095177fffffffffffffffff0000000000000000ffffffffffffffffffffffffffffffff16600160801b91909216021790915590610259610738565b905085877fafece0d710ade702a82d755ffd5b7a46d2705b9845a3be706736bb8aab7cde13898787866040516102929493929190610d93565b60405180910390a350505050505050565b6000546001600160a01b031690565b6000806102bd610839565b506000838152600260209081526040918290208251606081018452905467ffffffffffffffff8082168352680100000000000000008204811693830193909352600160801b9004909116918101829052901561032c57602001516001925067ffffffffffffffff1690506103b0565b6b8000000000000000000000008416156103a7576002600061034d8661073f565b815260208082019290925260409081016000208151606081018352905467ffffffffffffffff80821683526801000000000000000082048116948301859052600160801b9091041691018190521515935091506103b09050565b50600091508190505b915091565b6040517f8cc48b1c0000000000000000000000000000000000000000000000000000000081526060906001600160a01b037f00000000000000000000000000000000000000000000000000000000000000001690638cc48b1c906104259089908990899089908990600401610dc8565b60006040518083038186803b15801561043d57600080fd5b505afa158015610451573d6000803e3d6000fd5b505050506040513d6000823e601f3d9081017fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe016820160405261049791908101906108e1565b9695505050505050565b6000546001600160a01b031633146104cb5760405162461bcd60e51b815260040161016c90610d25565b6000546040517f7e644d79422f17c01e4894b5f4f588d331ebfa28653d42ae832dc59e38c9798f9161050a916001600160a01b03909116908490610b9e565b60405180910390a1600080547fffffffffffffffffffffffff0000000000000000000000000000000000000000166001600160a01b0392909216919091179055565b6001546001600160a01b031633146105765760405162461bcd60e51b815260040161016c90610d5c565b6b80000000000000000000000083166105a15760405162461bcd60e51b815260040161016c90610c12565b806105be5760405162461bcd60e51b815260040161016c90610cb7565b6000806105ca85610764565b9092509050828210156105ef5760405162461bcd60e51b815260040161016c90610cee565b6000858152600260205260408120805467ffffffffffffffff9486900394851667ffffffffffffffff19909116179055610627610738565b9050857f2bf412519a9530b3eb1f35f50a9ea1aa482bec60101aa3ddfe7c46539500ba638387878560405161065f9493929190610d93565b60405180910390a2505050505050565b6001546001600160a01b031690565b6000546001600160a01b031633146106a85760405162461bcd60e51b815260040161016c90610c80565b6001546001600160a01b03828116911614156106d65760405162461bcd60e51b815260040161016c90610c49565b600180547fffffffffffffffffffffffff0000000000000000000000000000000000000000166001600160a01b0383169081179091556040517f21ffb9a0b86ae3fac1c74b9687a1f60074ca118d66f641fb58ec34d8611dc24c90600090a250565b6001430190565b7fffffffffffffffffffffffffffffffffffffffff000000007fffffffffffffff1690565b60008161076f610839565b506000838152600260209081526040918290208251606081018452905467ffffffffffffffff8082168352680100000000000000008204811693830193909352600160801b900490911691810182905290156107d7575167ffffffffffffffff1691506103b0565b6107e08461073f565b6000818152600260209081526040918290208251606081018452905467ffffffffffffffff808216808452680100000000000000008304821694840194909452600160801b909104169201919091529350915050915091565b604080516060810182526000808252602082018190529181019190915290565b60008083601f84011261086a578182fd5b50813567ffffffffffffffff811115610881578182fd5b602083019150836020808302850101111561089b57600080fd5b9250929050565b80516108ad81610ed1565b92915050565b6000602082840312156108c4578081fd5b81356001600160a01b03811681146108da578182fd5b9392505050565b600060208083850312156108f3578182fd5b825167ffffffffffffffff811115610909578283fd5b80840185601f82011261091a578384fd5b8051915061092f61092a83610eb1565b610e8a565b828152838101908285018585028401860189101561094b578687fd5b8693505b848410156109755761096189826108a2565b83526001939093019291850191850161094f565b50979650505050505050565b600060208284031215610992578081fd5b5035919050565b6000806000604084860312156109ad578182fd5b83359250602084013567ffffffffffffffff8111156109ca578283fd5b6109d686828701610859565b9497909650939450505050565b6000806000806000608086880312156109fa578081fd5b8535945060208601359350604086013567ffffffffffffffff811115610a1e578182fd5b610a2a88828901610859565b9094509250506060860135610a3e81610ed1565b809150509295509295909350565b600080600080600060808688031215610a63578081fd5b853594506020860135935060408601359250606086013567ffffffffffffffff811115610a8e578182fd5b610a9a88828901610859565b969995985093965092949392505050565b60008284527f07ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff831115610adc578081fd5b6020830280836020870137939093016020019283525090919050565b600081357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe1833603018112610b2b578182fd5b820180359067ffffffffffffffff821115610b44578283fd5b602082023603841315610b55578283fd5b60408552610b6a604086018360208401610aab565b6020850135602087015280935050505092915050565b63ffffffff169052565b6001600160a01b0391909116815260200190565b6001600160a01b0392831681529116602082015260400190565b6020808252825182820181905260009190848201906040850190845b81811015610bf657835163ffffffff1683529284019291840191600101610bd4565b50909695505050505050565b9115158252602082015260400190565b6020808252600f908201527f494e56414c49445f4e4f545f4e46540000000000000000000000000000000000604082015260600190565b6020808252601f908201527f494e56414c49445f4d494e5445525f53414d455f414c52454144595f53455400604082015260600190565b60208082526014908201527f4e4f545f415554484f52495a45445f41444d494e000000000000000000000000604082015260600190565b6020808252600e908201527f494e56414c49445f47454d535f30000000000000000000000000000000000000604082015260600190565b60208082526015908201527f494e56414c49445f47454d535f544f4f5f4d414e590000000000000000000000604082015260600190565b6020808252601b908201527f6f6e6c792061646d696e2063616e206368616e67652061646d696e0000000000604082015260600190565b60208082526015908201527f4e4f545f415554484f52495a45445f4d494e5445520000000000000000000000604082015260600190565b600085825260606020830152610dad606083018587610aab565b905067ffffffffffffffff8316604083015295945050505050565b60006080820187835260208781850152608060408501528186835260a08501905060a0828802860101925087845b88811015610e75577fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff6087860301835281357fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc18b3603018112610e56578687fd5b610e62868c8301610af8565b9550509183019190830190600101610df6565b50505050809150506104976060830184610b80565b60405181810167ffffffffffffffff81118282101715610ea957600080fd5b604052919050565b600067ffffffffffffffff821115610ec7578081fd5b5060209081020190565b63ffffffff81168114610ee357600080fd5b5056fea2646970667358221220f34b2340e69536de8227cad078c8193ffc44d0ae40ba3d1ced87edc4490ae2b064736f6c63430006050033",
+  "devdoc": {
+    "methods": {
+      "changeAdmin(address)": {
+        "details": "change the administrator to be `newAdmin`.",
+        "params": {
+          "newAdmin": "address of the new administrator."
+        }
+      },
+      "getAdmin()": {
+        "details": "gives the current administrator of this contract.",
+        "returns": {
+          "_0": "the current administrator of this contract."
+        }
+      },
+      "getMinter()": {
+        "details": "return the current minter"
+      },
+      "setMinter(address)": {
+        "details": "Set the Minter that will be the only address able to create Estate",
+        "params": {
+          "minter": "address of the minter"
+        }
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {}
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 12779,
+        "contract": "src/solc_0.6/CatalystRegistry.sol:CatalystRegistry",
+        "label": "_admin",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 6684,
+        "contract": "src/solc_0.6/CatalystRegistry.sol:CatalystRegistry",
+        "label": "_minter",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_address"
+      },
+      {
+        "astId": 6690,
+        "contract": "src/solc_0.6/CatalystRegistry.sol:CatalystRegistry",
+        "label": "_catalysts",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_mapping(t_uint256,t_struct(CatalystStored)6682_storage)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_uint256,t_struct(CatalystStored)6682_storage)": {
+        "encoding": "mapping",
+        "key": "t_uint256",
+        "label": "mapping(uint256 => struct CatalystRegistry.CatalystStored)",
+        "numberOfBytes": "32",
+        "value": "t_struct(CatalystStored)6682_storage"
+      },
+      "t_struct(CatalystStored)6682_storage": {
+        "encoding": "inplace",
+        "label": "struct CatalystRegistry.CatalystStored",
+        "members": [
+          {
+            "astId": 6677,
+            "contract": "src/solc_0.6/CatalystRegistry.sol:CatalystRegistry",
+            "label": "emptySockets",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint64"
+          },
+          {
+            "astId": 6679,
+            "contract": "src/solc_0.6/CatalystRegistry.sol:CatalystRegistry",
+            "label": "catalystId",
+            "offset": 8,
+            "slot": "0",
+            "type": "t_uint64"
+          },
+          {
+            "astId": 6681,
+            "contract": "src/solc_0.6/CatalystRegistry.sol:CatalystRegistry",
+            "label": "set",
+            "offset": 16,
+            "slot": "0",
+            "type": "t_uint64"
+          }
+        ],
+        "numberOfBytes": "32"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      },
+      "t_uint64": {
+        "encoding": "inplace",
+        "label": "uint64",
+        "numberOfBytes": "8"
+      }
+    }
+  }
+}

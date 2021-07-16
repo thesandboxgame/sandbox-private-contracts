@@ -1,4 +1,5 @@
 import {DeployFunction} from 'hardhat-deploy/types';
+import {skipUnlessTest} from '../../utils/network';
 
 const func: DeployFunction = async function (hre) {
   const {deployments, getNamedAccounts} = hre;
@@ -6,15 +7,7 @@ const func: DeployFunction = async function (hre) {
 
   const {gameTokenAdmin} = await getNamedAccounts();
 
-  const childGameToken = await deployments.getOrNull('ChildGameToken');
-  if (!childGameToken) {
-    return;
-  }
-
-  const gameMinter = await deployments.getOrNull('GameMinter');
-  if (!gameMinter) {
-    return;
-  }
+  const gameMinter = await deployments.get('GameMinter');
 
   const currentMinter = await read('ChildGameToken', 'getMinter');
   const isMinter = currentMinter == gameMinter.address;
@@ -31,5 +24,6 @@ const func: DeployFunction = async function (hre) {
 export default func;
 func.runAtTheEnd = true;
 func.tags = ['ChildGameToken', 'ChildGameToken_setup'];
-func.dependencies = ['ChildGameToken_deploy, GameMinter_deploy'];
+func.dependencies = ['ChildGameToken_deploy', 'GameMinter_deploy'];
 // TODO: Setup deploy-polygon folder and network.
+func.skip = skipUnlessTest; // TODO enable

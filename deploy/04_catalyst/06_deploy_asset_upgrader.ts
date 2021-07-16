@@ -34,8 +34,8 @@ export default func;
 func.tags = ['AssetUpgrader', 'AssetUpgrader_deploy'];
 func.dependencies = [
   'AssetAttributesRegistry_deploy',
-  'Sand_Deploy',
-  'Asset_Deploy',
+  'Sand_deploy',
+  'Asset_deploy',
   'GemsCatalystsRegistry_deploy',
 ];
 func.skip = skipUnlessTest; // disabled for now

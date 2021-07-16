@@ -11,7 +11,7 @@ const erc721Tests = require('../erc721')(
   async () => {
     const others = await getUnnamedAccounts();
     const {assetBouncerAdmin} = await getNamedAccounts();
-    await deployments.fixture();
+    await deployments.fixture('Asset');
     const minter = others[0];
     const asset = await ethers.getContract('Asset');
     const assetAsMinter = await asset.connect(

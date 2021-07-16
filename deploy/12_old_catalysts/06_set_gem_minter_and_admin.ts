@@ -67,4 +67,5 @@ export default func;
 func.tags = ['OldGems'];
 func.dependencies = ['OldGems_deploy'];
 func.runAtTheEnd = true;
+// comment to deploy old system
 func.skip = skipUnlessTest; // not meant to be redeployed

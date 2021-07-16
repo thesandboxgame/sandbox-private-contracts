@@ -8,15 +8,15 @@ const func: DeployFunction = async function (hre) {
 
   const {deployer, catalystMinterAdmin} = await getNamedAccounts();
 
-  const registry = await deployments.get('CatalystRegistry');
+  const registry = await deployments.get('OldCatalystRegistry');
   const sand = await deployments.get('Sand');
   const asset = await deployments.get('Asset');
-  const gem = await deployments.get('Gem');
-  const catalyst = await deployments.get('Catalyst');
+  const gem = await deployments.get('OldGems');
+  const catalyst = await deployments.get('OldCatalysts');
 
   const bakedMintData = [];
   for (let i = 0; i < 4; i++) {
-    const mintData = await read('Catalyst', 'getMintData', i);
+    const mintData = await read('OldCatalysts', 'getMintData', i);
     const maxGems = BigNumber.from(mintData.maxGems).mul(
       BigNumber.from(2).pow(240)
     );
@@ -38,8 +38,8 @@ const func: DeployFunction = async function (hre) {
     bakedMintData.push(bakedData);
   }
 
-  const catalystMinter = await deploy('CatalystMinter', {
-    contract: 'CatalystMinter',
+  const catalystMinter = await deploy('ObsoleteCatalystMinter', {
+    contract: 'ObsoleteCatalystMinter',
     from: deployer,
     log: true,
     skipIfAlreadyDeployed: true,
@@ -73,13 +73,13 @@ const func: DeployFunction = async function (hre) {
   }
 
   // disabled as we now use the one wtitout limit
-  // const currentMinter = await read('CatalystRegistry', 'getMinter');
+  // const currentMinter = await read('OldCatalystRegistry', 'getMinter');
   // if (currentMinter.toLowerCase() != catalystMinter.address.toLowerCase()) {
   //   console.log('setting CatalystMinter as CatalystRegistry minter');
-  //   const currentRegistryAdmin = await read('CatalystRegistry', 'getAdmin');
+  //   const currentRegistryAdmin = await read('OldCatalystRegistry', 'getAdmin');
   //   await catchUnknownSigner(
   //     execute(
-  //       'CatalystRegistry',
+  //       'OldCatalystRegistry',
   //       {from: currentRegistryAdmin, log: true},
   //       'setMinter',
   //       catalystMinter.address
@@ -111,17 +111,21 @@ const func: DeployFunction = async function (hre) {
   }
 
   await setSuperOperatorFor('Sand', catalystMinter.address);
-  await setSuperOperatorFor('Gem', catalystMinter.address);
+  await setSuperOperatorFor('OldGems', catalystMinter.address);
   await setSuperOperatorFor('Asset', catalystMinter.address);
-  await setSuperOperatorFor(`Catalyst`, catalystMinter.address);
+  await setSuperOperatorFor('OldCatalysts', catalystMinter.address);
 };
 export default func;
-func.tags = ['CatalystMinter', 'CatalystMinter_setup', 'CatalystMinter_deploy'];
+func.tags = [
+  'ObsoleteCatalystMinter',
+  'ObsoleteCatalystMinter_setup',
+  'ObsoleteCatalystMinter_deploy',
+];
 func.dependencies = [
   'Sand_deploy',
   'Asset_deploy',
-  // 'Gems_deploy', // old Gem is assumed to be deployed
-  // 'Catalysts_deploy', // old Catalyst is assumed to be deployed
-  // 'CatalystRegistry_deploy', // old CatalystRegistry is assumed to be deployed
+  'OldGems_deploy', // old Gem is assumed to be deployed
+  'OldCatalysts_deploy', // old Catalyst is assumed to be deployed
+  'OldCatalystRegistry_deploy', // old CatalystRegistry is assumed to be deployed
 ];
-func.skip = async (hre) => hre.network.name === 'hardhat'; // skip running in test as this is not to be used, require putting the whole Gem/Catalyst deployment back
+func.skip = async () => true; // skip running as this is not to be used, require putting the whole Gem/Catalyst deployment back
