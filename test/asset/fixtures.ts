@@ -35,15 +35,21 @@ export const setupAsset = deployments.createFixture(async function () {
     TRUSTED_FORWARDER.address
   );
 
+  // Set predicate Asset
+  try {
+    await waitFor(predicate.setAsset(Asset.address));
+  } catch (e) {
+    console.log(e);
+  }
+
   let id = 0;
   const ipfsHashString =
     '0x78b9f42c22c3c8b260b781578da3151e8200c741c6b7437bafaff5a9df9b403e';
 
-  async function mintAsset(to: string, value: number) {
+  async function mintAsset(to: string, value: number, hash = ipfsHashString) {
     // Asset to be minted
     const creator = to;
     const packId = ++id;
-    const hash = ipfsHashString;
     const supply = value;
     const rarity = 0;
     const owner = to;
@@ -67,12 +73,40 @@ export const setupAsset = deployments.createFixture(async function () {
     return event.args?.id;
   }
 
+  async function mintMultiple(
+    to: string,
+    supplies: number[],
+    hash = ipfsHashString
+  ): Promise<number[]> {
+    const creator = to;
+    const packId = ++id;
+    const rarity = 0;
+    const owner = to;
+    const data = '0x';
+
+    const tx = await Asset.mintMultiple(
+      creator,
+      packId,
+      hash,
+      supplies,
+      rarity,
+      owner,
+      data
+    );
+    const receipt = await tx.wait();
+
+    return receipt.events.find(
+      (v: Event) => v.event === 'TransferBatch'
+    ).args[3];
+  }
+
   const users = await setupUsers(otherAccounts, {Asset});
 
   return {
     Asset,
     users,
     mintAsset,
+    mintMultiple,
     trustedForwarder,
     predicate,
   };

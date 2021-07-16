@@ -36,7 +36,7 @@ contract ERC1155ERC721 is WithSuperOperators, IERC1155, IERC721, ERC2771Handler 
     uint256 private constant NOT_IS_NFT = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7FFFFFFFFFFFFFFFFFFFFFFF;
     uint256 private constant NFT_INDEX = 0x00000000000000000000000000000000000000007FFFFFFF8000000000000000;
     uint256 private constant NOT_NFT_INDEX = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF800000007FFFFFFFFFFFFFFF;
-    uint256 private constant URI_ID = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000007FFFFFFFFFFFF800;
+    uint256 internal constant URI_ID = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000007FFFFFFFFFFFF800;
     uint256 private constant PACK_ID = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000007FFFFFFFFF800000;
     uint256 private constant PACK_INDEX = 0x00000000000000000000000000000000000000000000000000000000000007FF;
     uint256 private constant PACK_NUM_FT_TYPES = 0x00000000000000000000000000000000000000000000000000000000007FF800;
@@ -49,8 +49,8 @@ contract ERC1155ERC721 is WithSuperOperators, IERC1155, IERC721, ERC2771Handler 
     mapping(address => mapping(uint256 => uint256)) private _packedTokenBalance; // erc1155
     mapping(address => mapping(address => bool)) private _operatorsForAll; // erc721 and erc1155
     mapping(uint256 => address) private _erc721operators; // erc721
-    mapping(uint256 => bytes32) private _metadataHash; // erc721 and erc1155
-    mapping(uint256 => bytes) private _rarityPacks; // rarity configuration per packs (2 bits per Asset)
+    mapping(uint256 => bytes32) internal _metadataHash; // erc721 and erc1155
+    mapping(uint256 => bytes) internal _rarityPacks; // rarity configuration per packs (2 bits per Asset)
     mapping(uint256 => uint32) private _nextCollectionIndex; // extraction
 
     mapping(address => address) private _creatorship; // creatorship transfer
@@ -1101,9 +1101,9 @@ contract ERC1155ERC721 is WithSuperOperators, IERC1155, IERC721, ERC2771Handler 
         }
 
         bytes memory bstr = new bytes(len);
-        uint256 k = len - 1;
+        uint256 k = len;
         while (_i != 0) {
-            bstr[k--] = bytes1(uint8(48 + (_i % 10)));
+            bstr[--k] = bytes1(uint8(48 + uint8(_i % 10)));
             _i /= 10;
         }
 
